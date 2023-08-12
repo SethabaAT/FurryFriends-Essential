@@ -1,3 +1,9 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 body{
     background-color: #FFE6A7;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -46,8 +52,8 @@ button{
     display: flex;
     align-items:center;
     align-content:center;
-    width:100px
-    top:4.3%
+    width:100px;
+    top:4.3%;
 }  
 
 
@@ -89,4 +95,110 @@ h3{
     top:4.3%;
   }
   
+
+  /*tahbo*/
+  .cntnr{
+    max-width: 1100px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 0 30px;
+    
+  }
+
+  .cards .cntnr{
+      display: flex;
+      flex-direction: column;
+  }
+
+
   
+ .cntnr  h2{   
+    text-align: center;
+    
+    height: 20px;   
+  }
+
+  .small-container{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .card
+{
+    flex:1;
+    flex-basis: 23.0784%;
+    max-width: 400px;
+    max-height: 400px;
+    border-radius: 10px;
+    background: #d9d9d9;
+    margin: 20px 10px;
+    box-shadow:  0 3px 5px rgba(0,0,0,.6);
+    padding: 15px 20px;
+
+}
+
+.card .card-contents, .category .card-contents{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+ .card .card-contents a img{
+    max-width: 300px;
+    max-height: 300px;     
+     
+ } 
+
+
+ .category{    
+    border-radius: 50%;
+    width: 100px;
+   height: 250px;
+
+ }
+
+ .category .card-contents a {
+    text-decoration: none;
+    color: #2d2c2c;
+ }
+
+ .category .card-contents a h3{
+    text-align: center;
+ }
+
+ .category .card-contents a img{
+    
+    width: 150px;
+    height: 90%;
+    
+    /* border-radius: 100%; */
+    object-fit: cover;
+ }
+
+ .price{
+    font-size: large;
+    font-weight: 500;
+ }
+
+ .discount .price{
+    color: rgb(228, 48, 48);
+ }
+
+ .price .prev{
+    font-size: medium;
+    color:#504e4e;
+    margin-left: 5px;
+ }
+
+@media only screen and (max-width: 750px) {
+    .category{    
+        border-radius: 50%;
+       width: 40%;
+       height: 40%;
+    
+     }
+    
+}
