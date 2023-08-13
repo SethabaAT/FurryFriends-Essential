@@ -52,15 +52,10 @@ button{
     display: flex;
     align-items:center;
     align-content:center;
-<<<<<<< HEAD
+
     width:100px;
-    top:4.3%;
-
-   
-    
->>>>>>> v0.1
-}  
-
+ 
+}
 
 .container {
     display: flex;
@@ -101,7 +96,7 @@ h3{
     top:4.3%;
   }
   
-<<<<<<< HEAD
+
 
   /*tahbo*/
   .cntnr{
@@ -234,4 +229,4 @@ h3{
     color: brown;
     text-shadow: #FFC631 ;
     }
->>>>>>> v0.1
+
