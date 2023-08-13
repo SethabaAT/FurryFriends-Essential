@@ -1,9 +1,3 @@
-*{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
-
 body{
     background-color: #FFE6A7;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -18,7 +12,13 @@ header ul li{
     list-style-type: none;
    
 }
-
+.ul-logo img{
+    width:120px;
+    height:50px;
+}
+.ul-logo h4{
+    font-size:12px;
+}
 header ul li a{
     text-decoration: none;
    
@@ -52,6 +52,12 @@ button{
     display: flex;
     align-items:center;
     align-content:center;
+<<<<<<< Updated upstream
+=======
+    width:100px
+    
+}  
+>>>>>>> Stashed changes
 
     width:100px;
  
@@ -96,6 +102,7 @@ h3{
     top:4.3%;
   }
   
+<<<<<<< Updated upstream
 
 
   /*tahbo*/
@@ -143,36 +150,34 @@ h3{
 .card .card-contents, .category .card-contents{
     display: flex;
     flex-direction: column;
+=======
+  /* css code for login page*/
+  input{
+	height: 30px;
+	border-radius: 1rem;
+	padding-left:1rem;
+	}
+  .Back_LG{
+    display:block;
+    justify-content: center;
+>>>>>>> Stashed changes
     align-items: center;
-}
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 16px;
+    width: 300px;
+    height: 250px;
+    border-radius: 1rem;
+    padding:30px 5px 5px 25px; 
+    margin:  auto;
+    background-color: #D9D9D9;
+    } 
 
-
-
- .card .card-contents a img{
-    max-width: 300px;
-    max-height: 300px;     
-     
- } 
-
-
- .category{    
-    border-radius: 50%;
-    width: 100px;
-   height: 250px;
-
- }
-
- .category .card-contents a {
-    text-decoration: none;
-    color: #2d2c2c;
- }
-
- .category .card-contents a h3{
-    text-align: center;
- }
-
- .category .card-contents a img{
+    p a{
+    text-decoration:none ;
+    color: brown;
+    text-shadow: #FFC631 ;
+    } 
     
+<<<<<<< Updated upstream
     width: 150px;
     height: 90%;
     
@@ -230,3 +235,8 @@ h3{
     text-shadow: #FFC631 ;
     }
 
+=======
+    /* The Product's Page Css Code*/ 
+    /* Idea is  to have 5 for each pet and I need about 20 products */
+    /*Question is are we only selling food items or anyting related to pets?*/
+>>>>>>> Stashed changes
