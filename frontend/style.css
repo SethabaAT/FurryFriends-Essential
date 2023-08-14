@@ -1,3 +1,9 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 body{
     background-color: #FFE6A7;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -52,13 +58,6 @@ button{
     display: flex;
     align-items:center;
     align-content:center;
-<<<<<<< Updated upstream
-=======
-    width:100px
-    
-}  
->>>>>>> Stashed changes
-
     width:100px;
  
 }
@@ -102,7 +101,6 @@ h3{
     top:4.3%;
   }
   
-<<<<<<< Updated upstream
 
 
   /*tahbo*/
@@ -114,6 +112,11 @@ h3{
     
   }
 
+  .cards{
+    background-color: #D9D9D9;
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 16px;
+  }
   .cards .cntnr{
       display: flex;
       flex-direction: column;
@@ -142,6 +145,7 @@ h3{
     border-radius: 10px;
     background: #d9d9d9;
     margin: 20px 10px;
+    border: 4px solid #FFE6A7;
     box-shadow:  0 3px 5px rgba(0,0,0,.6);
     padding: 15px 20px;
 
@@ -150,36 +154,38 @@ h3{
 .card .card-contents, .category .card-contents{
     display: flex;
     flex-direction: column;
-=======
-  /* css code for login page*/
-  input{
-	height: 30px;
-	border-radius: 1rem;
-	padding-left:1rem;
-	}
-  .Back_LG{
-    display:block;
-    justify-content: center;
->>>>>>> Stashed changes
     align-items: center;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 16px;
-    width: 300px;
+    }
+
+
+
+ .card .card-contents a img{
+    max-width: 300px;
+    max-height: 200px;     
+     
+ } 
+
+
+ .category{    
+    border-radius: 50%;
+    width: 100px;
     height: 250px;
-    border-radius: 1rem;
-    padding:30px 5px 5px 25px; 
-    margin:  auto;
-    background-color: #D9D9D9;
+    
     } 
 
-    p a{
-    text-decoration:none ;
-    color: brown;
-    text-shadow: #FFC631 ;
+    .category .card-contents a {
+    text-decoration: none;
+    color: #2d2c2c;
+ }
+
+ .category .card-contents a h3{
+    text-align: center;
     } 
     
-<<<<<<< Updated upstream
+.category .card-contents a img{
+    
     width: 150px;
-    height: 90%;
+    height: 150px;
     
     /* border-radius: 100%; */
     object-fit: cover;
@@ -199,6 +205,37 @@ h3{
     color:#504e4e;
     margin-left: 5px;
  }
+
+footer{
+    margin-top: 50px;    
+}
+
+footer .cntnr .small-container{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.small-container .footer{
+    max-width: 320px;
+    box-shadow: none;
+    background-color: #FFE6A7;
+    line-height: 30px;
+   
+}
+
+.footer h4{
+    margin-bottom: 10px;
+}
+
+.icon{
+    color:#2d2c2c;
+    font-size: large;
+    margin-right: 5px;
+}
+
+.icon:hover{
+    color:  brown;
+}
 
 @media only screen and (max-width: 750px) {
     .category{    
@@ -235,8 +272,8 @@ h3{
     text-shadow: #FFC631 ;
     }
 
-=======
+    
+
     /* The Product's Page Css Code*/ 
     /* Idea is  to have 5 for each pet and I need about 20 products */
     /*Question is are we only selling food items or anyting related to pets?*/
->>>>>>> Stashed changes
