@@ -277,3 +277,55 @@ footer .cntnr .small-container{
     /* The Product's Page Css Code*/ 
     /* Idea is  to have 5 for each pet and I need about 20 products */
     /*Question is are we only selling food items or anyting related to pets?*/
+
+    /*sign-up*/
+   
+.sign-up{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 100px auto;
+        width: 400px;
+        height: 616px;
+        background: #D9D9D9;
+        border-radius: 1rem;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 16px;
+
+}
+
+.sign-up h1{
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-group label{
+    font-size: 16px;
+    font-weight: 600;
+    padding-bottom: 8px;
+}
+
+.form-group input{
+    outline: none;
+    border: 1px solid;
+    background: none;
+    border-radius: 4px;
+    width: 350px;
+    height: 44px;
+}
+
+.form-group input:focus{
+    background-color: #efeded;
+    border: 1px solid rgb(182, 182, 164);
+}
+
+button:hover{
+    background-color: #f0b930;
+}
