@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Styling/Register.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <title>Register Page</title>
+</head>
+<body>
+    <!--The nav bar-->
+    <nav class="navbar">
+        
+        <div class="navbar-logo">
+            <img src="images/display/Logo.png" alt="Logo">
+            <a href="index.html" class="navbar-name"><span class="navbar-name">FurryFriends Essential</span></a>
+        </div>
+
+        <div class="navbar-search">
+            <input type="text" placeholder="Search">
+        </div>
+        <div class="navbar-links">
+            <a href="index.html">Home</a>
+            <a href="#">About</a>
+            <a href="#">Content</a>
+        </div>
+        <a href="">
+            <div class="cart">
+                <!--Shopping Cart-->
+                <i class="bi bi-cart2"></i>
+                <div class="cartAmount" id="cartAmount">0</div>
+            </div>
+        </a>
+    </nav>
+
+    <!--The form-->
+    <div class="registration-container">
+        <h1>Register</h1>
+        <form action="/register" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required> <!-- Change name="name" to name="username" -->
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+            
+            <button type="submit">Register</button>
+        </form>
+        
+        <p>Already have an account? <a href="login.html">Log in</a></p>
+    </div>
+</body>
+</html>

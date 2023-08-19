@@ -1,0 +1,179 @@
+body{
+    background-color: #FFE6A7;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+* !Stying the navBar
+*/
+
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo img {
+    width: 80px;
+    height: 75px;
+    margin-right: 10px;
+}
+
+.navbar-name {
+    font-size: 25px;
+    text-decoration: none;
+    color: white;
+}
+
+.navbar-search input {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    width: 300px;
+    font-size: 25px;
+}
+
+.navbar-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+.navbar-links a:hover {
+    text-decoration: underline;
+}
+
+.cart{
+    background-color: white;
+    color: #073b4c;
+    padding: 5px;
+    font-size: 30px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.cartAmount{
+    position: absolute;
+    top:-15px;
+    right:-10px;
+    font-size: 18px;
+    background-color: red;
+    color: #fff;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 16px;
+    width: 100%;
+    border-radius: 1rem;
+    margin: 2rem auto;
+    background-color: #D9D9D9;
+}
+#Right {
+    width: 40%;
+    float: right;
+}
+#Left {
+    width: 40%;
+    float: left;
+    text-align: left;
+}
+h3{
+    font-size: 2rem;
+} 
+.search-bar form {
+    display: flex; 
+    padding-bottom: 100px; 
+  }
+  
+  .search-bar input[type="text"] {
+    width: 250px; 
+    height: 30px;
+    font-size: 13px; 
+    border: 1px solid #ccc; 
+    border-radius: 15px;
+    margin-bottom: 20px;
+    position:absolute;
+    padding: 5px 5px 5px 25px;
+    top:4.3%;
+  }
+  
+  /* css code for login page*/
+
+  .Login-container{
+    width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+  }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button {
+        padding: 10px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+
+    
+    p {
+        text-align: center;
+        margin-top: 10px;
+    }
+    
+    a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+    }
+    
+    a:hover {
+        text-decoration: underline;
+    }
+
+    
+    
