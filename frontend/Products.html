@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" type = "text/css"  href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"> 
+    <!-- Had to put my css here so i dont alter what you've done -->
+    <style>
+        .product-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .product {
+            text-align: center;
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+
+        <ul class="ul-logo"> 
+          <h4>Ferry Friends</h4> 
+          <img src="images/display/Logo.png"  alt="Image shows the Ferry Friends Logo"/>
+        </ul>
+
+        <div class="search-bar">
+            <form action="/search" method="get">
+                <input type="text" name="q" placeholder="Search">   
+            </form>
+        </div>
+
+        <ul class="myNav">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Content</a></li>
+            <li><a href="#">Cart</a></li>
+            <li><a href="#"><button>Sign In</button></a></li>
+        </ul> 
+
+        
+    </header>  
+    
+
+    <h1>Product Gallery</h1>
+
+    <div class="product-gallery">
+        <div class="product">
+            <img src="https://th.bing.com/th/id/R.b508f80e9b7885939fc4a09d6158a953?rik=yUwZbSPLTfP%2bRQ&pid=ImgRaw&r=0" alt="Product 1">
+            <h2>Product 1</h2>
+            <p>No need to heat up , its all served and ready</p>
+        </div>
+
+        <div class="product">
+		<img src="https://th.bing.com/th/id/OIP.t0QcEIpczDtGN2cCHDIqjQHaLX?w=131&h=200&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="Product 4">
+            <h2>Product 2</h2>
+            <p>Targets the paws , promotes blood circulation</p>
+        </div>
+
+        <div class="product">
+            <img src="https://th.bing.com/th/id/OIP.hMXL5TKmcsfefBpj8KfmJAHaHa?w=213&h=213&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="Product 3">
+            <h2>Product 3</h2>
+            <p>Product description goes here...</p>
+        </div>
+
+        <div class="product">
+            <img src="https://th.bing.com/th/id/OIP.nn0RDV04CybKWuG3K0MxBgHaFj?w=235&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="Product 4">
+            <h2>Product 4</h2>
+            <p>Product description goes here...</p>
+        </div>
+		
+		<div class="product">
+            <img src="https://th.bing.com/th/id/OIP.nn0RDV04CybKWuG3K0MxBgHaFj?w=235&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="Product 4">
+            <h2>Product 4</h2>
+            <p>Product description goes here...</p>
+        </div>
+		
+		<div class="product">
+            <img src="https://th.bing.com/th/id/OIP.nn0RDV04CybKWuG3K0MxBgHaFj?w=235&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="Product 4">
+            <h2>Product 4</h2>
+            <p>Product description goes here...</p>
+        </div> 
+		
+		<div class="product">
+            <img src="https://th.bing.com/th/id/OIP.nn0RDV04CybKWuG3K0MxBgHaFj?w=235&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="Product 4">
+            <h2>Product 4</h2>
+            <p>Product description goes here...</p>
+        </div> 
+		
+		<div class="product">
+            <img src="https://th.bing.com/th/id/OIP.nn0RDV04CybKWuG3K0MxBgHaFj?w=235&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="Product 4">
+            <h2>Product 4</h2>
+            <p>Product description goes here...</p>
+        </div>
+
+        
+    </div>
+        
+    
+    <!-- add footer -->
+    <footer>
+        <div class="cntnr">
+            <div class="small-container">
+                <div class="card footer">
+                    <h4>Company Info</h4>
+                    <p><a href="">About Us</a></p>
+                    <p><a href="">FAQs</a></p>
+                    <p><a href="">Delivery Costs</a></p>
+                    <p><a href="">Return Policy</a></p>
+                    <p><a href="">Privacy Policy</a></p>
+                </div>
+                <div class="card footer">
+                    <h4>Contact Info</h4>
+                    <p><a href="mailto:support@ffEssentials.com">support@ffEssentials.com</a></p>
+                    <p>WhatsApp: (+27)71 234 5678</p>
+                    <p>Phone: (+27)87 111 2200</p>
+                    <a href=""><i class="fa-brands fa-facebook icon"></i></a>
+                    <a href=""><i class="fa-brands fa-instagram icon"></i></a>
+                    <a href=""><i class="fa-brands fa-twitter icon"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    
+</body>
+</html>
