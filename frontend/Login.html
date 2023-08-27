@@ -3,41 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | FurryFriends-Essential</title> 
     <link rel="stylesheet" type = "text/css"  href="style.css">
-    <title>Login Page</title>
-
-    <header>
-
-        <ul class="ul-logo"> 
-          <h4>Ferry Friends</h4> 
-          <img src="C:\Users\Tracy\Documents\GitHub\FurryFriends-Essential\frontend\images\display\Logo.png"  alt="Image shows the Ferry Friends Logo"/>
-        </ul>
-
-        <div class="search-bar">
-            <form action="/search" method="get">
-                <input type="text" name="q" placeholder="Search">   
-            </form>
-        </div>
-
-        <ul class="myNav">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Content</a></li>
-            <li><a href="#"><button>Sign In</button></a></li>
-        </ul> 
-
-        
-    </header>   
 </head>
 <body>
-    <div class="Back_LG"> 
-        <input type = "text" placeholder="Username" name="email">
-        <br></br>
-        <input type = "text" placeholder="Email Address" name="email">
-        <br></br>
-        <button>Login</button>
-        <br></br>
-        <p><b><a href="#">Create New Account</a></b></p>
+    <header>
+        <ul class="ul-logo"> 
+          <h4>Ferry Friends</h4> 
+          <img src="images/display/Logo.png"/>
+        </ul>       
+
+        <ul class="myNav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Content</a></li>
+            <li><a href="#">Cart</a></li>
+            <li><a href="Login.html"><button>Sign In</button></a></li>
+        </ul> 
+
+    </header> 
+    
+    <div class="cntnr signup">
+        <div class="sign-up">
+            <h1 class="headingSignUp">Sign up</h1>
+            <form action="">
+                <div class="form-group">
+                    <label for="">User name</label>
+                    <input type="text" placeholder="Enter your User name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input type="email" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="signup-footer">
+                    <button class="signUpBtn" type="submit" id="submit_auth" value="Sign-In">Sign In</button>
+                </div>
+            </form>
+        </div>
     </div>
+
+
 </body>
 </html>

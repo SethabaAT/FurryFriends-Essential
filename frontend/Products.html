@@ -7,7 +7,7 @@
     <link rel="stylesheet" type = "text/css"  href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"> 
     <!-- Had to put my css here so i dont alter what you've done -->
-    <style>
+      <style>
         .product-gallery {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -16,11 +16,33 @@
 
         .product {
             text-align: center;
+			
         }
 
-        .product img {
+         .product img {
             max-width: 100%;
-            height: auto;
+            height: 200px; /* Set a fixed height for all images */
+            object-fit: cover; /* Maintain aspect ratio and cover container */
+        }
+
+        /* Adding a button with a box shadow */
+        .product-btn {
+        display: block;
+        margin: 10px auto 0;
+        padding: 10px 15px; /* Adjust padding for a narrower button */
+        max-width: 150px; /* Set a maximum width for the button */
+        background-color: #FFC631;
+        border: none;
+        border-radius: 4px;
+        color: #333;
+        text-decoration: none;
+        box-shadow: 0 4px 6px #D9D9D9;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+        .product-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
@@ -39,11 +61,11 @@
         </div>
 
         <ul class="myNav">
-            <li><a href="#">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Content</a></li>
             <li><a href="#">Cart</a></li>
-            <li><a href="#"><button>Sign In</button></a></li>
+            <li><a href="Login.html"><button>Sign In</button></a></li>
         </ul> 
 
         
@@ -52,58 +74,65 @@
 
     <h1>Product Gallery</h1>
 
-    <div class="product-gallery">
+   <div class="product-gallery">
         <div class="product">
             <img src="https://th.bing.com/th/id/R.b508f80e9b7885939fc4a09d6158a953?rik=yUwZbSPLTfP%2bRQ&pid=ImgRaw&r=0" alt="Product 1">
             <h2>Product 1</h2>
-            <p>No need to heat up , its all served and ready</p>
+            <p>No need to heat up, it's all served and ready</p>
+            
+            <a class="product-btn" href="./catalog.html">Add to cart</a>
         </div>
 
+       
         <div class="product">
-		<img src="https://th.bing.com/th/id/OIP.t0QcEIpczDtGN2cCHDIqjQHaLX?w=131&h=200&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="Product 4">
+            <img src="https://th.bing.com/th/id/OIP.t0QcEIpczDtGN2cCHDIqjQHaLX?w=131&h=200&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="Product 2">
             <h2>Product 2</h2>
-            <p>Targets the paws , promotes blood circulation</p>
+            <p>Targets the paws, promotes blood circulation</p>
+            <a class="product-btn" href="./catalog.html">Add to cart</a>
         </div>
-
-        <div class="product">
+<div class="product">
             <img src="https://th.bing.com/th/id/OIP.hMXL5TKmcsfefBpj8KfmJAHaHa?w=213&h=213&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="Product 3">
             <h2>Product 3</h2>
-            <p>Product description goes here...</p>
+            <p>Specially formulated for optimal health</p>
+			 <a class="product-btn" href="./catalog.html">Add to cart</a>
         </div>
 
         <div class="product">
             <img src="https://th.bing.com/th/id/OIP.nn0RDV04CybKWuG3K0MxBgHaFj?w=235&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="Product 4">
             <h2>Product 4</h2>
-            <p>Product description goes here...</p>
+            <p>Enhances coat shine and overall wellness</p>
+			 <a class="product-btn" href="./catalog.html">Add to cart</a>
         </div>
 		
 		<div class="product">
             <img src="https://th.bing.com/th/id/OIP.nn0RDV04CybKWuG3K0MxBgHaFj?w=235&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="Product 4">
             <h2>Product 4</h2>
-            <p>Product description goes here...</p>
+            <p>Delivers the goodness of natural ingredients.</p>
+			 <a class="product-btn" href="./catalog.html">Add to cart</a>
         </div>
 		
 		<div class="product">
             <img src="https://th.bing.com/th/id/OIP.nn0RDV04CybKWuG3K0MxBgHaFj?w=235&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="Product 4">
             <h2>Product 4</h2>
-            <p>Product description goes here...</p>
+            <p>Provides essential vitamins and minerals</p>
+			 <a class="product-btn" href="./catalog.html">Add to cart</a>
         </div> 
 		
 		<div class="product">
             <img src="https://th.bing.com/th/id/OIP.nn0RDV04CybKWuG3K0MxBgHaFj?w=235&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="Product 4">
             <h2>Product 4</h2>
-            <p>Product description goes here...</p>
+            <p>High-quality ingredients for happy pets.</p>
+			 <a class="product-btn" href="./catalog.html">Add to cart</a>
         </div> 
 		
 		<div class="product">
             <img src="https://th.bing.com/th/id/OIP.nn0RDV04CybKWuG3K0MxBgHaFj?w=235&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="Product 4">
             <h2>Product 4</h2>
-            <p>Product description goes here...</p>
+            <p>Yum Yum for the newbies</p>
+			 <a class="product-btn" href="./catalog.html">Preview</a>
         </div>
 
-        
     </div>
-        
     
     <!-- add footer -->
     <footer>
