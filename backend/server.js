@@ -3,23 +3,18 @@ import dotenv from "dotenv";
 import exp from "constants";
 import userRoute from "./routes/userRoute.js";
 import productRoute from "./routes/productRoute.js";
+import cors from "cors";
 
 // Configure the dotenv
 const app = express();
 dotenv.config();
+app.use(cors());
 
 // Parse json bodies in the request object
 app.use(express.json());
 
 // Set the path to the frontend's public directory
 // app.use(express.static(path.join(__dirname, "..", "..", "frontend", "public")));
-
-//The first page it will render in
-app.get("/", (req, res) => {
-  res.sendFile(
-    path.join(__dirname, "..", "..", "frontend", "public", "index.html")
-  );
-});
 
 // Importing the routes
 app.use("/", userRoute);
