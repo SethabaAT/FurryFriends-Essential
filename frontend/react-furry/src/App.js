@@ -1,40 +1,33 @@
 
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Routes, Route, Switch, Link} from 'react-router-dom'
 import {Navbar} from './components/nav/navbar'
 import { Footer } from "./components/footer";
 
 import { Login } from './pages/login/login';
 import { Register } from './pages/register/register';
 import { Home } from "./pages/home";
-import { ShoppingCart } from './pages/ShoppingCart/ShoppingCart';
+import { ShoppingCart } from './pages/Shop/ShoppingCart';
+import { ShopContextProvider } from './context/shop-context';
 
 const App = () => {
   return (
     <div className="App">
+      <ShopContextProvider >
+        <Router>
 
-      <Router>
-
-        <Navbar/>
-
-        <Routes>
-          {/* home route */}
-          <Route path="/" element= {<Home/>}/>
-
-          {/* login */}
-          <Route path="/login"  element={<Login />}/>
-
-
-          {/* Register  route*/}
-          <Route path="/register" element={<Register />} />
+          <Navbar/>
           
-          <Route path='/ShoppingCart' element={<ShoppingCart />} />
-          
-        </Routes>
+          <Routes>          
+            <Route path="/" element= {<Home/>}/>          
+            <Route path="/login"  element={<Login />}/>         
+            <Route path="/register" element={<Register />} />          
+            <Route path='/ShoppingCart' element={<ShoppingCart />} />          
+          </Routes>
 
-        <Footer />
+          <Footer />
 
-      </Router>
-     
+        </Router>
+      </ShopContextProvider>
     </div>
   );
 }

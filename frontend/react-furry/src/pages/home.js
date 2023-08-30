@@ -3,45 +3,45 @@ import { Card } from '../components/card'
 import { Button } from '../components/button'
 import { Link } from 'react-router-dom'
 
-import prod1 from '../images/products/All-Breed-Puppy.png'
 
+import products from './products/productsData'
+import PRODUCTS from './products/productsData'
 
 //temporary db
-const products = [
-    {
-      id: 1,
-      name: "Tin can",
-      price: 199,
-      image: require("../images/products/prod2.png")
-    },
-    {
-      id: 2,
-      name: "Tin can",
-      price: 199,
-      image: require("../images/products/prod2.png")
-    },
-    {
-      id: 3,
-      name: "Tin can",
-      price: 199,
-      image: require("../images/products/prod2.png")
-    },
-    {
-      id: 4,
-      name: "Tin can",
-      price: 199,
-      image: require("../images/products/prod2.png")
-    },
-    {
-        id: 5,
-        name: "Tin can",
-        price: 199,
-        image: require("../images/products/prod2.png")
-      },
-  ]
+// const products = [
+//     {
+//       id: 1,
+//       name: "Tin can",
+//       price: 199,
+//       image: require("../images/products/prod2.png")
+//     },
+//     {
+//       id: 2,
+//       name: "Tin can",
+//       price: 199,
+//       image: require("../images/products/prod2.png")
+//     },
+//     {
+//       id: 3,
+//       name: "Tin can",
+//       price: 199,
+//       image: require("../images/products/prod2.png")
+//     },
+//     {
+//       id: 4,
+//       name: "Tin can",
+//       price: 199,
+//       image: require("../images/products/prod2.png")
+//     },
+//     {
+//         id: 5,
+//         name: "Tin can",
+//         price: 199,
+//         image: require("../images/products/prod2.png")
+//       },
+//   ]
 
 export const Home = () => {
-
     
   return (
     <> 
@@ -66,8 +66,8 @@ export const Home = () => {
                 <h2>Discounted Products</h2>
                 <div className="small-container">
                 
-                {products.map( (prod) => (
-                    <Card key={prod.id} price={prod.price} prodImg={prod.image} />
+                {PRODUCTS.map( (prod) => (
+                    <Card prodKey={prod.id} prodImg={prod.image} prodName={prod.name} prodPrice={prod.price}/>
                 ))}
                     
                 </div>

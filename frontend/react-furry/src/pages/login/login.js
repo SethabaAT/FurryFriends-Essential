@@ -3,10 +3,6 @@ import { Link } from 'react-router-dom'
 import { Button } from '../../components/button'
 
 export const Login = () => {
-  const logIn = () => {
-          
-  }
-
   return (   
     // <div class="Back_LG"> 
     //     <input type = "text" placeholder="Username" name="email"/>
