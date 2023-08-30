@@ -1,5 +1,5 @@
 
-import {BrowserRouter as Router, Routes, Route, NavLink} from 'react-router-dom'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import {Navbar} from './components/nav/navbar'
 import { Footer } from "./components/footer";
 
