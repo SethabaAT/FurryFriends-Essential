@@ -1,4 +1,6 @@
 import React from 'react'
+import { GiShoppingCart } from 'react-icons/gi'
+
 import './navbar.css'
 import {Link} from 'react-router-dom'
 import { Button } from '../button'
@@ -26,7 +28,7 @@ export const Navbar = () => {
                     <li><Link to="/">Home</Link></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Content</a></li>
-                    <li><a href="#">Cart</a></li>
+                    <li><Link to="/ShoppingCart"><GiShoppingCart size={30}/></Link></li>
                     <li><Link to="/login"><Button classN={"btn"} text={"Sign In"} /> </Link> 
                     </li>
                 </ul> 

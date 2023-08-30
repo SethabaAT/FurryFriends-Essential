@@ -5,6 +5,41 @@ import { Link } from 'react-router-dom'
 
 import prod1 from '../images/products/All-Breed-Puppy.png'
 
+
+//temporary db
+const products = [
+    {
+      id: 1,
+      name: "Tin can",
+      price: 199,
+      image: require("../images/products/prod2.png")
+    },
+    {
+      id: 2,
+      name: "Tin can",
+      price: 199,
+      image: require("../images/products/prod2.png")
+    },
+    {
+      id: 3,
+      name: "Tin can",
+      price: 199,
+      image: require("../images/products/prod2.png")
+    },
+    {
+      id: 4,
+      name: "Tin can",
+      price: 199,
+      image: require("../images/products/prod2.png")
+    },
+    {
+        id: 5,
+        name: "Tin can",
+        price: 199,
+        image: require("../images/products/prod2.png")
+      },
+  ]
+
 export const Home = () => {
 
     
@@ -31,34 +66,10 @@ export const Home = () => {
                 <h2>Discounted Products</h2>
                 <div className="small-container">
                 
-                    {/* <div className="card discount">
-                        <div className="card-contents">
-                            <a href=""><img src={prod1} alt=""/></a>
-                            <h5>Valp Puppy</h5>
-                            <p className="price">R 699<sup>00</sup> <span className="prev"><del>R 699<sup>00</sup></del></span></p>
-                        </div>
-                    </div> */}
-
-                    <Card prodImg={prod1} prodName={"Valp pup"} prodPrice={"R 999"}/>
-                    <Card prodImg={prod1} prodName={"Valp pup"} prodPrice={"R 999"}/>
-                    <Card prodImg={prod1} prodName={"Valp pup"} prodPrice={"R 999"}/>
-                    <Card prodImg={prod1} prodName={"Valp pup"} prodPrice={"R 999"}/>
-
-                    {/* <div className="card discount">
-                        <div className="card-contents">
-                            <a href=""><img src="../../images/products/All-Breed-Puppy.png" alt=""/></a>
-                            <h5>Valp Puppy</h5>
-                            <p className="price">R 699<sup>00</sup> <span className="prev"><del>R 699<sup>00</sup></del></span></p>
-                        </div>
-                    </div>
-
-                    <div className="card discount">
-                        <div className="card-contents">
-                            <a href=""><img src="images/products/All-Breed-Puppy.png" alt=""/></a>
-                            <h5>Valp Puppy</h5>
-                            <p className="price">R 699<sup>00</sup> <span className="prev"><del>R 699<sup>00</sup></del></span></p>
-                        </div>
-                    </div> */}
+                {products.map( (prod) => (
+                    <Card key={prod.id} price={prod.price} prodImg={prod.image} />
+                ))}
+                    
                 </div>
             </div>
 

@@ -3,13 +3,13 @@
     display: flex;
     justify-content: space-between;
     
-    max-width: 1100px;
+    /* max-width: 1100px; */
     margin: 0 auto;
     margin-top: 20px;
-    /* padding: 0 30px; */
+    padding: 0 30px;
     max-height: 50px;
-   
-   
+   color: white;
+   background-color: rgb(64, 61, 61);
 }
 
 .navbar ul{
@@ -39,6 +39,8 @@
 }
 .navbar  ul li a{
     text-decoration: none;
+    color: white;
+    font-size: 18px;
    
 }
 
@@ -48,12 +50,12 @@
 }
 .navbar  ul li a:hover{
 
-    color: brown;
+    color: rgb(242, 226, 152);
 }
 button{
     background-color: #FFC631;
     text-decoration-color:1E1F20 ;
-    border-radius: 45px;
+    border-radius: 8px;
     height: 2.3rem;
     width:100px;
     top:4.3%;
@@ -72,6 +74,7 @@ button{
 .search-menu{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 1rem;
 }
 
