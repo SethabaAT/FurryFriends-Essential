@@ -1,5 +1,6 @@
 import Product from "../models/Product.js";
 
+// A function for adding products to the database
 export const addProduct = async (req, res, next) => {
   try {
     let { name, categoryId, description, price, qty, imageURL, discount } =
@@ -17,7 +18,6 @@ export const addProduct = async (req, res, next) => {
     );
 
     product = await product.save();
-
     res.status(201).json({ message: "Product Created" });
   } catch (error) {
     console.log("Error in adding the product", error);
@@ -25,6 +25,7 @@ export const addProduct = async (req, res, next) => {
   }
 };
 
+// A function for getting all the products from the database
 export const getAllProducts = async (req, res, next) => {
   try {
     const products = await Product.findAll();
@@ -35,6 +36,7 @@ export const getAllProducts = async (req, res, next) => {
   }
 };
 
+// A function that gets all the products by id
 export const getProductByCategory = async (req, res, next) => {
   try {
     let category = req.params.category;
@@ -46,6 +48,8 @@ export const getProductByCategory = async (req, res, next) => {
   }
 };
 
+// A fucntion for removing the products from the database
 export const removeProduct = async (req, res, next) => {};
 
+// A function for updating an existing product
 export const updateProduct = async (req, res, next) => {};

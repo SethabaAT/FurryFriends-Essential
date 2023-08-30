@@ -16,7 +16,15 @@ class Product {
     let sql = `INSERT INTO product(name, categoryId, description, price, qty, imageURL, discount)
                  VALUES('${this.name}','${this.categoryId}','${this.description}','${this.price}','${this.qty}','${this.imageURL}','${this.discount}')`;
 
-    const [newProduct, _] = await db.execute(sql);
+    const [newProduct, _] = await db.execute(sql, [
+      this.name,
+      this.categoryId,
+      this.description,
+      this.price,
+      this.qty,
+      this.imageURL,
+      this.discount,
+    ]);
     return newProduct;
   }
 

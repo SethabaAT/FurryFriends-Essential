@@ -20,8 +20,8 @@ export const register = async (req, res, next) => {
 export const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-
     console.log("User Input: ", email, password);
+
     // Find the user
     const user = await User.findByEmail(email);
     if (!user) {
