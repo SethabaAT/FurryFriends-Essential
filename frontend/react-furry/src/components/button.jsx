@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const Button = ({classN,text,color, type,onClickAdd}) => {
+export const Button = ({classN,text,color, type,onClickAdd,itemAmount}) => {
   return (
     <button className={classN} color={color} type={type} onClick={onClickAdd}>
-        {text}
+        {text}{itemAmount}
     </button>
   )
 }

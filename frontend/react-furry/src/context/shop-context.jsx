@@ -26,8 +26,6 @@ export const ShopContextProvider = (props) => {
         setCartItems((prev)=> ({...prev, [itemId]: prev[itemId]-1}));
     }
 
-    console.log(cartItems);
-    
     //context value for outside access
     const contextValue = {cartItems, addToCart, removeFromCart}
 
