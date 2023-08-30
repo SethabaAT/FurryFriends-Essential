@@ -2,8 +2,9 @@ import db from "../config/db.js";
 import bcrypt from "bcrypt";
 
 class User {
-  constructor(name, email, password) {
-    this.name = name;
+  constructor(firstName, secondName, email, password) {
+    this.firstName = firstName;
+    this.secondName = secondName;
     this.email = email;
     this.password = password;
   }
@@ -15,9 +16,11 @@ class User {
     const hashedPassword = await bcrypt.hash(this.password, saltRounds);
 
     // Query for inseritn into the database
-    let sql = "INSERT INTO user(name, email, password) VALUES(?,?,?)";
+    let sql =
+      "INSERT INTO user(firstName, secondName, email, password) VALUES(?,?,?,?)";
     const [newUser, _] = await db.execute(sql, [
-      this.name,
+      this.firstName,
+      this.secondName,
       this.email,
       hashedPassword,
     ]);
