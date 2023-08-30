@@ -4,9 +4,10 @@ import bcrypt from "bcrypt";
 // Register Controller
 export const register = async (req, res, next) => {
   try {
-    let { name, email, password } = req.body;
-    let user = new User(name, email, password);
-
+    console.log("Hi");
+    let { firstName, secondName, email, password } = req.body;
+    let user = new User(firstName, secondName, email, password);
+    console.log("hi again");
     user = await user.save();
     res.status(201).json({ message: "User Registered" });
     console.log("User Registered");

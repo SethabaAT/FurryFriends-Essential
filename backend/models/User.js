@@ -35,7 +35,12 @@ class User {
     if (userRows.length === 0) {
       return null; // User not found
     }
-    return new User(userRows[0].name, userRows[0].email, userRows[0].password);
+    return new User(
+      userRows[0].firstName,
+      userRows[0].secondName,
+      userRows[0].email,
+      userRows[0].password
+    );
   }
 }
 
