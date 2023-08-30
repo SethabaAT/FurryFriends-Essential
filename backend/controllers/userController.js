@@ -6,7 +6,7 @@ export const register = async (req, res, next) => {
   try {
     console.log("Hi");
     let { firstName, secondName, email, password } = req.body;
-    let user = new User(firstName, secondName, email, password);
+    let user = new User(firstName, secondName, email, password, 0);
     console.log("hi again");
     user = await user.save();
     res.status(201).json({ message: "User Registered" });
@@ -35,7 +35,9 @@ export const login = async (req, res, next) => {
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (passwordMatch) {
       console.log("Login Successful");
-      res.status(200).json({ message: "Login successful" });
+      res
+        .status(200)
+        .json({ message: "Login successful", user_type: user.user_type });
     } else {
       console.error("Invalid Credentials");
       res.status(401).json({ message: "Invalid credentials" });
