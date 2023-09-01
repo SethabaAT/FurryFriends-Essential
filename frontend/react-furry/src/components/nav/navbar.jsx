@@ -7,7 +7,11 @@ import { Button } from '../button'
 
 import logo from '../../images/display/Logo.png'
 
-export const Navbar = () => {
+export const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
+const handleLogout = () => {
+        console.log("logged out");
+        setIsLoggedIn(false);
+        };
 
   return (
     <div className='navbar'>
@@ -29,8 +33,11 @@ export const Navbar = () => {
                     <li><a href="#">About</a></li>
                     <li><a href="#">Content</a></li>
                     <li><Link to="/ShoppingCart"><GiShoppingCart size={30}/></Link></li>
-                    <li><Link to="/login"><Button classN={"btn"} text={"Sign In"} /> </Link> 
-                    </li>
+                    {isLoggedIn ? (
+                        <li><Button classN={"btn"} text={"Sign Out"} onClickAdd={handleLogout} /></li>
+                    ) : (
+                        <li><Link to="/login"><Button classN={"btn"} text={"Sign In"} /></Link></li>
+                    )}
                 </ul> 
             </div>
             
