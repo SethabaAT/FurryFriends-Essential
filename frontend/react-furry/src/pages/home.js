@@ -67,7 +67,7 @@ export const Home = () => {
                 <div className="small-container">
                 
                 {PRODUCTS.map( (prod) => (
-                    <Card prodKey={prod.id} prodImg={prod.image} prodName={prod.name} prodPrice={prod.price}/>
+                    <Card data={prod}/>
                 ))}
                     
                 </div>
