@@ -19,15 +19,24 @@ export const ShopContextProvider = (props) => {
 
     const [cartItems,setCartItems] = useState(getDefaultCart());
 
+
+    //a fuction for adding an item to cart
     const addToCart = (itemId) => {
         setCartItems((prev)=> ({...prev, [itemId]: prev[itemId]+1}));
     }
+
+    //a function for removing an item from cart
     const removeFromCart = (itemId) => {
         setCartItems((prev)=> ({...prev, [itemId]: prev[itemId]-1}));
     }
 
+    //a function to edit cart amount
+    const updateCartItemCount = ( newAmount, itemId) =>{
+        setCartItems((prev) => ({...prev, [itemId]: newAmount}));
+    }
+
     //context value for outside access
-    const contextValue = {cartItems, addToCart, removeFromCart}
+    const contextValue = {cartItems, addToCart, removeFromCart, updateCartItemCount}
 
   return <ShopContext.Provider value={contextValue}>{props.children}</ShopContext.Provider>;
  
