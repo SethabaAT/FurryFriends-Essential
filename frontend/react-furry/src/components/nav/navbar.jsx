@@ -16,13 +16,12 @@ export const Navbar = () => {
             <h4>Ferry Friends</h4> 
             <img src={logo}  alt="Image Logo"/>
         </div>
-
-        <div className="search-menu">
-            <div className="search-bar">
+        <div className="search-bar">
                 <form action="/search" method="get">
                     <input type="text" name="q" placeholder="Search" />   
                 </form>
-            </div>
+        </div>
+        {/* <div className="search-menu">          */}
             <div className="menu">
                 <ul className="myNav">
                     <li><Link to="/">Home</Link></li>
@@ -34,7 +33,7 @@ export const Navbar = () => {
                 </ul> 
             </div>
             
-        </div>
+        {/* </div> */}
        
 </div>
   )
