@@ -2,7 +2,7 @@ import React from 'react'
 import { GiShoppingCart } from 'react-icons/gi'
 
 import './navbar.css'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { Button } from '../button'
 
 import logo from '../../images/display/Logo.png'
@@ -12,6 +12,8 @@ const handleLogout = () => {
         console.log("logged out");
         setIsLoggedIn(false);
         };
+//go to the login page
+const singInNavigate = useNavigate();
 
   return (
     <div className='navbar'>
@@ -35,7 +37,7 @@ const handleLogout = () => {
                     {isLoggedIn ? (
                         <li><Button classN={"btn"} text={"Sign Out"} onClickAdd={handleLogout} /></li>
                     ) : (
-                        <li><Link to="/login"><Button classN={"btn"} text={"Sign In"} /></Link></li>
+                        <li><Button classN={"btn"} text={"Sign In"} onClickAdd={() => singInNavigate("/login")} /></li>
                     )}
                 </ul> 
             </div>

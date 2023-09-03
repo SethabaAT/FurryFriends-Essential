@@ -35,8 +35,24 @@ export const ShopContextProvider = (props) => {
         setCartItems((prev) => ({...prev, [itemId]: newAmount}));
     }
 
+    //gets the totalAmount in the cart
+    const getTotCartAmount = () =>{
+        let totAmount = 0;
+        //loop through cartItems object and check 
+        //if an item is in the cart
+        for( const item in cartItems){
+            if(cartItems[item] > 0){
+                //get the price of the item
+                let itemInfo = PRODUCTS.find((prod) => prod.id === Number(item));
+                totAmount += cartItems[item] * itemInfo.price;
+            }
+        }
+
+        return totAmount;
+    }
+
     //context value for outside access
-    const contextValue = {cartItems, addToCart, removeFromCart, updateCartItemCount}
+    const contextValue = {cartItems, addToCart, removeFromCart, updateCartItemCount, getTotCartAmount}
 
   return <ShopContext.Provider value={contextValue}>{props.children}</ShopContext.Provider>;
  
