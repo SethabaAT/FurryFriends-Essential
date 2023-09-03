@@ -52,4 +52,24 @@ export const getProductByCategory = async (req, res, next) => {
 export const removeProduct = async (req, res, next) => {};
 
 // A function for updating an existing product
-export const updateProduct = async (req, res, next) => {};
+export const updateProduct = async (req, res, next) => {
+  try {
+    const productId = parseInt(req.params.productId);
+    const updatedProductData = req.body;
+
+    // Update the product using the Product class's update method
+    const updatedProduct = await Product.update(productId, updatedProductData);
+
+    if (!updatedProduct) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+
+    res.json({
+      message: "Product updated successfully",
+      product: updatedProduct,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};

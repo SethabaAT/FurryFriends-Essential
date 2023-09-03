@@ -4,10 +4,8 @@ import bcrypt from "bcrypt";
 // Register Controller
 export const register = async (req, res, next) => {
   try {
-    console.log("Hi");
     let { firstName, secondName, email, password } = req.body;
     let user = new User(firstName, secondName, email, password, 0);
-    console.log("hi again");
     user = await user.save();
     res.status(201).json({ message: "User Registered" });
     console.log("User Registered");
@@ -37,7 +35,11 @@ export const login = async (req, res, next) => {
       console.log("Login Successful");
       res
         .status(200)
-        .json({ message: "Login successful", user_type: user.user_type });
+        .json({
+          message: "Login successful",
+          user_type: user.user_type,
+          token: "test123",
+        });
     } else {
       console.error("Invalid Credentials");
       res.status(401).json({ message: "Invalid credentials" });
