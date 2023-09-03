@@ -3,17 +3,17 @@ import Product from "../models/Product.js";
 // A function for adding products to the database
 export const addProduct = async (req, res, next) => {
   try {
-    let { name, categoryId, description, price, qty, imageURL, discount } =
+    let { name, category_id, description, price, qty, image, discount } =
       req.body;
 
     // Create a new Product
     let product = new Product(
       name,
-      categoryId,
+      category_id,
       description,
       price,
       qty,
-      imageURL,
+      image,
       discount
     );
 
@@ -49,20 +49,25 @@ export const getProductByCategory = async (req, res, next) => {
 };
 
 // A fucntion for removing the products from the database
-export const removeProduct = async (req, res, next) => {};
+export const removeProduct = async (req, res, next) => {
+  try {
+    // Get the id from the request parameters
+    await Product.destroy(parseInt(req.params.productId)).then(() =>
+      res.status(204).send("Deleted")
+    );
+  } catch (err) {
+    console.log("Error", err);
+  }
+};
 
 // A function for updating an existing product
 export const updateProduct = async (req, res, next) => {
   try {
-    const productId = parseInt(req.params.productId);
-    const updatedProductData = req.body;
+    const productId = parseInt(req.params.productId); // from the request parameters
+    const updatedProductData = req.body; // From the request body
 
     // Update the product using the Product class's update method
     const updatedProduct = await Product.update(productId, updatedProductData);
-
-    if (!updatedProduct) {
-      return res.status(404).json({ error: "Product not found" });
-    }
 
     res.json({
       message: "Product updated successfully",

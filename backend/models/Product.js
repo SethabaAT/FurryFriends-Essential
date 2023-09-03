@@ -1,28 +1,28 @@
 import db from "../config/db.js";
 
 class Product {
-  constructor(name, categoryId, description, price, qty, imageURL, discount) {
+  constructor(name, category_id, description, price, qty, image, discount) {
     this.name = name;
-    this.categoryId = categoryId;
+    this.category_id = category_id;
     this.description = description;
     this.price = price;
     this.qty = qty;
-    this.imageURL = imageURL;
+    this.image = image;
     this.discount = discount;
   }
 
   // Save to the Database
   async save() {
-    let sql = `INSERT INTO product(name, category_id, description, price, qty, image, discount)
-                 VALUES('?',''?',''?',''?',''?',''?',''?')`;
+    const sql = `INSERT INTO product(name, category_id, description, price, qty, image, discount)
+                 VALUES (?, ?, ?, ?, ?, ?, ?)`;
 
     const [newProduct, _] = await db.execute(sql, [
       this.name,
-      this.categoryId,
+      this.category_id,
       this.description,
       this.price,
       this.qty,
-      this.imageURL,
+      this.image,
       this.discount,
     ]);
     return newProduct;
@@ -75,6 +75,12 @@ class Product {
       id,
     ]);
     return existingProduct;
+  }
+
+  // Remove
+  static async destroy(id) {
+    const sql = "DELETE FROM product where id=?";
+    await db.execute(sql, [id]);
   }
 
   // Find all products
