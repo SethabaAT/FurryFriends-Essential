@@ -33,4 +33,14 @@ const PRODUCTS = [
   ]
 
 
+// export const users = [
+//   {
+//     name: 'Thabo',
+//     surname: "Matlhoko",
+//     password: "12345",
+//     userType: 1;
+//   },]
+
+
+
 export default PRODUCTS

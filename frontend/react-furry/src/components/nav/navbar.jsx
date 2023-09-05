@@ -32,7 +32,7 @@ const singInNavigate = useNavigate();
                 <ul className="myNav">
                     <li><Link to="/">Home</Link></li>
                     <li><a href="#">About</a></li>
-                    <li><a href="#">Content</a></li>
+                    <li><Link to="/Shop">Shop</Link></li>
                     <li><Link to="/ShoppingCart"><GiShoppingCart size={30}/></Link></li>
                     {isLoggedIn ? (
                         <li><Button classN={"btn"} text={"Sign Out"} onClickAdd={handleLogout} /></li>
