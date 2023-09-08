@@ -1,5 +1,6 @@
 import User from "../models/User.js";
 import bcrypt from "bcrypt";
+import { generateToken, verifyToken } from "../auth.js";
 
 // Register Controller
 export const register = async (req, res, next) => {
@@ -33,13 +34,24 @@ export const login = async (req, res, next) => {
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (passwordMatch) {
       console.log("Login Successful");
-      res
-        .status(200)
-        .json({
-          message: "Login successful",
-          user_type: user.user_type,
-          token: "test123",
-        });
+
+      // Generate a token
+      // But create a user payload before (basically I just wanna turn the user into a js object)
+      const userPayload = {
+        firstName: user.firstName,
+        secondName: user.secondName,
+        email: user.email,
+        password: user.password,
+        user_type: user.user_type,
+      };
+      const token = generateToken(userPayload);
+
+      // Response to the endpoints
+      res.status(200).json({
+        message: "Login successful",
+        user_type: user.user_type,
+        token: token,
+      });
     } else {
       console.error("Invalid Credentials");
       res.status(401).json({ message: "Invalid credentials" });
