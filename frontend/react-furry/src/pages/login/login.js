@@ -35,6 +35,11 @@ export const Login = ({ setIsLoggedIn }) => {
         // Successful login, redirect to home
         console.log("Login Succesful");
         setIsLoggedIn(true);
+
+        // Store token
+        localStorage.setItem("token", response.token);
+        console.log(localStorage.getItem("token"));
+
         if (response.user_type === 1) {
           console.log("Welcome Admin");
           //   navigate("/admin", { replace: true });

@@ -11,6 +11,7 @@ export const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
 const handleLogout = () => {
         console.log("logged out");
         setIsLoggedIn(false);
+        localStorage.removeItem('token');
         };
 
   return (
