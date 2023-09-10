@@ -1,20 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {register} from '../../Service/service'
 
-/*  This is the function that does an api call
-    You can put all api calls in one file "sevice if you want"
-*/
-async function register(userData) {
-  const res = await fetch("http://localhost:8080/register", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(userData), // Send the registration data as JSON
-  });
-  const data = await res.json();
-  return data;
-}
 
 export const Register = () => {
   const [firstName, setFirstName] = useState("");
@@ -31,8 +18,7 @@ export const Register = () => {
         firstName,
         secondName,
         email,
-        password,
-        // confirmPassword,
+        password,        
       };
 
       const response = await register(userData);
@@ -69,7 +55,7 @@ export const Register = () => {
             />
           </div>
           <div className="form-group">
-            <label for="">Last name</label>
+            <label htmlFor="">Last name</label>
             <input
               type="text"
               id="lastName"
@@ -81,7 +67,7 @@ export const Register = () => {
             />
           </div>
           <div className="form-group">
-            <label for="">Email</label>
+            <label htmlFor="">Email</label>
             <input
               type="email"
               id="email"
@@ -93,7 +79,7 @@ export const Register = () => {
             />
           </div>
           <div className="form-group">
-            <label for="">Password</label>
+            <label htmlFor="">Password</label>
             <input
               type="password"
               id="password"
@@ -110,7 +96,7 @@ export const Register = () => {
           </div> */}
           <div className="signup-footer">
             <button
-              className="signUpBtn"
+              className="frm-btn"
               type="submit"
               id="submit_auth"
               value="Sign-Up"
