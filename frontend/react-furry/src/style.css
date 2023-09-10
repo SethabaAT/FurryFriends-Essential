@@ -98,6 +98,7 @@ h3{
   .cntnr{
     /* max-width: 1100px; */
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
@@ -284,8 +285,7 @@ footer .cntnr .small-container{
         justify-content: center;
         align-items: center;
         margin: 100px auto;
-        padding-bottom: 20px ;
-        padding-top: 20px;
+        padding: 20px 15px;
         max-width:25em;
         min-height: 20em;
         background: #403d3d;
