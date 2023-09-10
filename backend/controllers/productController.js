@@ -18,7 +18,7 @@ export const addProduct = async (req, res, next) => {
     );
 
     product = await product.save();
-    res.status(201).json({ message: "Product Created" });
+    res.status(201).json({ message: "Product Added" });
   } catch (error) {
     console.log("Error in adding the product", error);
     next(error);
@@ -63,11 +63,11 @@ export const removeProduct = async (req, res, next) => {
 // A function for updating an existing product
 export const updateProduct = async (req, res, next) => {
   try {
-    const productId = parseInt(req.params.productId); // from the request parameters
+    const id = parseInt(req.params.id); // from the request parameters
     const updatedProductData = req.body; // From the request body
 
     // Update the product using the Product class's update method
-    const updatedProduct = await Product.update(productId, updatedProductData);
+    const updatedProduct = await Product.update(id, updatedProductData);
 
     res.json({
       message: "Product updated successfully",

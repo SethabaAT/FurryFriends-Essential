@@ -20,17 +20,6 @@ export const Login = ({ setIsLoggedIn }, { setUserType }) => {
       if (response.message === "Login successful") {
         // Successful login, redirect to home
         console.log("Login Succesful");
-<<<<<<< HEAD
-=======
-
-        //store the data in local storage for future use
-        localStorage.setItem("user", JSON.stringify(response.user_type));
-
-        //set the userType
-        setUserType(response.user_type);
-
-        setIsLoggedIn(true);
->>>>>>> 2e3cc41cc9af0022dea010ac7abe3850a8c13000
 
         //store the data in local storage for future use
         localStorage.setItem("user", JSON.stringify(response.user_type));
@@ -38,9 +27,9 @@ export const Login = ({ setIsLoggedIn }, { setUserType }) => {
         console.log(response.token);
 
         //set the userType
-        setUserType(response.user_type);
-
+        //setUserType(response.user_type);
         setIsLoggedIn(true);
+
         if (response.user_type === 1) {
           console.log("Welcome Admin");
           navigate("/admin", { replace: true });

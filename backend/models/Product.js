@@ -40,7 +40,7 @@ class Product {
     if (productData.name) {
       existingProduct.name = productData.name;
     }
-    if (productData.categoryId) {
+    if (productData.category_id) {
       existingProduct.category_id = productData.category_id;
     }
     if (productData.description) {
@@ -52,7 +52,7 @@ class Product {
     if (productData.qty) {
       existingProduct.qty = productData.qty;
     }
-    if (productData.imageURL) {
+    if (productData.image) {
       existingProduct.image = productData.image;
     }
     if (productData.discount) {

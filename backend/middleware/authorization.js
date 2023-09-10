@@ -27,6 +27,8 @@ function isAdmin(req, res, next) {
 
   // Filter the token
   token = token.replace("Bearer ", "");
+
+  console.log("Token: ", token);
   if (!token) {
     return res.status(401).json({ message: "Unauthorized" });
   }

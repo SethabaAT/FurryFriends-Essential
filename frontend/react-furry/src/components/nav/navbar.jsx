@@ -12,16 +12,12 @@ export const Navbar = ({isLoggedIn, setIsLoggedIn, userType, setUserType}) => {
     const handleLogout = () => {
         console.log("logged out");
         //clear local storage
-<<<<<<< HEAD
+
         localStorage.clear();
         setUserType(-1);
         setIsLoggedIn(false);
-=======
-         localStorage.clear();
-         setUserType(-1);
-        setIsLoggedIn(false);
-        localStorage.removeItem('token');
->>>>>>> 2e3cc41cc9af0022dea010ac7abe3850a8c13000
+        localStorage.clear();
+        setUserType(-1);
     };
 
     //go to the login page
