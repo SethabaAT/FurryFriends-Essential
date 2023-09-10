@@ -49,7 +49,11 @@ header ul li a:hover{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 16px;
     width: 100%;
     border-radius: 1rem;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding-top: 5px;
     margin: 2rem auto;
+    margin-top: 0;
     background-color: #FFE6A7;
     height: 70vh;
 }
@@ -183,8 +187,8 @@ h3{
     
 .category .card-contents a img{
     
-    width: 150px;
-    height: 150px;
+    max-width: 150%;
+    max-height: 150%;
     
     /* border-radius: 100%; */
     object-fit: cover;

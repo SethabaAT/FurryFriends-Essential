@@ -4,6 +4,9 @@ import { Button } from '../components/button'
 import { Link } from 'react-router-dom'
 
 import banner from '../images/display/bannerImg.png'
+import fishImg from '../images/display/fish-category.png'
+import dogImg from '../images/display/dog-category.png'
+import catImg from '../images/display/cat-category.png'
 
 import PRODUCTS from './products/productsData'
 
@@ -45,6 +48,7 @@ export const Home = () => {
     
   return (
     <> 
+    <hr/>
         <div className="container">
                 <div id="Right">
                     <h3>
@@ -80,19 +84,19 @@ export const Home = () => {
                 
                     <div className="card category">
                         <div className="card-contents">
-                            <a href=""><h3>Dogs</h3><img src="images/display/cat-icon.png" alt=""/></a>                        
+                            <a href=""><img src={dogImg} alt=""/></a>                        
                         </div>
                     </div>
 
                     <div className="card category">
                         <div className="card-contents">
-                            <a href=""><h3>Dogs</h3><img src="../../images/display/cat-icon.png" alt=""/></a>
+                            <a href=""><img src={catImg} alt=""/></a>
                         </div>
                     </div>
 
                     <div className="card category">
                         <div className="card-contents">
-                            <a href=""><h3>Dogs</h3><img src="images/display/cat-icon.png" alt=""/></a>
+                            <a href=""><img src={fishImg} alt=""/></a>
                         </div>
                     </div>
 
