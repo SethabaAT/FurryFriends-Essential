@@ -48,14 +48,7 @@ export const Login = ({setIsLoggedIn, setUserTypes}) => {
             console.error("Error during login:", error);
             // Handle the error, e.g., display an error message to the user
         }
-      } else {
-        console.error("Login was not successful:", response.statusText);
-        // Handle the case of unsuccessful login, e.g., show an error message
-      }
-    } catch (error) {
-      console.error("Error during login:", error);
-      // Handle the error, e.g., display an error message to the user
-    }
+      
   };
 
   return (
