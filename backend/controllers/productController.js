@@ -37,6 +37,18 @@ export const getAllProducts = async (req, res, next) => {
 };
 
 // A function that gets all the products by id
+export const getProductByID = async (req, res, next) => {
+  try {
+    let id = req.params.id;
+    const product = await Product.findById(parseInt(id));
+    res.status(200).json({ product });
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+};
+
+// A function that gets all the products by id
 export const getProductByCategory = async (req, res, next) => {
   try {
     let category = req.params.category;
@@ -52,7 +64,8 @@ export const getProductByCategory = async (req, res, next) => {
 export const removeProduct = async (req, res, next) => {
   try {
     // Get the id from the request parameters
-    await Product.destroy(parseInt(req.params.productId)).then(() =>
+    const id = parseInt(req.params.id);
+    await Product.destroy(parseInt(id)).then(() =>
       res.status(204).send("Deleted")
     );
   } catch (err) {
