@@ -3,22 +3,22 @@ import Product from "../models/Product.js";
 // A function for adding products to the database
 export const addProduct = async (req, res, next) => {
   try {
-    let { name, categoryId, description, price, qty, imageURL, discount } =
+    let { name, category_id, description, price, qty, image, discount } =
       req.body;
 
     // Create a new Product
     let product = new Product(
       name,
-      categoryId,
+      category_id,
       description,
       price,
       qty,
-      imageURL,
+      image,
       discount
     );
 
     product = await product.save();
-    res.status(201).json({ message: "Product Created" });
+    res.status(201).json({ message: "Product Added" });
   } catch (error) {
     console.log("Error in adding the product", error);
     next(error);
@@ -49,7 +49,32 @@ export const getProductByCategory = async (req, res, next) => {
 };
 
 // A fucntion for removing the products from the database
-export const removeProduct = async (req, res, next) => {};
+export const removeProduct = async (req, res, next) => {
+  try {
+    // Get the id from the request parameters
+    await Product.destroy(parseInt(req.params.productId)).then(() =>
+      res.status(204).send("Deleted")
+    );
+  } catch (err) {
+    console.log("Error", err);
+  }
+};
 
 // A function for updating an existing product
-export const updateProduct = async (req, res, next) => {};
+export const updateProduct = async (req, res, next) => {
+  try {
+    const id = parseInt(req.params.id); // from the request parameters
+    const updatedProductData = req.body; // From the request body
+
+    // Update the product using the Product class's update method
+    const updatedProduct = await Product.update(id, updatedProductData);
+
+    res.json({
+      message: "Product updated successfully",
+      product: updatedProduct,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};

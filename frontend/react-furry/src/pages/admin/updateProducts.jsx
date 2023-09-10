@@ -1,17 +1,19 @@
 import {React, useState} from 'react'
 import { updateProduct } from '../../Service/service';
-import PRODUCTS from '../products/productsData'
 import { Alert, AlertTitle } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 export const UpdateProduct = () => {
     //states
-    const [productId,setProdId] = useState();
-    const [prodName, setProdName] = useState("");
-    const [prodPrice, setprodPrice] = useState();
-    const [imgPath, setImgPath] = useState("");
+    const [id,setProdId] = useState("");
+    const [name, setProdName] = useState("");
+    const [price, setprodPrice] = useState("");
+    const [image, setImgPath] = useState("");
     const [description, setDescription] = useState("");
-    const [category, setCategory] = useState("");
-   
+    const [category_id, setCategory] = useState("");
+    const [discount, setDiscount] = useState("");
+    const [qty, setQTY] = useState("");
+    const navigate = useNavigate();
     
     const handleProductUpdate = async (event) => {
         event.preventDefault();
@@ -19,21 +21,28 @@ export const UpdateProduct = () => {
         try{
             //create product
             const prod = {
-                productId,
-                prodName,
-                prodPrice,
-                imgPath,
-                description,
-                category
+                "name": name,
+                "category_id": parseInt(category_id),
+                "description": description,
+                "price":parseFloat(price),
+                "qty":parseInt(qty),
+                "image":image,
+                "discount":parseFloat(discount)
             }
-
-            const response = await updateProduct(prod);
+            const token = localStorage.getItem("token");
+            const response = await updateProduct(prod,parseInt(id),token);
             
-             { response === "updated"  ? <Alert severity='success'><AlertTitle>Sucess:</AlertTitle>
+             { response.message === "Product updated successfully"  ? <Alert severity='success'><AlertTitle>Sucess:</AlertTitle>
                     Successfully Updated Product</Alert>
                     : 
                     <Alert severity='error'><AlertTitle>Fail:</AlertTitle>
                     Failed to Update Product</Alert> }
+
+            // Go to admin
+            if (response.message === "Product updated successfully" ){
+                console.log(response.message);
+                navigate("/admin", { replace: true });
+            }
         }catch(error){
             console.error("Error updating Product:", error);
         }
@@ -49,10 +58,10 @@ export const UpdateProduct = () => {
                         <label for="">Product ID</label>
                         <input
                             type="text"
-                            id="productId"
+                            id="id"
                             placeholder="Product ID:"
-                            value={productId}
-                            name="productId"
+                            value={id}
+                            name="id"
                             onChange={(e) => setProdId(e.target.value)} required/>
                       
                     </div>
@@ -60,10 +69,10 @@ export const UpdateProduct = () => {
                         <label for="productName">Product Name</label>
                         <input
                             type="text"
-                            id="productName"
+                            id="name"
                             placeholder="Product Name:"
-                            value={prodName}
-                            name="productName"
+                            value={name}
+                            name="name"
                             onChange={(e) => setProdName(e.target.value)}/>
                     </div>
                     <div className="form-group">
@@ -72,7 +81,7 @@ export const UpdateProduct = () => {
                             type="text"
                             id="price"
                             placeholder="Product Price:"
-                            value={prodPrice}
+                            value={price}
                             name="price"
                             onChange={(e) => setprodPrice(e.target.value)}/>
                     </div>
@@ -80,9 +89,9 @@ export const UpdateProduct = () => {
                         <label htmlFor="">Product Image</label>
                         <input
                             type="text"
-                            id="imgPath"
+                            id="image"
                             name="image"
-                            value={imgPath}
+                            value={image}
                             placeholder="Image path:"
                             onChange={(e) => setImgPath(e.target.value)}/>
                     </div>
@@ -90,8 +99,8 @@ export const UpdateProduct = () => {
                         <label htmlFor="">Description</label>
                         <input
                             type="text"
-                            id="desc"
-                            name="desc"
+                            id="description"
+                            name="description"
                             value={description}
                             placeholder="Give product discripiton:"
                             onChange={(e) => setDescription(e.target.value)}/>
@@ -100,11 +109,31 @@ export const UpdateProduct = () => {
                         <label htmlFor="">Category</label>
                         <input
                             type="text"
-                            id="categ"
-                            name="categ"
-                            value={category}
+                            id="category_id"
+                            name="category_id"
+                            value={category_id}
                             placeholder="Product Category:"
                             onChange={(e) => setCategory(e.target.value)}/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="">Quantity</label>
+                        <input
+                            type="text"
+                            id="qty"
+                            name="qty"
+                            value={qty}
+                            placeholder="Product Quantity:"
+                            onChange={(e) => setQTY(e.target.value)}/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="">Discount</label>
+                        <input
+                            type="text"
+                            id="discount"
+                            name="discount"
+                            value={discount}
+                            placeholder="Product Discount:"
+                            onChange={(e) => setDiscount(e.target.value)}/>
                     </div>
                     <div className="signup-footer">
                         <button className="frm-btn" type="submit" id="submit_prod" value="add-prod">
