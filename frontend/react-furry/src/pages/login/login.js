@@ -4,9 +4,7 @@ import {Button} from "../../components/button";
 import {useNavigate} from "react-router-dom";
 import {login} from "../../Service/service";
 
-export const Login = ({
-    setIsLoggedIn
-}, {setUserType}) => {
+export const Login = ({setIsLoggedIn, setUserTypes}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -26,10 +24,13 @@ export const Login = ({
                 //store the data in local storage for future use
                 localStorage.setItem("user", JSON.stringify(response.user_type));
 
-                //set the userType
-                setUserType(response.user_type);
-
                 setIsLoggedIn(true);
+                console.log( typeof response.user_type )
+                //set the userType
+                setUserTypes(response.user_type);
+                
+                
+
                 if (response.user_type === 1) {
                     console.log("Welcome Admin");
                     navigate("/admin", {replace: true});

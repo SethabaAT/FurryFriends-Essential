@@ -40,9 +40,7 @@ const App = () => {
                             element={<Login setIsLoggedIn = {
                                 setIsLoggedIn
                             }
-                            setUserType = {
-                                setUserType
-                            } />
+                            setUserTypes = {setUserType} />
                             }
                         />
 
