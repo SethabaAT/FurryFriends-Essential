@@ -2,23 +2,11 @@ import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import {Button} from "../../components/button";
 import {useNavigate} from "react-router-dom";
+import {login} from "../../Service/service";
 
-/*  This is the function that does an api call
-    You can put all api calls in one file "sevice if you want"
-*/
-async function login(email, password) {
-    const res = await fetch("http://localhost:8080/login", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({email, password}), // Include the email and password
-    });
-    const data = await res.json();
-    return data;
-}
-
-export const Login = ({setIsLoggedIn}) => {
+export const Login = ({
+    setIsLoggedIn
+}, {setUserType}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -34,10 +22,17 @@ export const Login = ({setIsLoggedIn}) => {
             if (response.message === "Login successful") {
                 // Successful login, redirect to home
                 console.log("Login Succesful");
+
+                //store the data in local storage for future use
+                localStorage.setItem("user", JSON.stringify(response.user_type));
+
+                //set the userType
+                setUserType(response.user_type);
+
                 setIsLoggedIn(true);
                 if (response.user_type === 1) {
                     console.log("Welcome Admin");
-                      navigate("/admin", { replace: true });
+                    navigate("/admin", {replace: true});
                 } else if (response.user_type === 0) {
                     console.log("Welcome User");
                     navigate("/Shop", {replace: true});
@@ -59,7 +54,7 @@ export const Login = ({setIsLoggedIn}) => {
                 <h1 className="headingSignUp">Sign In</h1>
                 <form onSubmit={handleLogin}>
                     <div className="form-group">
-                        <label for="">Email</label>
+                        <label htmlFor="">Email</label>
                         <input
                             type="email"
                             id="email"
@@ -70,7 +65,7 @@ export const Login = ({setIsLoggedIn}) => {
                             required="required"/>
                     </div>
                     <div className="form-group">
-                        <label for="">Password</label>
+                        <label htmlFor="">Password</label>
                         <input
                             type="password"
                             id="password"
@@ -83,7 +78,7 @@ export const Login = ({setIsLoggedIn}) => {
 
                     <div className="signup-footer">
                         <Button
-                            classN={"signUpBtn"}
+                            classN={"frm-btn"}
                             type={"submit"}
                             id="submit_auth"
                             text={"Sign In"}

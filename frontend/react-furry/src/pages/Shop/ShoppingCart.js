@@ -2,6 +2,7 @@ import {React, useContext} from 'react'
 import PRODUCTS from '../products/productsData'
 import {CartItem} from './itemDetails/CartItem'
 import {ShopContext} from '../../context/shop-context'
+import './ShoppingCart.css'
 
 import {useNavigate} from 'react-router-dom'
 
@@ -33,10 +34,10 @@ export const ShoppingCart = () => {
             {/* if the total amount is greater than 0, display subtotal */}
             {
                 totAmount > 0
-                    ? <div className="chechout">
+                    ? <div className="checkout">
                             <p>Subtotal: R {totAmount}</p>
-                            <button onClick={() => navigate("/")}>Continue Shopping</button>
-                            <button>Checkout</button>
+                            <button onClick={() => navigate("/Shop")}>Continue Shopping</button>
+                            <button className='checkout-button'>Checkout</button>
                         </div>
 
                     //else display: your cart is empty

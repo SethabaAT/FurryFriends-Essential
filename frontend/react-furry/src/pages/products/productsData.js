@@ -30,17 +30,19 @@ const PRODUCTS = [
         price: 199,
         image: require("../../images/products/prod2.png")
       },
+      {
+        id: 6,
+        name: "Tin can",
+        price: 199,
+        image: require("../../images/products/prod2.png")
+      },
+      {
+        id: 7,
+        name: "Tin can",
+        price: 199,
+        image: require("../../images/products/prod2.png")
+      },
   ]
-
-
-// export const users = [
-//   {
-//     name: 'Thabo',
-//     surname: "Matlhoko",
-//     password: "12345",
-//     userType: 1;
-//   },]
-
 
 
 export default PRODUCTS
