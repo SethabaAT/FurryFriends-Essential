@@ -3,13 +3,12 @@ import Product from "../models/Product.js";
 // A function for adding products to the database
 export const addProduct = async (req, res, next) => {
   try {
-    let { name, category_id, description, price, qty, image, discount } =
-      req.body;
+    let { name, category, description, price, qty, image, discount } = req.body;
 
     // Create a new Product
     let product = new Product(
       name,
-      category_id,
+      category,
       description,
       price,
       qty,
