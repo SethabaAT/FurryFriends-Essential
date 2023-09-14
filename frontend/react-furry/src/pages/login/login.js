@@ -16,6 +16,7 @@ export const Login = ({setIsLoggedIn, setUserTypes}) => {
       // Call the login service function and pass email and password
       const response = await login(email, password);
 
+      console.log(response.message);
       // Check if the login was successful based on the response
       if (response.message === "Login successful") {
         // Successful login, redirect to home
@@ -30,8 +31,6 @@ export const Login = ({setIsLoggedIn, setUserTypes}) => {
                 console.log( typeof response.user_type )
                 //set the userType
                 setUserTypes(response.user_type);
-                
-                
 
                 if (response.user_type === 1) {
                     console.log("Welcome Admin");

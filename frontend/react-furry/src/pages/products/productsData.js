@@ -3,7 +3,7 @@ const PRODUCTS = [
     {
       id: 1,
       name: "Tin can",
-      price: 199,
+      price: 199,      
       image: require("../../images/products/prod2.png")
     },
     {

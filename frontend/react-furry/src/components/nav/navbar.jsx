@@ -54,7 +54,7 @@ const userMenu =
 export const Navbar = ({isLoggedIn, setIsLoggedIn, userType, setUserType}) => {
 
      //go to the login page
-     const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const handleLogout = () => {
         console.log("logged out");
@@ -94,7 +94,7 @@ export const Navbar = ({isLoggedIn, setIsLoggedIn, userType, setUserType}) => {
            
             <div className="menu">
                 <ul className="myNav">
-                     {/* check the type of user */}
+                    {/* check the type of user */}
                     { userType === 1 ? adminMenu : ( userType === 0 ? userMenu : DefaultUserMenu)}
                     {
                         isLoggedIn

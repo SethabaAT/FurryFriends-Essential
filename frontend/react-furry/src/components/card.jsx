@@ -19,6 +19,7 @@ export const Card = (props) => {
         <div className="card-contents">
             <Link to="/ItemDetails"><img src={image} alt=""/></Link>
             <h5>{name}</h5>
+            
             <p className="price">R {price} <span className="prev"></span></p>
             <Button text={"Add to cart"} itemAmount={cartItemAmount > 0 && <>({cartItemAmount})</>} classN={"btn"} onClickAdd={() => addToCart(id)}/>
         </div>
