@@ -1,31 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products</title>
     <link rel="stylesheet" type = "text/css"  href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"> 
-    <!-- Had to put my css here so i dont alter what you've done -->
-    <style>
-        .product-gallery {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
+<style>
+  
 
-        .product {
-            text-align: center;
-        }
+  .products-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 products per row */
+    gap: 20px;
+    padding: 20px;
+  }
 
-        .product img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
+  .product-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .product-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .product-info {
+    padding: 16px;
+  }
+
+  .product-title {
+    font-size: 1.2rem;
+    margin: 8px 0;
+  }
+
+  .product-price {
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    padding-bottom: 6px;
+  }
+
+  .product-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background-color: #FFC631;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .product-button:hover {
+    background-color: #2980b9;
+  }
+</style>
+<title>Products Page</title>
 </head>
 <body>
-    <header>
+<header>
 
         <ul class="ul-logo"> 
           <h4>Ferry Friends</h4> 
@@ -39,74 +78,142 @@
         </div>
 
         <ul class="myNav">
-            <li><a href="#">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Content</a></li>
             <li><a href="#">Cart</a></li>
-            <li><a href="#"><button>Sign In</button></a></li>
+            <li><a href="Login.html"><button>Sign In</button></a></li>
         </ul> 
 
         
     </header>  
     
+    <div class="products-container">
 
-    <h1>Product Gallery</h1>
-
-    <div class="product-gallery">
-        <div class="product">
-            <img src="https://th.bing.com/th/id/R.b508f80e9b7885939fc4a09d6158a953?rik=yUwZbSPLTfP%2bRQ&pid=ImgRaw&r=0" alt="Product 1">
-            <h2>Product 1</h2>
-            <p>No need to heat up , its all served and ready</p>
-        </div>
-
-        <div class="product">
-		<img src="https://th.bing.com/th/id/OIP.t0QcEIpczDtGN2cCHDIqjQHaLX?w=131&h=200&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="Product 4">
-            <h2>Product 2</h2>
-            <p>Targets the paws , promotes blood circulation</p>
-        </div>
-
-        <div class="product">
-            <img src="https://th.bing.com/th/id/OIP.hMXL5TKmcsfefBpj8KfmJAHaHa?w=213&h=213&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="Product 3">
-            <h2>Product 3</h2>
-            <p>Product description goes here...</p>
-        </div>
-
-        <div class="product">
-            <img src="https://th.bing.com/th/id/OIP.nn0RDV04CybKWuG3K0MxBgHaFj?w=235&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="Product 4">
-            <h2>Product 4</h2>
-            <p>Product description goes here...</p>
-        </div>
-		
-		<div class="product">
-            <img src="https://th.bing.com/th/id/OIP.nn0RDV04CybKWuG3K0MxBgHaFj?w=235&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="Product 4">
-            <h2>Product 4</h2>
-            <p>Product description goes here...</p>
-        </div>
-		
-		<div class="product">
-            <img src="https://th.bing.com/th/id/OIP.nn0RDV04CybKWuG3K0MxBgHaFj?w=235&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="Product 4">
-            <h2>Product 4</h2>
-            <p>Product description goes here...</p>
-        </div> 
-		
-		<div class="product">
-            <img src="https://th.bing.com/th/id/OIP.nn0RDV04CybKWuG3K0MxBgHaFj?w=235&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="Product 4">
-            <h2>Product 4</h2>
-            <p>Product description goes here...</p>
-        </div> 
-		
-		<div class="product">
-            <img src="https://th.bing.com/th/id/OIP.nn0RDV04CybKWuG3K0MxBgHaFj?w=235&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="Product 4">
-            <h2>Product 4</h2>
-            <p>Product description goes here...</p>
-        </div>
-
-        
+    <div class="product-card">
+    <img src="images/Pets/0ta1mn2r.png" alt="Product 1">
+    <div class="product-info">
+    <p class="product-price">R119.99</p>
+    <button class="product-button">Add to Cart</button>
     </div>
-        
+    </div>
+
+    <div class="product-card">
+    <img src="images\Pets\0ujklt25.png" alt="Product 2">
+    <div class="product-info">
+    <p class="product-price">R429.99</p>
+    <button class="product-button">Add to Cart</button>
+    </div>
+    </div>
+
     
-    <!-- add footer -->
-    <footer>
+    <div class="product-card">
+    <img src="images/Pets/Hills-Science-Plan-Canine-Sensitive-Stomach-Skin-with-Chicken-3-3.jpg" alt="Product 2">
+    <div class="product-info">
+    <p class="product-price">R129.99</p>
+    <button class="product-button">Add to Cart</button>
+    </div>
+    </div>
+
+    <div class="product-card">
+    <img src="images/Pets/ki8pi1le.png" alt="Product 2">
+    <div class="product-info">
+    <p class="product-price">R529.99</p>
+    <button class="product-button">Add to Cart</button>
+    </div>
+    </div>
+
+    <div class="product-card">
+    <img src="images/Pets/psfjgv8l.png" alt="Product 2">
+    <div class="product-info">
+    <p class="product-price">R129.99</p>
+    <button class="product-button">Add to Cart</button>
+    </div>
+    </div>
+
+    <div class="product-card">
+    <img src="images/Pets/sgulynma.png" alt="Product 2">
+    <div class="product-info">
+    <p class="product-price">R349.99</p>
+    <button class="product-button">Add to Cart</button>
+    </div>
+    </div>
+
+    <div class="product-card">
+    <img src="images/Pets/ssdaxitj.png" alt="Product 2">
+    <div class="product-info">
+    <p class="product-price">R89.99</p>
+    <button class="product-button">Add to Cart</button>
+    </div>
+    </div>
+
+    <div class="product-card">
+    <img src="images/Pets/u7dax5i6.png" alt="Product 2">
+    <div class="product-info">
+    <p class="product-price">R229.99</p>
+    <button class="product-button">Add to Cart</button>
+    </div>
+    </div>
+
+    <div class="product-card">
+    <img src="images/Pets/5zug3245.png" alt="Product 2">
+    <div class="product-info">
+    <p class="product-price">R329.99</p>
+    <button class="product-button">Add to Cart</button>
+    </div>
+    </div>
+
+    <div class="product-card">
+        <img src="images/Pets/a4vk7fi7.png" alt="Product 2">
+        <div class="product-info">
+        <p class="product-price">R209.99</p>
+        <button class="product-button">Add to Cart</button>
+        </div>
+        </div>
+    
+        <div class="product-card">
+        <img src="images/Pets/r67u19v6.png" alt="Product 2">
+        <div class="product-info">
+        <p class="product-price">R100.99</p>
+        <button class="product-button">Add to Cart</button>
+        </div>
+        </div>
+    
+        <div class="product-card">
+        <img src="images/Pets/72626tee.png" alt="Product 2">
+        <div class="product-info">
+        <p class="product-price">R139.29</p>
+        <button class="product-button">Add to Cart</button>
+        </div>
+        </div>
+    
+        <div class="product-card">
+        <img src="images/Pets/9n46625n.png" alt="Product 2">
+        <div class="product-info">
+        <p class="product-price">R263.99</p>
+        <button class="product-button">Add to Cart</button>
+        </div>
+        </div>
+    
+        <div class="product-card">
+        <img src="images/Pets/6latk837.png" alt="Product 2">
+        <div class="product-info">
+        <p class="product-price">R146.99</p>
+        <button class="product-button">Add to Cart</button>
+        </div>
+        </div> 
+    
+        <div class="product-card">
+        <img src="images/Pets/9mteviwm.png" alt="Product 2">
+        <div class="product-info">
+        <p class="product-price">R205.49</p>
+        <button class="product-button">Add to Cart</button>
+        </div> 
+                               
+      </div> 
+  </div> 
+  
+  <footer>
         <div class="cntnr">
             <div class="small-container">
                 <div class="card footer">
@@ -130,7 +237,5 @@
             </div>
         </div>
     </footer>
-    
-    
 </body>
 </html>
