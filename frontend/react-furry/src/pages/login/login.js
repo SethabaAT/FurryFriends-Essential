@@ -13,6 +13,7 @@ export const Login = ({setIsLoggedIn, setUserTypes}) => {
     e.preventDefault();
 
     try {
+      console.log(email + " "+ password);
       // Call the login service function and pass email and password
       const response = await login(email, password);
 

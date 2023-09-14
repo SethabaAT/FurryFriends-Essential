@@ -10,7 +10,7 @@ export const UpdateProduct = () => {
     const [price, setprodPrice] = useState("");
     const [image, setImgPath] = useState("");
     const [description, setDescription] = useState("");
-    const [category_id, setCategory] = useState("");
+    const [category, setCategory] = useState("");
     const [discount, setDiscount] = useState("");
     const [qty, setQTY] = useState("");
     const navigate = useNavigate();
@@ -22,7 +22,7 @@ export const UpdateProduct = () => {
             //create product
             const prod = {
                 "name": name,
-                "category_id": parseInt(category_id),
+                "category": category,
                 "description": description,
                 "price":parseFloat(price),
                 "qty":parseInt(qty),
@@ -109,9 +109,9 @@ export const UpdateProduct = () => {
                         <label htmlFor="">Category</label>
                         <input
                             type="text"
-                            id="category_id"
-                            name="category_id"
-                            value={category_id}
+                            id="category"
+                            name="category"
+                            value={category}
                             placeholder="Product Category:"
                             onChange={(e) => setCategory(e.target.value)}/>
                     </div>

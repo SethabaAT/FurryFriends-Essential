@@ -3,13 +3,12 @@ import Product from "../models/Product.js";
 // A function for adding products to the database
 export const addProduct = async (req, res, next) => {
   try {
-    let { name, category_id, description, price, qty, image, discount } =
-      req.body;
+    let { name, category, description, price, qty, image, discount } = req.body;
 
     // Create a new Product
     let product = new Product(
       name,
-      category_id,
+      category,
       description,
       price,
       qty,
@@ -37,6 +36,18 @@ export const getAllProducts = async (req, res, next) => {
 };
 
 // A function that gets all the products by id
+export const getProductByID = async (req, res, next) => {
+  try {
+    let id = req.params.id;
+    const product = await Product.findById(parseInt(id));
+    res.status(200).json({ product });
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+};
+
+// A function that gets all the products by id
 export const getProductByCategory = async (req, res, next) => {
   try {
     let category = req.params.category;
@@ -52,7 +63,8 @@ export const getProductByCategory = async (req, res, next) => {
 export const removeProduct = async (req, res, next) => {
   try {
     // Get the id from the request parameters
-    await Product.destroy(parseInt(req.params.productId)).then(() =>
+    const id = parseInt(req.params.id);
+    await Product.destroy(parseInt(id)).then(() =>
       res.status(204).send("Deleted")
     );
   } catch (err) {

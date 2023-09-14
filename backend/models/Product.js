@@ -1,9 +1,9 @@
 import db from "../config/db.js";
 
 class Product {
-  constructor(name, category_id, description, price, qty, image, discount) {
+  constructor(name, category, description, price, qty, image, discount) {
     this.name = name;
-    this.category_id = category_id;
+    this.category = category;
     this.description = description;
     this.price = price;
     this.qty = qty;
@@ -16,9 +16,10 @@ class Product {
     const sql = `INSERT INTO product(name, category_id, description, price, qty, image, discount)
                  VALUES (?, ?, ?, ?, ?, ?, ?)`;
 
+    const category_id = await Product.findCategoryIdByName(this.category);
     const [newProduct, _] = await db.execute(sql, [
       this.name,
-      this.category_id,
+      category_id,
       this.description,
       this.price,
       this.qty,
@@ -36,42 +37,23 @@ class Product {
       throw new Error("Product not found");
     }
 
-    // Update only the fields provided in productData
-    if (productData.name) {
-      existingProduct.name = productData.name;
-    }
-    if (productData.category_id) {
-      existingProduct.category_id = productData.category_id;
-    }
-    if (productData.description) {
-      existingProduct.description = productData.description;
-    }
-    if (productData.price) {
-      existingProduct.price = productData.price;
-    }
-    if (productData.qty) {
-      existingProduct.qty = productData.qty;
-    }
-    if (productData.image) {
-      existingProduct.image = productData.image;
-    }
-    if (productData.discount) {
-      existingProduct.discount = productData.discount;
-    }
-
     // Perform the SQL update
     const sql = `UPDATE product
                    SET name = ?, category_id = ?, description = ?, price = ?, qty = ?, image = ?, discount = ?
                    WHERE id = ?`;
 
+    const category_id = await Product.findCategoryIdByName(
+      productData.category
+    );
+
     await db.execute(sql, [
-      existingProduct.name,
-      existingProduct.category_id,
-      existingProduct.description,
-      existingProduct.price,
-      existingProduct.qty,
-      existingProduct.image,
-      existingProduct.discount,
+      productData.name,
+      category_id,
+      productData.description,
+      productData.price,
+      productData.qty,
+      productData.image,
+      productData.discount,
       id,
     ]);
     return existingProduct;
@@ -111,6 +93,14 @@ class Product {
     const [[product] = []] = await db.execute(sql, [id]);
 
     return product;
+  }
+
+  // Find category by name
+  static async findCategoryIdByName(name) {
+    let sql = "SELECT * FROM category WHERE name=?";
+    const [[category] = []] = await db.execute(sql, [name]);
+
+    return category.id;
   }
 }
 

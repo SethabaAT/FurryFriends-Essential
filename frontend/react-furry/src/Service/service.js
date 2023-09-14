@@ -30,49 +30,6 @@ export const login = async (email, password) => {
   return data;
 };
 
-//get a single product from the db
-export const getProduct = async (id, token) => {
-  //get the product
-  const res = await fetch(`${API_URL}/getProductById/${id}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
-    },
-  });
-
-  //return the response from db ==> idealy the product and its details
-  return await res.json();
-};
-
-export const updateProduct = async (prod, id, token) => {
-  const res = await fetch(`${API_URL}/updateProduct/${id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify(prod),
-  });
-  const data = await res.json();
-  return data;
-};
-
-//get all the products from the db
-export const getProducts = async (token) => {
-  //get the products
-  const res = await fetch(`${API_URL}/getAllProducts`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
-    },
-  });
-
-  //return the response from db ==> idealy all the products
-  return await res.json();
-};
-
 // Add product to the database
 export const addProduct = async (prod, token) => {
   const res = await fetch(`${API_URL}/addProduct`, {
@@ -87,6 +44,20 @@ export const addProduct = async (prod, token) => {
   return await res.json();
 };
 
+// Update product
+export const updateProduct = async (prod, id, token) => {
+  const res = await fetch(`${API_URL}/updateProduct/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(prod),
+  });
+  const data = await res.json();
+  return data;
+};
+
 // Remove product
 export const removeProduct = async (id, token) => {
   const res = await fetch(`${API_URL}/removeProduct/${id}`, {
@@ -97,5 +68,47 @@ export const removeProduct = async (id, token) => {
     },
   });
 
+  return await res.json();
+};
+
+//get a single product from the db
+export const getProduct = async (id) => {
+  //get the product
+  const res = await fetch(`${API_URL}/getProductById/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  //return the response from db ==> idealy the product and its details
+  return await res.json();
+};
+
+//get all the products from the db
+export const getProducts = async () => {
+  //get the products
+  const res = await fetch(`${API_URL}/getAllProducts`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  //return the response from db ==> idealy all the products
+  return await res.json();
+};
+
+//get product(s) for for category
+export const getProductByCategory = async (category) => {
+  //get the product
+  const res = await fetch(`${API_URL}/getProductByCategory/${category}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  //return the response from db ==> idealy products for that category
   return await res.json();
 };
