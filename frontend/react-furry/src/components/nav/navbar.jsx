@@ -69,7 +69,7 @@ export const Navbar = ({isLoggedIn, setIsLoggedIn, userType, setUserType}) => {
     };
 
     //get user type const userType = JSON.parse(localStorage.getItem('user'));
-
+    const token = localStorage.getItem("token");
     return (
         <div className='navbar'>
 
@@ -97,17 +97,17 @@ export const Navbar = ({isLoggedIn, setIsLoggedIn, userType, setUserType}) => {
                     {/* check the type of user */}
                     { userType === 1 ? adminMenu : ( userType === 0 ? userMenu : DefaultUserMenu)}
                     {
-                        isLoggedIn
+                        (token == null && isLoggedIn == false)
                             ? (
-                                <li><Button classN={"def-btn"} text={"Sign Out"} onClickAdd={handleLogout}/></li>
-                            )
-                            : (
                                 <li><Button
                                     classN={"def-btn"}
                                     text={"Sign In"}
                                     onClickAdd={() => navigate("/login")}/></li>
 
+                            ):(
+                                <li><Button classN={"def-btn"} text={"Sign Out"} onClickAdd={handleLogout}/></li>
                             )
+                            
                     }
                 </ul>
             </div>
