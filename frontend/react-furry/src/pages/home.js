@@ -8,6 +8,7 @@ const banner = "/images/display/bannerImg.png";
 const fishImg = "/images/display/fish-category.png";
 const dogImg = "/images/display/dog-category.png";
 const catImg = "/images/display/cat-category.png";
+const catIcon = "images/display/cat-icon.png";
 
 export const Home = () => {
   return (
@@ -73,7 +74,7 @@ export const Home = () => {
               <div className="card-contents">
                 <a href="">
                   <h3>Dogs</h3>
-                  <img src="images/display/cat-icon.png" alt="" />
+                  <img src={catIcon} alt="" />
                 </a>
               </div>
             </div>
