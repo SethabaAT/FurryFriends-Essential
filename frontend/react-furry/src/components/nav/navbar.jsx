@@ -5,8 +5,8 @@ import './navbar.css'
 import {Link, useNavigate} from 'react-router-dom'
 import {Button} from '../button'
 
-import logo from '../../images/display/Logo.png'
 import {Badge} from '@mui/material'
+const logo = '/images/display/Logo.png'
 
 const adminMenu = (
     <> 
