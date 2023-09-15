@@ -90,3 +90,14 @@ export const updateProduct = async (req, res, next) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
+// A function that get discounted products
+export const getDiscountedProducts = async (req, res, next) => {
+  try {
+    const products = await Product.findDiscountedProducts();
+    res.status(200).json({ products });
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+};
