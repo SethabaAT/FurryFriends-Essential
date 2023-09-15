@@ -112,3 +112,17 @@ export const getProductByCategory = async (category) => {
   //return the response from db ==> idealy products for that category
   return await res.json();
 };
+
+// get discounted products
+export const getDiscountedProducts = async () => {
+  //get the products
+  const res = await fetch(`${API_URL}/getDiscountedProducts`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  //return the response from db ==> idealy all the products
+  return await res.json();
+};
