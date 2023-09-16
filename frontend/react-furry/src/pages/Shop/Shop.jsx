@@ -11,7 +11,7 @@ export const Shop = () => {
           
         <div className="small-container">
 
-            {PRODUCTS.map((prod) => (<Card data={prod}/>))}
+            {PRODUCTS.map((prod) => (<Card data={prod} key={prod.id}/>))}
 
         </div>
     </div>

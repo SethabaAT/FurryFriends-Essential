@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card } from "../components/card";
 import { Button } from "../components/button";
 import { Link } from "react-router-dom";
 import PRODUCTS from "./products/productsData";
+import { getProducts } from "../Service/service";
 
 const banner = "/images/display/bannerImg.png";
 const fishImg = "/images/display/fish-category.png";
@@ -11,7 +12,12 @@ const catImg = "/images/display/cat-category.png";
 const catIcon = "images/display/cat-icon.png";
 
 export const Home = () => {
-  return (
+
+  
+
+
+  return ( 
+    
     <>
       <hr />
       <div className="container">
@@ -34,10 +40,10 @@ export const Home = () => {
         {/* <!-- for discounted products --> */}
 
         <div className="cntnr">
-          <h2>Discounted Products</h2>
+          <h2>Discount Deals</h2>
           <div className="small-container">
             {PRODUCTS.map((prod) => (
-              <Card data={prod} />
+              <Card data={prod} key={prod.id} />
             ))}
           </div>
         </div>

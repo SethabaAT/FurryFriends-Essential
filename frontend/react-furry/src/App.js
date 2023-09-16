@@ -13,7 +13,7 @@ import {RemoveProducts} from "./pages/admin/removeProducts";
 import {AddProducts} from "./pages/admin/addProducts";
 import {UpdateProduct} from "./pages/admin/updateProducts";
 import {Admin} from "./pages/admin/admin";
-// import {ItemDetails} from "./pages/Shop/itemDetails/ItemDetails";
+import { ItemDetails } from "./pages/Shop/itemDetails/itemDetails";
 import {Switch} from "@mui/material";
 
 const App = () => {
@@ -50,8 +50,9 @@ const App = () => {
                         <Route path="/updateProducts" element={<UpdateProduct />}/>
                         
                         <Route path="/register" element={<Register />}/>
-
+                        
                         <Route path="/shop" element={<Shop />}/>
+                        <Route path="/ItemDetails/:id" element={<ItemDetails />} />
                         <Route path="/ShoppingCart" element={<ShoppingCart />}/>
                     </Routes>
 

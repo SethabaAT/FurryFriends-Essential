@@ -86,7 +86,7 @@ export const Navbar = ({isLoggedIn, setIsLoggedIn, userType, setUserType}) => {
             
             {/* //hide searchbar if user is admin */}
             {userType === 1 ? null : 
-            <div class="search-bar">
+            <div className="search-bar">
                 <form action="/search" method="get">
                     <input type="text" name="q" placeholder="Search" />  
                 </form>

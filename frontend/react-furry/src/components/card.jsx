@@ -12,12 +12,13 @@ export const Card = (props) => {
   const getCartItemAmount = () => {
     return (cartItemAmount > 0 && <>({cartItemAmount})</>)
   }
-  const Amount =getCartItemAmount();
+  
 
-  return (
-    <div className='card' key = {id}>
-        <div className="card-contents">
-            <Link to="/ItemDetails"><img src={image} alt=""/></Link>
+  return (    
+   
+    <div className="card" >
+        <div className="card-contents" >
+            <Link to={`/ItemDetails/${id}`}><img src={image} alt="Item image"/></Link>
             <h5>{name}</h5>
             
             <p className="price">R {price} <span className="prev"></span></p>

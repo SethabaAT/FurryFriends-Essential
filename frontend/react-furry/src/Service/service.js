@@ -94,7 +94,7 @@ export const getProducts = async () => {
       "Content-Type": "application/json",
     },
   });
-
+  
   //return the response from db ==> idealy all the products
   return await res.json();
 };
