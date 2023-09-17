@@ -95,6 +95,14 @@ class Product {
     return product;
   }
 
+  // Find discounted products
+  static async findDiscountedProducts() {
+    let sql = "SELECT * FROM product WHERE discount <> price";
+    const [productRows, _] = await db.execute(sql);
+
+    return productRows;
+  }
+
   // Find category by name
   static async findCategoryIdByName(name) {
     let sql = "SELECT * FROM category WHERE name=?";

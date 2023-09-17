@@ -6,6 +6,7 @@ import {
   updateProduct,
   getProductByCategory,
   getProductByID,
+  getDiscountedProducts,
 } from "../controllers/productController.js";
 import { isAdmin } from "../middleware/authorization.js";
 
@@ -16,6 +17,7 @@ router.route("/removeProduct/:id").delete(isAdmin, removeProduct);
 router.route("/updateProduct/:id").put(isAdmin, updateProduct);
 router.route("/getProductById/:id").get(getProductByID);
 router.route("/getAllProducts").get(getAllProducts);
+router.route("/getDiscountedProducts").get(getDiscountedProducts);
 router.route("/getProductByCategory/:category").get(getProductByCategory);
 
 export default router;
