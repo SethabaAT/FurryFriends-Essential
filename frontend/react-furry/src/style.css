@@ -152,6 +152,7 @@ h3{
 
 .card:hover{
     box-shadow:  0 3px 5px rgba(0,0,0,.6);
+    transition:  0.3s ease;
 }
 
 .card .card-contents, .category .card-contents{
@@ -168,7 +169,9 @@ h3{
      
  } 
 
-
+ .card .card-contents a img:hover{
+    transition:  0.3s ease;
+ }
  .category{    
     border-radius: 50%;
     width:100px;
@@ -343,3 +346,4 @@ footer .cntnr .small-container{
     text-transform: uppercase;
     cursor: pointer;
 }
+

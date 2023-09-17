@@ -44,13 +44,13 @@ body {
 
 .product-price {
     font-size: 24px;
-    color: #ff6600;
+    color:  #555;
     margin: 10px 0;
 }
 
 .add-to-cart-button {
-    background-color: #ff6600;
-    color: #fff;
+    background-color: #ffe6a7;
+    color: #403d3d;
     border: none;
     padding: 10px 20px;
     font-size: 16px;
@@ -60,5 +60,5 @@ body {
 }
 
 .add-to-cart-button:hover {
-    background-color: #ff3300;
+    background-color: #ffb700;
 }
