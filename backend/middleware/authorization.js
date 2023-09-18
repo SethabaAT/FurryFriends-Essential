@@ -13,6 +13,9 @@ function isUser(req, res, next) {
 
   const user = verifyToken(token);
   if (user && user.user_type === 0) {
+    const user_id = user.id;
+    req.user_id = user_id;
+    console.log(`This guy ${user_id} is now ordering`);
     next();
   } else {
     // User is not authorized to access this route
