@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../../components/button";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../Service/service";
+import { ShopContext } from "../../context/shop-context";
 
-export const Login = ({setIsLoggedIn, setUserTypes}) => {
+export const Login = () => {
+  
+    const {setIsLoggedIn, setUserType} = useContext(ShopContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -29,9 +32,10 @@ export const Login = ({setIsLoggedIn, setUserTypes}) => {
         console.log(response.token);
 
                 setIsLoggedIn(true);
+                
                 console.log( typeof response.user_type )
                 //set the userType
-                setUserTypes(response.user_type);
+                setUserType(response.user_type);
 
                 if (response.user_type === 1) {
                     console.log("Welcome Admin");

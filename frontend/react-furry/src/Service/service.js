@@ -126,3 +126,18 @@ export const getDiscountedProducts = async () => {
   //return the response from db ==> idealy all the products
   return await res.json();
 };
+
+
+//sending a list of items in the shopping cart
+export const postItemsInCart = async (cartItemList,token) =>{
+  const res = await fetch(`${API_URL}/cartItems`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(cartItemList),
+  });
+
+  return await res.json();
+}

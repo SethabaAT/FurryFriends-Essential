@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {BrowserRouter as Router, Routes, Route, useLocation} from "react-router-dom";
 import {Navbar} from "./components/nav/navbar";
 import {Footer} from "./components/footer";
@@ -13,47 +13,34 @@ import {RemoveProducts} from "./pages/admin/removeProducts";
 import {AddProducts} from "./pages/admin/addProducts";
 import {UpdateProduct} from "./pages/admin/updateProducts";
 import {Admin} from "./pages/admin/admin";
-import { ItemDetails } from "./pages/Shop/itemDetails/itemDetails";
+import {ItemDetails} from "./pages/Shop/itemDetails/itemDetails";
 import {Switch} from "@mui/material";
 
 const App = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    const [userType, setUserType] = useState(-1);
-
+    
     return (
         <div className="App">
             <ShopContextProvider>
 
                 <Router>
-                    <Navbar
-                        isLoggedIn={isLoggedIn}
-                        setIsLoggedIn={setIsLoggedIn}
-                        userType={userType}
-                        setUserType={setUserType}/>
+                    <Navbar/>
 
                     <Routes>
-                        <Route path="/" element={<Home />}/>
+                        <Route path="/" element={< Home />}/>
 
-                        <Route
-                            path="/login"
-                            element={<Login setIsLoggedIn = {
-                                setIsLoggedIn
-                            }
-                            setUserTypes = {setUserType} />
-                            }
-                        />
+                        <Route path="/login" element={< Login />}/>
 
-                        <Route path="/admin" element={<Admin />}/>
-                        <Route path="/removeProducts" element={<RemoveProducts />}/>
-                        <Route path="/addProducts" element={<AddProducts/>}/>
-                        <Route path="/updateProducts" element={<UpdateProduct />}/>
-                        
-                        <Route path="/register" element={<Register />}/>
-                        
-                        <Route path="/shop" element={<Shop />}/>
-                        <Route path="/ItemDetails/:id" element={<ItemDetails />} />
-                        <Route path="/ShoppingCart" element={<ShoppingCart />}/>
+                        <Route path="/admin" element={< Admin />}/>
+                        <Route path="/removeProducts" element={< RemoveProducts />}/>
+                        <Route path="/addProducts" element={< AddProducts />}/>
+                        <Route path="/updateProducts" element={< UpdateProduct />}/>
+
+                        <Route path="/register" element={< Register />}/>
+
+                        <Route path="/shop" element={< Shop />}/>
+                        <Route path="/ItemDetails/:id" element={< ItemDetails />}/>
+                        <Route path="/ShoppingCart" element={< ShoppingCart />}/>
                     </Routes>
 
                     <Footer/>

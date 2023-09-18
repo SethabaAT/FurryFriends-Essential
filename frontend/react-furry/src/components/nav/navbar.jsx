@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {GiShoppingCart} from 'react-icons/gi'
+import { ShopContext } from '../../context/shop-context'
 
 import './navbar.css'
 import {Link, useNavigate} from 'react-router-dom'
@@ -51,8 +52,9 @@ const userMenu =
         </li>
     </>);
 
-export const Navbar = ({isLoggedIn, setIsLoggedIn, userType, setUserType}) => {
+export const Navbar = () => {
 
+    const {isLoggedIn,setIsLoggedIn,userType, setUserType} =useContext(ShopContext);
      //go to the login page
     const navigate = useNavigate();
 

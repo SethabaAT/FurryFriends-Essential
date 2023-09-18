@@ -3,16 +3,55 @@ import PRODUCTS from '../products/productsData'
 import {CartItem} from './itemDetails/CartItem'
 import {ShopContext} from '../../context/shop-context'
 import './ShoppingCart.css'
+import {postItemsInCart} from '../../Service/service'
 
 import {useNavigate} from 'react-router-dom'
 
 export const ShoppingCart = () => {
 
-    const {cartItems, getTotCartAmount} = useContext(ShopContext);
+
+    const {cartItems, getTotCartAmount,isLoggedIn} = useContext(ShopContext);
 
     const totAmount = getTotCartAmount();
-    let count = 0;
+    
     const navigate = useNavigate();
+
+   let cartItemList =[];
+
+    const handleCheckOut = async () =>{
+        if(isLoggedIn === true){
+            //get the item id and its qty
+           
+            PRODUCTS.map((p) => {
+                if(cartItems[p.id ] !== 0){
+
+                
+                 cartItemList.push([{id: p.id,qty: cartItems[p.id]}]);                
+                
+                }else{
+                    console.log("cannot read em")
+               }
+            });
+
+            try{
+                const token = localStorage.getItem("token");
+                 //send the items to the database
+             const res = await postItemsInCart(cartItemList,token);
+
+             //afterwards,  generate the invoice from here:
+
+            }catch(error){
+                console.log("Error sending cartItems list "+ error)
+            }
+            
+        }else{
+            //redirect to login
+            console.log("not loggedin");
+            navigate('/login');
+
+        }
+    }
+
 
     return (
         <div className='cart'>
@@ -24,10 +63,10 @@ export const ShoppingCart = () => {
 
             <div className='cart-items'>
                 {PRODUCTS.map((product) => {
-                     console.log(cartItems)
+                    
                     //diplay items that are in the cart(context)
                     if (cartItems[product.id] !== 0) {
-                        console.log("Product amount "+cartItems[product.name]+ " "+ ++count)
+                        
                         //display the products in the cart
                         return <CartItem data={product} key={product.id}/>
                     }
@@ -40,7 +79,7 @@ export const ShoppingCart = () => {
                 ? <div className="checkout">
                         <p>Subtotal: R {totAmount}</p>
                         <button onClick={() => navigate("/Shop")}>Continue Shopping</button>
-                        <button className='checkout-button'>Checkout</button>
+                        <button className='checkout-button' onClick={handleCheckOut}>Checkout</button>
                     </div>
 
                 //else display: your cart is empty

@@ -18,6 +18,11 @@ const getDefaultCart = () => {
 export const ShopContextProvider = (props) => {
 
     const [cartItems, setCartItems] = useState(getDefaultCart());
+
+    //login status
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [userType,setUserType] = useState(-1);
+    
    
     //a fuction for adding an item to cart
     const addToCart = (itemId) => {
@@ -61,6 +66,10 @@ export const ShopContextProvider = (props) => {
     //context value for outside access
     const contextValue = {
         cartItems,
+        isLoggedIn,
+        setIsLoggedIn,
+        userType,
+        setUserType,
         addToCart,
         removeFromCart,
         updateCartItemCount,
