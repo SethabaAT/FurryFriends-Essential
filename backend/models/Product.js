@@ -80,7 +80,7 @@ class Product {
 
   // Find product by category name
   static async findByCategory(category) {
-    let sql = `SELECT * FROM product JOIN category ON product.category_id = category.id WHERE category.name = ?`;
+    let sql = `SELECT product.* FROM product JOIN category ON product.category_id = category.id WHERE category.name = ?`;
 
     const [productRows, _] = await db.execute(sql, [category]);
 
