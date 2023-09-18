@@ -9,49 +9,51 @@ import {useNavigate} from 'react-router-dom'
 
 export const ShoppingCart = () => {
 
-
-    const {cartItems, getTotCartAmount,isLoggedIn} = useContext(ShopContext);
+    const {cartItems, getTotCartAmount, isLoggedIn} = useContext(ShopContext);
 
     const totAmount = getTotCartAmount();
-    
+
     const navigate = useNavigate();
 
-   let cartItemList =[];
+    let cartItemList = [];
 
-    const handleCheckOut = async () =>{
-        if(isLoggedIn === true){
+    const handleCheckOut = async() => {
+        if (isLoggedIn === true) {
             //get the item id and its qty
-           
-            PRODUCTS.map((p) => {
-                if(cartItems[p.id ] !== 0){
 
-                
-                 cartItemList.push([{id: p.id,qty: cartItems[p.id]}]);                
-                
-                }else{
+            PRODUCTS.map((p) => {
+                if (cartItems[p.id] !== 0) {
+
+                    cartItemList.push([
+                        {
+                            id: p.id,
+                            qty: cartItems[p.id]
+                        }
+                    ]);
+
+                } else {
                     console.log("cannot read em")
-               }
+                }
             });
 
-            try{
+            try {
                 const token = localStorage.getItem("token");
-                 //send the items to the database
-             const res = await postItemsInCart(cartItemList,token);
+                //send the items to the database
+                const res = await postItemsInCart(cartItemList, token);
 
-             //afterwards,  generate the invoice from here:
+                //afterwards,  generate the invoice from here:
 
-            }catch(error){
-                console.log("Error sending cartItems list "+ error)
+            } catch (error) {
+                console.log("Error sending cartItems list " + error)
             }
-            
-        }else{
+
+        } else {
             //redirect to login
             console.log("not loggedin");
             navigate('/login');
 
         }
     }
-
 
     return (
         <div className='cart'>
@@ -63,10 +65,10 @@ export const ShoppingCart = () => {
 
             <div className='cart-items'>
                 {PRODUCTS.map((product) => {
-                    
+
                     //diplay items that are in the cart(context)
                     if (cartItems[product.id] !== 0) {
-                        
+
                         //display the products in the cart
                         return <CartItem data={product} key={product.id}/>
                     }
