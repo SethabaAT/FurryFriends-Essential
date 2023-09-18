@@ -3,7 +3,7 @@ import {ShopContext} from '../../../context/shop-context';
 
 export const CartCard = (props) => {
 
-    const {id, price, image,desc, name} = props.data;
+    const {id, price, image,desc, name,discount} = props.data;
     const {addToCart, removeFromCart, cartItems, updateCartItemCount} = useContext(ShopContext);
 
   return (
@@ -14,7 +14,7 @@ export const CartCard = (props) => {
                     {name}
                 </p>
                 <p>
-                    R {price}
+                    R {price > discount ? discount : price} {price > discount ? <span className="prev"><del>{price}</del></span> : null}
                 </p>
             </div>
 

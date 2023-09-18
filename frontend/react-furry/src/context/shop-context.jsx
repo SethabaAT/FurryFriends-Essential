@@ -56,7 +56,12 @@ export const ShopContextProvider = (props) => {
             if (cartItems[item] > 0) {
                 //get the price of the item
                 let itemInfo = PRODUCTS.find((prod) => prod.id === Number(item));
-                totAmount += cartItems[item] * itemInfo.price;
+                if(itemInfo.price > itemInfo.discount ){
+                    totAmount += cartItems[item] * itemInfo.discount;
+                }else{
+                    totAmount += cartItems[item] * itemInfo.price;
+                }
+                
             }
         }
 

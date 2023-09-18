@@ -45,11 +45,12 @@ const userMenu =
             <Link to="/Shop">SHOP</Link>
         </li>
         <li>
-            <Link to="/ShoppingCart"><GiShoppingCart size={22}/></Link>
-        </li>
-        <li>
             <Link to="">ORDERS</Link>
         </li>
+        <li>
+            <Link to="/ShoppingCart"><GiShoppingCart size={22}/></Link>
+        </li>
+        
     </>);
 
 export const Navbar = () => {

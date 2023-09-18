@@ -3,7 +3,7 @@ import { Card } from "../components/card";
 import { Button } from "../components/button";
 import { Link } from "react-router-dom";
 import PRODUCTS from "./products/productsData";
-import { getProducts } from "../Service/service";
+import { getDiscountedProducts } from "../Service/service";
 
 const banner = "/images/display/bannerImg.png";
 const fishImg = "/images/display/fish-category.png";
@@ -13,7 +13,25 @@ const catIcon = "images/display/cat-icon.png";
 
 export const Home = () => {
 
-  
+  const [discountedProducts,setDiscounted] = useState([]);
+
+  //get discounted products
+  useEffect(() => {   
+
+      const fetchProducts = async ()=>{
+        try{
+          const res = await getDiscountedProducts();
+          console.log(res["products"]);
+          setDiscounted(res["products"]);
+        }catch(error){
+          console.log("Could not get discounted products: "+error)
+        }
+
+      }
+
+   //fetch the products
+   fetchProducts();
+  },[]);
 
 
   return ( 
@@ -42,7 +60,7 @@ export const Home = () => {
         <div className="cntnr">
           <h2>Discount Deals</h2>
           <div className="small-container">
-            {PRODUCTS.map((prod) => (
+            {discountedProducts.map((prod) => (
               <Card data={prod} key={prod.id} />
             ))}
           </div>

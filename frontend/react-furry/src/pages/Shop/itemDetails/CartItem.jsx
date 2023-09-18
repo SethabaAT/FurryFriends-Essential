@@ -4,7 +4,7 @@ import './Cart.css'
 
 export const CartItem = (props) => {
 
-    const {id, name, price, image} = props.data;
+    const {id, name, price, image, discount} = props.data;
     const {addToCart, removeFromCart, cartItems, updateCartItemCount} = useContext(ShopContext);
     return (
         <div className='cart-item'>
@@ -14,13 +14,22 @@ export const CartItem = (props) => {
                     {name}
                 </h3>
                 <p>
-                    R {price}
+                    R {price > discount
+                        ? discount
+                        : price}
+                    {price > discount
+                        ? <span className="prev">
+                                <del>
+                                    R {price}</del>
+                            </span>
+                        : null}
                 </p>
             </div>
 
             <div className="handleItemCount">
                 <button className='cart-btn' onClick={() => removeFromCart(id)}>-</button>
-                <input className='cart-inpt'
+                <input
+                    className='cart-inpt'
                     value={cartItems[id]}
                     min={1}
                     type='number'
