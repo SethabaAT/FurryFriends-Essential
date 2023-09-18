@@ -2,7 +2,8 @@ import db from "../config/db.js";
 import bcrypt from "bcrypt";
 
 class User {
-  constructor(firstName, secondName, email, password, user_type) {
+  constructor(id, firstName, secondName, email, password, user_type) {
+    this.id = id;
     this.firstName = firstName;
     this.secondName = secondName;
     this.email = email;
@@ -19,13 +20,17 @@ class User {
     // Query for inseritn into the database
     let sql =
       "INSERT INTO user(firstName, secondName, email, password) VALUES(?,?,?,?)";
-    const [newUser, _] = await db.execute(sql, [
-      this.firstName,
-      this.secondName,
-      this.email,
-      hashedPassword,
-    ]);
-    return newUser;
+
+    await db
+      .execute(sql, [
+        this.firstName,
+        this.secondName,
+        this.email,
+        hashedPassword,
+      ])
+      .then((result) => {
+        console.log("User Added");
+      });
   }
 
   // Find user details using their email
@@ -38,7 +43,10 @@ class User {
     }
 
     this.user_type = userRows[0].user_type;
+    this.id = userRows[0].id;
+
     return new User(
+      userRows[0].id,
       userRows[0].firstName,
       userRows[0].secondName,
       userRows[0].email,
