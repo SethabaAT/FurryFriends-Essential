@@ -110,6 +110,14 @@ class Product {
 
     return category.id;
   }
+
+  //find category name by id
+  static async findCategoryNameById(id) {
+    let sql = "SELECT * FROM category WHERE id=?";
+    const [[category] = []] = await db.execute(sql, [id]);
+
+    return category.name;
+  }
 }
 
 export default Product;

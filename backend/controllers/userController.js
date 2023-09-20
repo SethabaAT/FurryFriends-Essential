@@ -6,10 +6,10 @@ import { generateToken, verifyToken } from "../auth.js";
 export const register = async (req, res, next) => {
   try {
     let { firstName, secondName, email, password } = req.body;
-    let user = new User(firstName, secondName, email, password, 0);
+    let user = new User(1, firstName, secondName, email, password, 0);
     user = await user.save();
     res.status(201).json({ message: "User Registered" });
-    console.log("User Registered");
+    console.log(user);
   } catch (error) {
     console.error("Error Registering user", error);
     next(error);
@@ -24,6 +24,7 @@ export const login = async (req, res, next) => {
 
     // Find the user
     const user = await User.findByEmail(email);
+    console.log(user);
     if (!user) {
       res.status(401).json({ message: "User not found" });
       console.error("User not Found");
@@ -38,6 +39,7 @@ export const login = async (req, res, next) => {
       // Generate a token
       // But create a user payload before (basically I just wanna turn the user into a js object)
       const userPayload = {
+        id: user.id,
         firstName: user.firstName,
         secondName: user.secondName,
         email: user.email,
