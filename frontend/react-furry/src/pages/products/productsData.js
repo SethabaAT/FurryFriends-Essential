@@ -1,7 +1,6 @@
 import { getProducts } from "../../Service/service";
 
-let PRODUCTS = await getProducts();
-PRODUCTS = PRODUCTS["products"];
+const PRODUCTS = await getProducts();
 
 // let PRODUCTS =[{
 //     id:1,

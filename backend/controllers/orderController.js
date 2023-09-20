@@ -22,22 +22,22 @@ export const createOrder = async (req, res, next) => {
     console.log("New order", order._id);
 
     for (const { id, qty } of data) {
-      console.log(`product id: ${id}, qty: ${qty}`);
-
       // Add the order item to the database
       await order.addOrderItem(order_id, id, qty);
 
       // Get the product
       let product = await Product.findById(id);
-      console.log(product);
 
       // Update the order total
       total += product.discount * qty;
 
+      // Categgoryy name
+      const category = await Product.findCategoryNameById(product.category_id);
+
       // Update the product qty in the databse
       let updatedProduct = new Product(
         product.name,
-        await Product.findCategoryNameById(product.category_id),
+        category,
         product.description,
         product.price,
         product.qty - qty,
@@ -49,6 +49,8 @@ export const createOrder = async (req, res, next) => {
 
     // After adding all the order items, update the total
     await Order.updateTotal(order_id, total);
+
+    res.status(201).json({ message: "Order Succesfully Added" });
   } catch (error) {
     console.log("Error in adding the order", error);
     next(error);
@@ -71,6 +73,12 @@ export const getUserOrders = async (req, res, next) => {
 export const getOrderById = async (req, res, next) => {
   try {
     const order = await Order.findById(req.params.id);
+
+    // If the order does not exist
+    if (!order) {
+      return res.status(404).json({ message: "Order not found" });
+    }
+
     res.status(200).json(order);
   } catch (error) {
     console.log("Error in getting order by id", error);
