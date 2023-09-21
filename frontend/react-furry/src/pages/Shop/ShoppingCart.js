@@ -8,7 +8,7 @@ import { postItemsInCart } from "../../Service/service";
 import { useNavigate } from "react-router-dom";
 
 export const ShoppingCart = () => {
-  const { cartItems, getTotCartAmount, isLoggedIn } = useContext(ShopContext);
+  const { cartItems, getTotCartAmount, isLoggedIn, clearCart } = useContext(ShopContext);
 
   const totAmount = getTotCartAmount();
 
@@ -36,6 +36,9 @@ export const ShoppingCart = () => {
         //send the items to the database
         const res = await postItemsInCart(cartItemList, token);
 
+        //clear the cart
+        clearCart();
+        
         //afterwards,  generate the invoice from here:
       } catch (error) {
         console.log("Error sending cartItems list " + error);

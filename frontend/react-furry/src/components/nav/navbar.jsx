@@ -55,7 +55,7 @@ const userMenu =
 
 export const Navbar = () => {
 
-    const {isLoggedIn,setIsLoggedIn,userType, setUserType} =useContext(ShopContext);
+    const {isLoggedIn,setIsLoggedIn,userType, setUserType, clearCart} =useContext(ShopContext);
      //go to the login page
     const navigate = useNavigate();
 
@@ -67,7 +67,7 @@ export const Navbar = () => {
         //set the user type to default
         setUserType(-1);
         setIsLoggedIn(false);
-
+        clearCart();
         navigate("/");
     };
 

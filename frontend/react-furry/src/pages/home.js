@@ -21,8 +21,8 @@ export const Home = () => {
       const fetchProducts = async ()=>{
         try{
           const res = await getDiscountedProducts();
-          console.log(res["products"]);
-          setDiscounted(res["products"]);
+          console.log("products\n"+res);
+          setDiscounted(res);
         }catch(error){
           console.log("Could not get discounted products: "+error)
         }
