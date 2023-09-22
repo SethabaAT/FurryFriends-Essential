@@ -27,7 +27,7 @@ export const ItemDetails = () => {
           const fetchProduct =async () =>{
             try{
               const res = await getProduct(id);
-               setProduct(res["product"]);     
+               setProduct(res);     
             }
             catch(e){
               console.error('Error fetching product:', e);
