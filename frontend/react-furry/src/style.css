@@ -332,6 +332,15 @@ footer .cntnr .small-container{
     height: 44px;
 }
 
+.form-group select{
+    outline: none;
+    border: 1.5px solid ;
+    background:#e0e0e0;
+    border-radius: 4px;
+    min-width: 350px;
+    height: 44px;
+}
+
 .form-group input:focus{
     background-color: #fff;
     border: 1px solid #f0b930;
@@ -345,5 +354,6 @@ footer .cntnr .small-container{
     height: 44px;
     text-transform: uppercase;
     cursor: pointer;
+    margin-bottom: 5px;
 }
 

@@ -6,17 +6,19 @@ import { login } from "../../Service/service";
 import { ShopContext } from "../../context/shop-context";
 
 export const Login = () => {
-  
-    const {setIsLoggedIn, setUserType} = useContext(ShopContext);
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const navigate = useNavigate();
+  const { setIsLoggedIn, setUserType } = useContext(ShopContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  // State to store the decoded JWT payload
+  const [decodedToken, setDecodedToken] = useState(null);
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      console.log(email + " "+ password);
+      console.log(email + " " + password);
       // Call the login service function and pass email and password
       const response = await login(email, password);
 
@@ -29,30 +31,32 @@ export const Login = () => {
         //store the data in local storage for future use
         localStorage.setItem("user", JSON.stringify(response.user_type));
         localStorage.setItem("token", response.token);
+
+        let tk = localStorage.getItem("token");
+       
         console.log(response.token);
 
-                setIsLoggedIn(true);
-                
-                console.log( typeof response.user_type )
-                //set the userType
-                setUserType(response.user_type);
+        setIsLoggedIn(true);
 
-                if (response.user_type === 1) {
-                    console.log("Welcome Admin");
-                    navigate("/admin", {replace: true});
-                } else if (response.user_type === 0) {
-                    console.log("Welcome User");
-                    navigate("/Shop", {replace: true});
-                }
-            } else {
-                console.error("Login was not successful:", response.statusText);
-                // Handle the case of unsuccessful login, e.g., show an error message
-            }
-        } catch (error) {
-            console.error("Error during login:", error);
-            // Handle the error, e.g., display an error message to the user
+        console.log(typeof response.user_type);
+        //set the userType
+        setUserType(response.user_type);
+
+        if (response.user_type === 1) {
+          console.log("Welcome Admin");
+          navigate("/admin", { replace: true });
+        } else if (response.user_type === 0) {
+          console.log("Welcome User");
+          navigate("/Shop", { replace: true });
         }
-      
+      } else {
+        console.error("Login was not successful:", response.statusText);
+        // Handle the case of unsuccessful login, e.g., show an error message
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      // Handle the error, e.g., display an error message to the user
+    }
   };
 
   return (
