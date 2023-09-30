@@ -32,14 +32,14 @@ export const UpdateProduct = () => {
             const token = localStorage.getItem("token");
             const response = await updateProduct(prod,parseInt(id),token);
             
-             { response.message === "Product updated successfully"  ? <Alert severity='success'><AlertTitle>Sucess:</AlertTitle>
+             { response.message === "Product Updated"  ? <Alert severity='success'><AlertTitle>Sucess:</AlertTitle>
                     Successfully Updated Product</Alert>
                     : 
                     <Alert severity='error'><AlertTitle>Fail:</AlertTitle>
                     Failed to Update Product</Alert> }
 
             // Go to admin
-            if (response.message === "Product updated successfully" ){
+            if (response.message === "Product Updated" ){
                 console.log(response.message);
                 navigate("/admin", { replace: true });
             }

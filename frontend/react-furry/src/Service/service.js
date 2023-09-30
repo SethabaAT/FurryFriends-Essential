@@ -40,7 +40,7 @@ export const addProduct = async (prod, token) => {
     body: JSON.stringify(prod),
   });
 
-  return await res.status();
+  return await res.json();
 };
 
 // Update product
@@ -54,7 +54,7 @@ export const updateProduct = async (prod, id, token) => {
     body: JSON.stringify(prod),
   });
 
-  return await res.status();
+  return await res.json();
 };
 
 // Remove product
@@ -67,7 +67,7 @@ export const removeProduct = async (id, token) => {
     },
   });
 
-  return await res.status();
+  return await res.json();
 };
 
 //get a single product from the db

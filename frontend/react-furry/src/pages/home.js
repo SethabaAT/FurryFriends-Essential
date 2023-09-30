@@ -12,30 +12,25 @@ const catImg = "/images/display/cat-category.png";
 const catIcon = "images/display/cat-icon.png";
 
 export const Home = () => {
-
-  const [discountedProducts,setDiscounted] = useState([]);
+  const [discountedProducts, setDiscounted] = useState([]);
 
   //get discounted products
-  useEffect(() => {   
-
-      const fetchProducts = async ()=>{
-        try{
-          const res = await getDiscountedProducts();
-          console.log("products\n"+res);
-          setDiscounted(res);
-        }catch(error){
-          console.log("Could not get discounted products: "+error)
-        }
-
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await getDiscountedProducts();
+        console.log("products\n" + res);
+        setDiscounted(res);
+      } catch (error) {
+        console.log("Could not get discounted products: " + error);
       }
+    };
 
-   //fetch the products
-   fetchProducts();
-  },[]);
+    //fetch the products
+    fetchProducts();
+  }, []);
 
-
-  return ( 
-    
+  return (
     <>
       <hr />
       <div className="container">
