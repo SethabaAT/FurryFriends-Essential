@@ -4,6 +4,7 @@ import exp from "constants";
 import userRoute from "./routes/userRoute.js";
 import productRoute from "./routes/productRoute.js";
 import orderRoute from "./routes/orderRoute.js";
+import cartRoute from "./routes/cartRoute.js";
 import cors from "cors";
 
 // Configure the dotenv
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use("/", userRoute);
 app.use("/", productRoute);
 app.use("/", orderRoute);
+app.use("/", cartRoute);
 
 // Error handling code
 app.use((err, req, res, next) => {

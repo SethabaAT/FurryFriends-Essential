@@ -1,9 +1,11 @@
 import Order from "../models/Order.js";
 import crypto from "crypto";
 import Product from "../models/Product.js";
+import Cart from "../models/Cart.js";
 
+// Generate the order id since I will use it immediately after creation
 const generateOrderId = () => {
-  const hash = crypto.randomBytes(16).toString("hex"); // Generates a 32-character hexadecimal string
+  const hash = crypto.randomBytes(16).toString("hex");
   return hash;
 };
 
@@ -11,40 +13,36 @@ const generateOrderId = () => {
 export const createOrder = async (req, res, next) => {
   try {
     // From the request
-    const data = req.body;
     const user_id = req.user_id;
+    const data = await Cart.findUserCartItems(user_id);
 
     // Generate a random id
     const order_id = generateOrderId();
     let total = 0;
     const order = new Order(order_id, user_id, new Date(), total);
-    await order.save();
+    await order.save(); // Save the order (note the total is zero at creation)
     console.log("New order", order._id);
 
-    for (const { id, qty } of data) {
-      // Add the order item to the database
-      await order.addOrderItem(order_id, id, qty);
+    // Add order items to the order we just created'
+    console.log(data);
+    for (const { product_id, qty } of data) {
+      await order.addOrderItem(order_id, product_id, qty); // Note that this id here is product id
 
-      // Get the product
-      let product = await Product.findById(id);
-
-      // Update the order total
+      // Get the product by id and update the quantity
+      let product = await Product.findById(product_id);
       total += product.discount * qty;
-
-      // Categgoryy name
-      const category = await Product.findCategoryNameById(product.category_id);
 
       // Update the product qty in the databse
       let updatedProduct = new Product(
         product.name,
-        category,
+        product.category_id,
         product.description,
         product.price,
         product.qty - qty,
         product.image,
         product.discount
       );
-      await Product.update(id, updatedProduct);
+      await Product.update(product_id, updatedProduct);
     }
 
     // After adding all the order items, update the total
