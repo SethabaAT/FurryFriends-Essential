@@ -73,7 +73,7 @@ class Cart {
   }
 
   // Delete cart
-  static async deleteAllItems(user_id, product_id) {
+  static async deleteAllItems(user_id) {
     const sql = `DELETE FROM cart WHERE user_id = ?`;
 
     const [deletedCart, _] = await db.execute(sql, [user_id]);

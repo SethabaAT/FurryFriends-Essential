@@ -47,7 +47,7 @@ export const createOrder = async (req, res, next) => {
 
     // After adding all the order items, update the total
     await Order.updateTotal(order_id, total);
-
+    await Cart.deleteAllItems(user_id);
     res.status(201).json({ message: "Order Succesfully Added" });
   } catch (error) {
     console.log("Error in adding the order", error);
