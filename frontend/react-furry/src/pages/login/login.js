@@ -6,13 +6,10 @@ import { login } from "../../Service/service";
 import { ShopContext } from "../../context/shop-context";
 
 export const Login = () => {
-  const { setIsLoggedIn, setUserType } = useContext(ShopContext);
+  const { setIsLoggedIn, setUserType, setToken } = useContext(ShopContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
-  // State to store the decoded JWT payload
-  const [decodedToken, setDecodedToken] = useState(null);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -29,16 +26,14 @@ export const Login = () => {
         console.log("Login Succesful");
 
         //store the data in local storage for future use
-        localStorage.setItem("user", JSON.stringify(response.user_type));
-        localStorage.setItem("token", response.token);
+        // localStorage.setItem("user", JSON.stringify(response.user_type));
+        // localStorage.setItem("token", response.token);
 
-        let tk = localStorage.getItem("token");
-       
-        console.log(response.token);
+        //store the token for the session
+        setToken(response.token);       
 
         setIsLoggedIn(true);
 
-        console.log(typeof response.user_type);
         //set the userType
         setUserType(response.user_type);
 

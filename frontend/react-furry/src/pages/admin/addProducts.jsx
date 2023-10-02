@@ -1,6 +1,8 @@
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
 import { addProduct } from "../../Service/service";
 import { useNavigate } from "react-router-dom";
+
+import { ShopContext } from "../../context/shop-context";
 
 export const AddProducts = () => {
   //states
@@ -11,7 +13,16 @@ export const AddProducts = () => {
   const [category, setCategory] = useState("");
   const [discount, setDiscount] = useState("");
   const [qty, setQTY] = useState("");
+
   const navigate = useNavigate();
+
+  const { userType, token,shouldRedirect, setShouldRedirect } = useContext(ShopContext);
+ 
+
+  const handleRedirect = () => {
+    setShouldRedirect(true);
+   navigate('/login');
+  };
 
   const handleCategoryChange = (e) => {
     const { value } = e.target;
@@ -33,7 +44,7 @@ export const AddProducts = () => {
         discount: parseFloat(discount),
       };
 
-      const token = localStorage.getItem("token");
+      
       const response = await addProduct(prod, token);
 
       // Go to admin
@@ -47,6 +58,8 @@ export const AddProducts = () => {
   };
 
   return (
+
+   <>{token === null && userType !== 1 ? <h4> UnAuthorised Access, Please Log In. </h4>: 
     <div className="cntnr signup">
       <div className="sign-up">
         <h1 className="headingSignUp">Add New Product</h1>
@@ -105,10 +118,10 @@ export const AddProducts = () => {
               <option value={""} disabled>
                 Select A Category
               </option>
-              <option value={"1"}>Dog</option>
-              <option value={"2"}>Cat</option>
-              <option value={"3"}>Bird</option>
-              <option value={"4"}>Rodent</option>
+              <option value={"Dog"}>Dog</option>
+              <option value={"Cat"}>Cat</option>
+              <option value={"Bird"}>Bird</option>
+              <option value={"Rodent"}>Rodent</option>
             </select>         
           </div>
           <div className="form-group">
@@ -147,6 +160,8 @@ export const AddProducts = () => {
           </div>
         </form>
       </div>
-    </div>
+    </div> }
+    </>
   );
+  
 };

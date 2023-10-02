@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import PRODUCTS from "../pages/products/productsData";
 
 //uses an context-api
@@ -17,6 +17,11 @@ const getDefaultCart = () => {
 export const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
 
+  const [shouldRedirect, setShouldRedirect] = useState(false);
+
+  //the token
+  const [token, setToken] = useState(null);
+
   //login status
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userType, setUserType] = useState(-1);
@@ -28,6 +33,11 @@ export const ShopContextProvider = (props) => {
       [itemId]: prev[itemId] + 1,
     }));
   };
+
+  //set the token
+  // useEffect(() => {
+
+  // },[token]);
 
   //a function for removing an item from cart
   const removeFromCart = (itemId) => {
@@ -73,6 +83,8 @@ export const ShopContextProvider = (props) => {
     cartItems,
     isLoggedIn,
     setIsLoggedIn,
+    token,
+    setToken,
     userType,
     setUserType,
     addToCart,
@@ -80,6 +92,8 @@ export const ShopContextProvider = (props) => {
     updateCartItemCount,
     getTotCartAmount,
     clearCart,
+    shouldRedirect, 
+    setShouldRedirect,
   };
 
   return (
