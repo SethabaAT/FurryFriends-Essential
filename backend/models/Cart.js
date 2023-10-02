@@ -91,4 +91,4 @@ class Cart {
   }
 }
 
-export default Order;
+export default Cart;

@@ -4,7 +4,7 @@ import Cart from "../models/Cart.js";
 export const addToCart = async (req, res, next) => {
   try {
     // From the request
-    const { product_id } = req.body;
+    const product_id = req.params.id;
     const user_id = req.user_id;
 
     // Check if the product is already in the cart
@@ -42,7 +42,8 @@ export const getUserCartItems = async (req, res, next) => {
 // Update qty
 export const updateQty = async (req, res, next) => {
   try {
-    const { product_id, qty } = req.body;
+    const product_id = req.body.product_id;
+    const qty = req.body.qty;
     const user_id = req.user_id;
 
     await Cart.updateQty(user_id, product_id, qty);
@@ -57,7 +58,7 @@ export const updateQty = async (req, res, next) => {
 // Delete
 export const deleteCartItem = async (req, res, next) => {
   try {
-    const { product_id } = req.body;
+    const product_id = req.params.id;
     const user_id = req.user_id;
 
     await Cart.deleteCartItem(user_id, product_id);
@@ -74,7 +75,7 @@ export const deleteAllCartItems = async (req, res, next) => {
   try {
     const user_id = req.user_id;
 
-    await Cart.deleteAllCartItems(user_id);
+    await Cart.deleteAllItems(user_id);
 
     res.status(200).json({ message: "Cart Deleted" });
   } catch (error) {
@@ -86,25 +87,33 @@ export const deleteAllCartItems = async (req, res, next) => {
 // Subtract from cart
 export const subtractFromCart = async (req, res, next) => {
   try {
-    const { product_id } = req.body;
+    const product_id = req.params.id;
     const user_id = req.user_id;
 
-    // Check if the product is already in the cart
-    const existingCartProduct = await Cart.findById(user_id, product_id);
+    // Check whether the product qty is 1
+    const [existingCartProduct, _] = await Cart.findById(user_id, product_id);
 
-    // If it is, update the quantity
-    if (existingCartProduct.length > 0) {
-      const qty = existingCartProduct[0].qty - 1;
-      await Cart.updateQty(user_id, product_id, qty);
+    if (existingCartProduct != null) {
+      const prevQty = existingCartProduct.qty;
+
+      console.log(prevQty);
+
+      // If it is, delete product
+      if (existingCartProduct.qty == 1) {
+        await Cart.deleteCartItem(user_id, product_id);
+      } else {
+        // If it is not, then subtract
+        const qty = existingCartProduct.qty - 1;
+        await Cart.updateQty(user_id, product_id, qty);
+      }
+
+      res.status(201).json({ message: "Product removal success" });
     } else {
-      // If not, add it to the cart
-      const cart = new Cart(user_id, product_id, 1);
-      await cart.save();
+      console.log("Error in removing from cart", error);
+      next(error);
     }
-
-    res.status(201).json({ message: "Product added to cart" });
   } catch (error) {
-    console.log("Error in adding to cart", error);
+    console.log("Error in removing from cart", error);
     next(error);
   }
 };

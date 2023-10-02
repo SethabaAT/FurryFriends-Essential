@@ -1,11 +1,21 @@
 import express from "express";
 import { isUser } from "../middleware/authorization.js";
+import {
+  addToCart,
+  subtractFromCart,
+  deleteAllCartItems,
+  deleteCartItem,
+  getUserCartItems,
+  updateQty,
+} from "../controllers/cartController.js";
 
 const router = express.Router();
 
-router.route("/cartItems").post(isUser, createOrder);
-router.route("/getUserOrders").get(isUser, getUserOrders);
-router.route("/getOrder/:id").get(isUser, getOrderById);
-router.route("/getOrderItems/:id").get(isUser, getOrderItems);
+router.route("/addToCart/:id").post(isUser, addToCart);
+router.route("/subtractFromCart/:id").put(isUser, subtractFromCart);
+router.route("/removeFromCart/:id").delete(isUser, deleteCartItem);
+router.route("/updateCart").put(isUser, updateQty);
+router.route("/clearCart").delete(isUser, deleteAllCartItems);
+router.route("/getCartItems").get(isUser, getUserCartItems);
 
 export default router;
