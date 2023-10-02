@@ -357,3 +357,11 @@ footer .cntnr .small-container{
     margin-bottom: 5px;
 }
 
+.unAuth{
+    display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: center; /* Vertically center */
+  height: 50vh; 
+  color:red;  
+         
+}

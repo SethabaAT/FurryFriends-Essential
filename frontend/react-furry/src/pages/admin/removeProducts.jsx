@@ -52,8 +52,11 @@ export const RemoveProducts = () => {
 
   return (
     <>
+      
       {token === null && userType !== 1 ? (
-        console.log("hi")
+        <div className="unAuth">
+          <h4> UnAuthorised Access, Please Sign In. </h4>
+        </div>
       ) : (
         <div className="cntnr signup">
           <div className="sign-up">
