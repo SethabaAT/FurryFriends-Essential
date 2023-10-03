@@ -19,16 +19,6 @@ export const UpdateProduct = () => {
   const [temp_quantity, setQty] = useState("");
   const [temp_discount, setDiscount] = useState("");
 
-  /*const [setProductToUpdate] = useState({
-    name: "",
-    price: "",
-    image: "",
-    description: "",
-    category_id:"",
-    discount: "",
-    qty: "",
-  });*/
-
   const handleProductUpdate = async () => {
     try {
       //create product
