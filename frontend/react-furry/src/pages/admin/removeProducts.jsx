@@ -30,7 +30,7 @@ export const RemoveProducts = () => {
 
       console.log(response.message);
       // Go to admin
-      if (response.message === "Product updated successfully") {
+      if (response.message === "Product Deleted") {
         console.log(response.message);
         navigate("/admin", { replace: true });
       }
@@ -52,7 +52,6 @@ export const RemoveProducts = () => {
 
   return (
     <>
-      
       {token === null && userType !== 1 ? (
         <div className="unAuth">
           <h4> UnAuthorised Access, Please Sign In. </h4>

@@ -1,9 +1,9 @@
 import db from "../config/db.js";
 
 class Product {
-  constructor(name, category, description, price, qty, image, discount) {
+  constructor(name, category_id, description, price, qty, image, discount) {
     this.name = name;
-    this.category = category;
+    this.category_id = category_id;
     this.description = description;
     this.price = price;
     this.qty = qty;
@@ -18,7 +18,7 @@ class Product {
 
     const [newProduct, _] = await db.execute(sql, [
       this.name,
-      this.category,
+      this.category_id,
       this.description,
       this.price,
       this.qty,
@@ -43,7 +43,7 @@ class Product {
 
     await db.execute(sql, [
       productData.name,
-      productData.category,
+      productData.category_id,
       productData.description,
       productData.price,
       productData.qty,

@@ -125,10 +125,10 @@ export const AddProducts = () => {
                   <option value={""} disabled>
                     Select A Category
                   </option>
-                  <option value={"Dog"}>Dog</option>
-                  <option value={"Cat"}>Cat</option>
-                  <option value={"Bird"}>Bird</option>
-                  <option value={"Rodent"}>Rodent</option>
+                  <option value={1}>Dog</option>
+                  <option value={2}>Cat</option>
+                  <option value={3}>Bird</option>
+                  <option value={4}>Rodent</option>
                 </select>
               </div>
               <div className="form-group">
