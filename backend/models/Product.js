@@ -16,10 +16,9 @@ class Product {
     const sql = `INSERT INTO product(name, category_id, description, price, qty, image, discount)
                  VALUES (?, ?, ?, ?, ?, ?, ?)`;
 
-    const category_id = await Product.findCategoryIdByName(this.category);
     const [newProduct, _] = await db.execute(sql, [
       this.name,
-      category_id,
+      this.category,
       this.description,
       this.price,
       this.qty,
@@ -42,13 +41,9 @@ class Product {
                    SET name = ?, category_id = ?, description = ?, price = ?, qty = ?, image = ?, discount = ?
                    WHERE id = ?`;
 
-    const category_id = await Product.findCategoryIdByName(
-      productData.category
-    );
-
     await db.execute(sql, [
       productData.name,
-      category_id,
+      productData.category,
       productData.description,
       productData.price,
       productData.qty,

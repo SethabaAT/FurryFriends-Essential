@@ -82,7 +82,7 @@ export const removeProduct = async (req, res, next) => {
     // Get the id from the request parameters
     const id = parseInt(req.params.id);
     await Product.destroy(parseInt(id));
-    res.status(204).send();
+    res.status(200).json({ message: "Product Deleted" });
   } catch (error) {
     console.error("Error removing product", error);
     next(error);
@@ -97,8 +97,7 @@ export const updateProduct = async (req, res, next) => {
 
     // Update the product using the Product class's update method
     await Product.update(id, updatedProductData);
-
-    res.status(204).send();
+    res.status(200).json({ message: "Product Updated" });
   } catch (error) {
     console.error("Error updating product", error);
     next(error);
