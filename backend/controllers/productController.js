@@ -6,16 +6,19 @@ export const addProduct = async (req, res, next) => {
     const { name, category, description, price, qty, image, discount } =
       req.body;
 
+    const category_id = category;
     // Create a new Product
     const product = new Product(
       name,
-      category,
+      category_id,
       description,
       price,
       qty,
       image,
       discount
     );
+
+    console.log("Added product: ", product);
 
     await product.save();
     res.status(201).json({ message: "Product Added" });
@@ -95,9 +98,11 @@ export const updateProduct = async (req, res, next) => {
     const id = parseInt(req.params.id); // from the request parameters
     const updatedProductData = req.body; // From the request body
 
+    console.log("Updated data: ", updatedProductData);
+
     // Update the product using the Product class's update method
     await Product.update(id, updatedProductData);
-    res.status(200).json({ message: "Product Updated" });
+    res.status(200).json({ message: "Product updated successfully" });
   } catch (error) {
     console.error("Error updating product", error);
     next(error);
