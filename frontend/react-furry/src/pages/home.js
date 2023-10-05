@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Card } from "../components/card";
 import { Button } from "../components/button";
 import { Link } from "react-router-dom";
-import PRODUCTS from "./products/productsData";
+
 import { getDiscountedProducts } from "../Service/service";
 
 const banner = "/images/display/bannerImg.png";
@@ -12,30 +12,25 @@ const catImg = "/images/display/cat-category.png";
 const catIcon = "images/display/cat-icon.png";
 
 export const Home = () => {
-
-  const [discountedProducts,setDiscounted] = useState([]);
+  const [discountedProducts, setDiscounted] = useState([]);
 
   //get discounted products
-  useEffect(() => {   
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await getDiscountedProducts();
 
-      const fetchProducts = async ()=>{
-        try{
-          const res = await getDiscountedProducts();
-         
-          setDiscounted(res);
-        }catch(error){
-          console.log("Could not get discounted products: "+error)
-        }
-
+        setDiscounted(res);
+      } catch (error) {
+        console.log("Could not get discounted products: " + error);
       }
+    };
 
-   //fetch the products
-   fetchProducts();
-  },[]);
+    //fetch the products
+    fetchProducts();
+  }, []);
 
-
-  return ( 
-    
+  return (
     <>
       <hr />
       <div className="container">
@@ -72,34 +67,37 @@ export const Home = () => {
           <div className="small-container">
             <div className="card category">
               <div className="card-contents">
-                <a href="">
+              <Link to={`/Shop/${1}`}>
                   <img src={dogImg} alt="" />
-                </a>
+                  </Link>
               </div>
             </div>
 
             <div className="card category">
               <div className="card-contents">
-                <a href="">
+                {/* Cat */}
+                <Link to={`/shop/${2}`}>
+                
                   <img src={catImg} alt="" />
-                </a>
+                </Link>
               </div>
             </div>
 
             <div className="card category">
               <div className="card-contents">
-                <a href="">
+                {/* bird */}
+              <Link to={`/shop/${3}`}>
                   <img src={fishImg} alt="" />
-                </a>
+                </Link>
               </div>
             </div>
 
             <div className="card category">
               <div className="card-contents">
-                <a href="">
-                  <h3>Dogs</h3>
+                {/* rodent */}
+                <Link to={`/shop/${4}`}>
                   <img src={catIcon} alt="" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>
