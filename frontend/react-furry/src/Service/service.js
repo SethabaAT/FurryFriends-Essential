@@ -139,3 +139,134 @@ export const postItemsInCart = async (cartItemList, token) => {
 
   return await res.json();
 };
+
+// Create order
+export const createOrder = async (token) => {
+  const res = await fetch(`${API_URL}/createOrder`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+
+  return res.json();
+};
+
+// Get user orders
+export const getUserOrders = async (token) => {
+  const res = await fetch(`${API_URL}/getUserOrders`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+
+  return res.json();
+};
+
+// Get order
+export const getOrder = async (id, token) => {
+  const res = await fetch(`${API_URL}/getOrder/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+
+  return res.json();
+};
+
+// Get order items
+export const getOrderItems = async (id, token) => {
+  const res = await fetch(`${API_URL}/getOrderItems/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+
+  return res.json();
+};
+
+// Add to cart
+export const addToCart = async (id, token) => {
+  const res = await fetch(`${API_URL}/addToCart/${id}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+
+  return res.json();
+};
+
+// Subtract from cart
+export const subtractFromCart = async (id, token) => {
+  const res = await fetch(`${API_URL}/subtractFromCart/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+
+  return res.json();
+};
+
+// Remove from cart
+export const removeFromCart = async (id, token) => {
+  const res = await fetch(`${API_URL}/removeFromCart/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+
+  return res.json();
+};
+
+// Update cart
+export const updateCart = async (cartItemList, token) => {
+  const res = await fetch(`${API_URL}/updateCart`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(cartItemList),
+  });
+
+  return res.json();
+};
+
+// Clear cart
+export const clearCart = async (token) => {
+  const res = await fetch(`${API_URL}/clearCart`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+
+  return res.json();
+};
+
+// Get cart items
+export const getCartItems = async (token) => {
+  const res = await fetch(`${API_URL}/getCartItems`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+
+  return res.json();
+};
