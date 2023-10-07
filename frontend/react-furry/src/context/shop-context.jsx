@@ -1,6 +1,8 @@
 import React, { createContext, useEffect, useState } from "react";
 import PRODUCTS from "../pages/products/productsData";
 
+import { getCartItems, addToCart, removeFromCart } from "../Service/service";
+
 //uses an context-api
 export const ShopContext = createContext(null); //stores data states
 
@@ -15,7 +17,10 @@ const getDefaultCart = () => {
 };
 
 export const ShopContextProvider = (props) => {
-  const [cartItems, setCartItems] = useState(getDefaultCart());
+  // const [cartItems, setCartItems] = useState(getDefaultCart());
+  const [cartItems, setCartItems] = useState([]);
+  const [cartState, setCartState] = useState(false);
+  const [totCart, changeTotCart] = useState(0);
 
   const [shouldRedirect, setShouldRedirect] = useState(false);
 
@@ -26,25 +31,54 @@ export const ShopContextProvider = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userType, setUserType] = useState(-1);
 
-  //a fuction for adding an item to cart
-  const addToCart = (itemId) => {
-    setCartItems((prev) => ({
-      ...prev,
-      [itemId]: prev[itemId] + 1,
-    }));
+  /*useEffect(() => {
+    const fetchCartItems = async () => {
+      try {
+        const c_items = await getCartItems();
+        //set the cart items state
+        setCartItems(c_items);
+      } catch (error) {
+        console.error("could not get cart items", error);
+      }
+    };
+
+    fetchCartItems();
+  }, [cartItems]);*/
+
+  const toggleCartState = () => {
+    setCartState((prev) => !prev);
   };
 
-  //set the token
-  // useEffect(() => {
+  //a fuction for adding an item to cart
+  const add_To_Cart = async (itemId) => {
+    /* setCartItems((prev) => ({
+      ...prev,
+      [itemId]: prev[itemId] + 1,
+    })); */
 
-  // },[token]);
+    try {
+      const res = await addToCart(itemId, token);
+
+      console.log(res.message);
+    } catch (error) {
+      console.error("Could not add to cart(context)", error);
+    }
+  };
 
   //a function for removing an item from cart
-  const removeFromCart = (itemId) => {
-    setCartItems((prev) => ({
+  const remove_From_Cart = async (itemId) => {
+    /* setCartItems((prev) => ({
       ...prev,
       [itemId]: prev[itemId] - 1,
-    }));
+    })); */
+
+    try {
+      const res = await removeFromCart(itemId, token);
+
+      console.log(res.message);
+    } catch (error) {
+      console.error("Could not remove from cart(context)", error);
+    }
   };
 
   //a function to edit cart amount
@@ -81,18 +115,19 @@ export const ShopContextProvider = (props) => {
   //context value for outside access
   const contextValue = {
     cartItems,
+    cartState,
+    toggleCartState,
     isLoggedIn,
     setIsLoggedIn,
     token,
     setToken,
     userType,
     setUserType,
-    addToCart,
-    removeFromCart,
-    updateCartItemCount,
+    totCart,
+    changeTotCart,
     getTotCartAmount,
     clearCart,
-    shouldRedirect, 
+    shouldRedirect,
     setShouldRedirect,
   };
 

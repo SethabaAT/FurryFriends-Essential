@@ -1,21 +1,22 @@
-import { React, useContext } from "react";
+import { React, useContext, useState, useEffect } from "react";
 import PRODUCTS from "../products/productsData";
 import { CartItem } from "./itemDetails/CartItem";
 import { ShopContext } from "../../context/shop-context";
 import "./ShoppingCart.css";
-import { postItemsInCart } from "../../Service/service";
+import { postItemsInCart, getCartItems } from "../../Service/service";
 
 
 import { useNavigate } from "react-router-dom";
 
 export const ShoppingCart = () => {
-  const { cartItems, getTotCartAmount, isLoggedIn, clearCart } = useContext(ShopContext);
-
-  const totAmount = getTotCartAmount();
+  const { isLoggedIn, token, cartState } = useContext(ShopContext);
+  const [cartItems, setCartItems] = useState([]);
+  //const totAmount = getTotCartAmount();
 
   const navigate = useNavigate();
 
   let cartItemList = [];
+  let totAmount = 0;
 
   const handleCheckOut = async () => {
     if (isLoggedIn === true) {
@@ -33,12 +34,11 @@ export const ShoppingCart = () => {
       });
 
       try {
-        const token = localStorage.getItem("token");
         //send the items to the database
         const res = await postItemsInCart(cartItemList, token);
 
-        //clear the cart
-        clearCart();
+    
+      
         // redirect to payment page
         navigate("/Payment")
 
@@ -54,38 +54,115 @@ export const ShoppingCart = () => {
 
   };
 
+  useEffect(() => {
+    const fetchCartItems = async () => {
+      try {
+        const c_items = await getCartItems(token);
+        if (c_items.message === "Something went wrong...") {
+          console.error("db error");
+        }
+        //set the cart items state
+        setCartItems(c_items);
+      } catch (error) {
+        console.error("could not get cart items", error);
+      }
+    };
+
+    fetchCartItems();
+  }, [CartItem, cartState]);
 
   return (
-    <div className="cart">
-      {totAmount > 0 ? (
-        <div>
-          <h1>Your Cart Items</h1>
-        </div>
-      ) : null}
-
-      <div className="cart-items">
-        {PRODUCTS.map((product) => {
-          //diplay items that are in the cart(context)
-          if (cartItems[product.id] !== 0) {
-            //display the products in the cart
-            return <CartItem data={product} key={product.id} />;
-          }
-        })}
-      </div>
-
-      {/* if the total amount is greater than 0, display subtotal */}
-      {totAmount > 0 ? (
-        <div className="checkout">
-          <p>Subtotal: R {totAmount}</p>
-          <button className="checkout-button" onClick={() => navigate("/Shop")}>Continue Shopping</button>
-          <button className="checkout-button" onClick={handleCheckOut}>
-            Checkout
-          </button>
-        </div>
+    <>
+      {" "}
+      {token === null ? (
+        navigate("/Login")
       ) : (
-        //else display: your cart is empty
-        <h1>Your Cart is Empty</h1>
+        <div className="cart">
+          {cartItems !== null ? (
+            <div>
+              <h1>Your Cart Items</h1>
+            </div>
+          ) : null}
+
+          {/* <div className="cart-items">
+        {cartItems !== null
+          ? PRODUCTS.map((product) => {
+              const matches = cartItems.find(
+                (itm) => itm.product_id === product.id
+              );
+
+              if (matches) {
+                console.log("matches");
+                totAmount += (product.price === product.discount ? product.price * matches.qty : product.discount * matches.qty)
+                return <CartItem data={product} pqty={matches.qty}  key={product.id} />;
+              }
+            })
+          : 
+            null}
+      </div>  */}
+        {cartItems !== null ?
+          <div>
+            <table className="cart-table">
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Product</th>
+                  <th>Remove</th>
+                  <th>Quantity</th>
+                  <th>Unit Price</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cartItems !== null
+                  ? PRODUCTS.map((product) => {
+                      const matches = cartItems.find(
+                        (itm) => itm.product_id === product.id
+                      );
+
+                      if (matches) {
+                        console.log("matches");
+                        totAmount +=
+                          product.price === product.discount
+                            ? product.price * matches.qty
+                            : product.discount * matches.qty;
+                        return (
+                          <CartItem
+                            data={product}
+                            pqty={matches.qty}
+                            key={product.id}
+                          />
+                        );
+                      }
+                    })
+                  : null}
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colSpan="3">Total:</td>
+                  <td>R {totAmount.toFixed(2)}</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div> : null}
+
+          {/* if the total amount is greater than 0, display subtotal */}
+          {cartItems !== null ? (
+            <div className="checkout">
+              <p>Subtotal: R {totAmount.toFixed(2)}</p>
+              <button onClick={() => navigate("/Shop")}>
+                Continue Shopping
+              </button>
+              <button className="checkout-button" onClick={handleCheckOut}>
+                Checkout
+              </button>
+            </div>
+          ) : (
+            //else display: your cart is empty
+            <h1>Your Cart is Empty</h1>
+          )}
+        </div>
       )}
-    </div>
+    </>
   );
 };

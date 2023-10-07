@@ -51,12 +51,7 @@ export const RemoveProducts = () => {
   };
 
   return (
-    <>
-      {token === null && userType !== 1 ? (
-        <div className="unAuth">
-          <h4> UnAuthorised Access, Please Sign In. </h4>
-        </div>
-      ) : (
+    <> {token === null ? navigate("/Login") :
         <div className="cntnr signup">
           <div className="sign-up">
             <h1 className="headingSignUp">Delete Product</h1>
@@ -190,7 +185,7 @@ export const RemoveProducts = () => {
             </div>
           </div>
         </div>
-      )}
+      }
     </>
   );
 };

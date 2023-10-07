@@ -1,10 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Card } from "../../components/card";
 import { Button } from "../../components/button";
-import { getProductByCategory } from "../../Service/service";
-import "../../style.css";
+import { getProductByCategory, getProducts } from "../../Service/service";
 
-import PRODUCTS from "../products/productsData";
 import { useParams } from "react-router";
 
 export const Shop = () => {
@@ -13,6 +11,7 @@ export const Shop = () => {
   const [dogs, setDogs] = useState([]);
   const [birds, setBirds] = useState([]);
   const [rodents, setRodents] = useState([]);
+  const [PRODUCTS, setProducts] = useState([]);
 
   //display statuses
   const [isAll, setIsAll] = useState(true); //first show all the products
@@ -65,6 +64,16 @@ export const Shop = () => {
   const { s_categ } = useParams();
 
   useEffect(() => {
+    const fetchProducts = async () => {
+      try{
+        const dbProducts = await getProducts();
+        setProducts(dbProducts);
+
+      } catch(err){
+        console.error("Could not retrieve products", err);
+      }
+    }
+
     const fetchCatsProducts = async () => {
       try {
         const catsRes = await getProductByCategory("cat");
@@ -115,6 +124,7 @@ export const Shop = () => {
     }
 
     //fetch the products
+    fetchProducts();
     fetchCatsProducts();
     fetchDogsProducts();
     fetchBirdsProducts();
