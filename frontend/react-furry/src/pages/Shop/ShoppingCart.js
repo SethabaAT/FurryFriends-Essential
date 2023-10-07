@@ -1,20 +1,22 @@
-import { React, useContext } from "react";
+import { React, useContext, useState, useEffect } from "react";
 import PRODUCTS from "../products/productsData";
 import { CartItem } from "./itemDetails/CartItem";
 import { ShopContext } from "../../context/shop-context";
 import "./ShoppingCart.css";
-import { postItemsInCart } from "../../Service/service";
+import { postItemsInCart , getCartItems} from "../../Service/service";
+
 
 import { useNavigate } from "react-router-dom";
 
 export const ShoppingCart = () => {
-  const { cartItems, getTotCartAmount, isLoggedIn, clearCart } = useContext(ShopContext);
-
-  const totAmount = getTotCartAmount();
+  const {   isLoggedIn, clearCart ,token} = useContext(ShopContext);
+ const [cartItems, setCartItems] = useState({});
+ //const totAmount = getTotCartAmount();
 
   const navigate = useNavigate();
 
   let cartItemList = [];
+  let totAmount = 0;
 
   const handleCheckOut = async () => {
     if (isLoggedIn === true) {
@@ -32,7 +34,7 @@ export const ShoppingCart = () => {
       });
 
       try {
-        const token = localStorage.getItem("token");
+        
         //send the items to the database
         const res = await postItemsInCart(cartItemList, token);
 
@@ -49,6 +51,30 @@ export const ShoppingCart = () => {
       navigate("/login");
     }
   };
+
+  useEffect(() => {
+    const fetchCartItems = async () => {
+      try {
+        const c_items = await getCartItems();
+        if(c_items.message  === "Something went wrong..."){
+          console.error("db error");
+        }
+        console.log(c_items);
+
+        if(c_items.length > 0){
+          totAmount +=c_items.length; 
+        }
+        //set the cart items state
+        setCartItems(c_items);
+
+        
+      } catch (error) {
+        console.error("could not get cart items", error);
+      }
+    };
+
+    fetchCartItems();
+  }, []);
 
   return (
     <div className="cart">

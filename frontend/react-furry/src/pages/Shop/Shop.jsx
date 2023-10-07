@@ -1,9 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Card } from "../../components/card";
 import { Button } from "../../components/button";
-import { getProductByCategory } from "../../Service/service";
+import { getProductByCategory, getProducts } from "../../Service/service";
 
-import PRODUCTS from "../products/productsData";
 import { useParams } from "react-router";
 
 export const Shop = () => {
@@ -12,58 +11,69 @@ export const Shop = () => {
   const [dogs, setDogs] = useState([]);
   const [birds, setBirds] = useState([]);
   const [rodents, setRodents] = useState([]);
+  const [PRODUCTS, setProducts] = useState([]);
 
-   //display statuses
-   const [isAll, setIsAll] = useState(true); //first show all the products
-   const [isCat, setIsCat] = useState(false);
-   const [isDog, setIsDog] = useState(false);
-   const [isRodent, setIsRodent] = useState(false);
-   const [isBird, setIsBird] = useState(false);
- 
-   //set display states
-   const handleAll = () => {
-     setIsRodent(false);
-     setIsDog(false);
-     setIsCat(false);
-     setIsBird(false);
-     setIsAll(true);
-   };
- 
-   const handleCat = () => {
-     setIsRodent(false);
-     setIsDog(false);
-     setIsCat(true); //set cat to true
-     setIsBird(false);
-     setIsAll(false);
- 
-     // console.log(cats);
-   };
-   const handleDog = () => {
-     setIsRodent(false);
-     setIsDog(true); //set dog to true
-     setIsCat(false);
-     setIsBird(false);
-     setIsAll(false);
-   };
- 
-   const handleRodent = () => {
-     setIsRodent(true); //set rodent to true
-     setIsDog(false);
-     setIsCat(false);
-     setIsBird(false);
-     setIsAll(false);
-   };
-   const handleBird = () => {
-     setIsRodent(false);
-     setIsDog(false);
-     setIsCat(false);
-     setIsBird(true); //set bird to true
-     setIsAll(false);
-   };
+  //display statuses
+  const [isAll, setIsAll] = useState(true); //first show all the products
+  const [isCat, setIsCat] = useState(false);
+  const [isDog, setIsDog] = useState(false);
+  const [isRodent, setIsRodent] = useState(false);
+  const [isBird, setIsBird] = useState(false);
+
+  //set display states
+  const handleAll = () => {
+    setIsRodent(false);
+    setIsDog(false);
+    setIsCat(false);
+    setIsBird(false);
+    setIsAll(true);
+  };
+
+  const handleCat = () => {
+    setIsRodent(false);
+    setIsDog(false);
+    setIsCat(true); //set cat to true
+    setIsBird(false);
+    setIsAll(false);
+
+    // console.log(cats);
+  };
+  const handleDog = () => {
+    setIsRodent(false);
+    setIsDog(true); //set dog to true
+    setIsCat(false);
+    setIsBird(false);
+    setIsAll(false);
+  };
+
+  const handleRodent = () => {
+    setIsRodent(true); //set rodent to true
+    setIsDog(false);
+    setIsCat(false);
+    setIsBird(false);
+    setIsAll(false);
+  };
+  const handleBird = () => {
+    setIsRodent(false);
+    setIsDog(false);
+    setIsCat(false);
+    setIsBird(true); //set bird to true
+    setIsAll(false);
+  };
 
   const { s_categ } = useParams();
 
   useEffect(() => {
+    const fetchProducts = async () => {
+      try{
+        const dbProducts = await getProducts();
+        setProducts(dbProducts);
+
+      } catch(err){
+        console.error("Could not retrieve products", err);
+      }
+    }
+
     const fetchCatsProducts = async () => {
       try {
         const catsRes = await getProductByCategory("cat");
@@ -98,30 +108,28 @@ export const Shop = () => {
       }
     };
 
-    if(s_categ !== null){
-        
-        if(s_categ === "1"){           
-            handleDog();
-        }
-        if(s_categ === "2"){           
-            handleCat();
-        }
-        if(s_categ === "3"){           
-            handleBird();
-        }
-        if(s_categ === "4"){           
-            handleRodent();
-        }
+    if (s_categ !== null) {
+      if (s_categ === "1") {
+        handleDog();
+      }
+      if (s_categ === "2") {
+        handleCat();
+      }
+      if (s_categ === "3") {
+        handleBird();
+      }
+      if (s_categ === "4") {
+        handleRodent();
+      }
     }
 
     //fetch the products
+    fetchProducts();
     fetchCatsProducts();
     fetchDogsProducts();
     fetchBirdsProducts();
     fetchRodentsProducts();
-  }, [s_categ,]);
-
- 
+  }, [s_categ]);
 
   return (
     <>
