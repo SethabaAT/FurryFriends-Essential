@@ -100,7 +100,7 @@ h3{
 
 
   .cntnr{
-    /* max-width: 1100px; */
+    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -112,7 +112,7 @@ h3{
   }
 
   .cards{
-    /* background-color: #D9D9D9; */
+
     border-radius: 1rem;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 16px;
   }
@@ -192,8 +192,7 @@ h3{
     
     max-width: 150%;
     max-height: 150%;
-    
-    /* border-radius: 100%; */
+  
     object-fit: cover;
  }
 
@@ -366,16 +365,16 @@ footer .cntnr .small-container{
          
 }
 
-/* Style for the footer */
+
 footer {
-    background-color: #333; /* Background color for the footer */
+    background-color: #333; 
     
-    padding: 20px; /* Padding around the content */
+    padding: 20px; 
   }
   
-  /* Style for the "Get Connected with us on social networks" section */
+  
   footer h4 {
-    font-size: 18px; /* Font size for the heading */
+    font-size: 18px; 
   }
   
   .social_icons {
@@ -386,8 +385,8 @@ footer {
   
   .social_icon {
     flex: 1;
-    text-align: right; /* Align icons to the right */
-    margin-left: 10px; /* Add spacing between icons */
+    text-align: right; 
+    margin-left: 10px; 
   }
 
   .Footer_Title{
@@ -396,32 +395,32 @@ footer {
   }
   
   
-  /* Style for the main container */
+  
   .main_container {
-    display: flex; /* Display children in a row */
-    justify-content: space-between; /* Space between children */
-    align-items: flex-start; /* Align children vertically to the top */
-    margin-top: 20px; /* Add space between the sections */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start;
+    margin-top: 20px; 
   }
   
-  /* Style for the card container */
+ 
   .footer_card {
-    flex: 1; /* Expand to fill available space */
-    background-color: #D9D9D9; /* Background color for the card */
-    padding: 20px; /* Padding within the card */
-    border-radius: 8px; /* Rounded corners for the card */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow for the card */
-    margin: 10px; /* Margin between the cards */
+    flex: 1; 
+    background-color: #D9D9D9; 
+    padding: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+    margin: 10px; 
   }
   
   .footer_card h3 {
-    font-size: 24px; /* Font size for the card heading */
-    margin-bottom: 10px; /* Add space below the heading */
+    font-size: 24px; 
+    margin-bottom: 10px; 
   }
   
   .footer_card p {
-    font-size: 16px; /* Font size for the card content */
-    line-height: 1.5; /* Line height for better readability */
+    font-size: 16px; 
+    line-height: 1.5; 
   }
 
   .no-bullets {
@@ -429,9 +428,9 @@ footer {
     padding-left: 0;
   }
   
-  /* Additional styling for list items if needed */
+  
   .no-bullets li {
-    margin-bottom: 5px; /* Add spacing between list items */
+    margin-bottom: 5px; 
   }
   
   .footer_card a{

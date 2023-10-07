@@ -19,7 +19,7 @@ export const Admin = () => {
           {/* <Button text={"Add Product"} onClickAdd={() => navigate('/addProducts')}/>
         <Button text={"Remove Product"} onClickAdd={() => navigate('/removeProducts')}/>
         <Button text={"Update Product"} onClickAdd={() => navigate('/updateProducts')}/> */}
-          <h4>Admin Dashboard</h4>
+          <h4 className="titlename">Admin Dashboard</h4>
           <PowerBIEmbed
             embedConfig={{
               type: "report", // Supported types: report, dashboard, tile, visual, qna, paginated report and create
