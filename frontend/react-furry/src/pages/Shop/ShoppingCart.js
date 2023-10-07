@@ -3,15 +3,14 @@ import PRODUCTS from "../products/productsData";
 import { CartItem } from "./itemDetails/CartItem";
 import { ShopContext } from "../../context/shop-context";
 import "./ShoppingCart.css";
-import { postItemsInCart , getCartItems} from "../../Service/service";
-
+import { postItemsInCart, getCartItems } from "../../Service/service";
 
 import { useNavigate } from "react-router-dom";
 
 export const ShoppingCart = () => {
-  const {   isLoggedIn, clearCart ,token} = useContext(ShopContext);
- const [cartItems, setCartItems] = useState({});
- //const totAmount = getTotCartAmount();
+  const { isLoggedIn, clearCart, token } = useContext(ShopContext);
+  const [cartItems, setCartItems] = useState([]);
+  //const totAmount = getTotCartAmount();
 
   const navigate = useNavigate();
 
@@ -34,13 +33,12 @@ export const ShoppingCart = () => {
       });
 
       try {
-        
         //send the items to the database
         const res = await postItemsInCart(cartItemList, token);
 
         //clear the cart
         clearCart();
-        
+
         //afterwards,  generate the invoice from here:
       } catch (error) {
         console.log("Error sending cartItems list " + error);
@@ -55,19 +53,12 @@ export const ShoppingCart = () => {
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
-        const c_items = await getCartItems();
-        if(c_items.message  === "Something went wrong..."){
+        const c_items = await getCartItems(token);
+        if (c_items.message === "Something went wrong...") {
           console.error("db error");
-        }
-        console.log(c_items);
-
-        if(c_items.length > 0){
-          totAmount +=c_items.length; 
         }
         //set the cart items state
         setCartItems(c_items);
-
-        
       } catch (error) {
         console.error("could not get cart items", error);
       }
@@ -78,24 +69,35 @@ export const ShoppingCart = () => {
 
   return (
     <div className="cart">
-      {totAmount > 0 ? (
-        <div>
-          <h1>Your Cart Items</h1>
-        </div>
-      ) : null}
+      {/* cartItems !== null ? (
+          <div>
+            <h1>Your Cart Items</h1>
+          </div>
+        ) : null} */}
 
       <div className="cart-items">
-        {PRODUCTS.map((product) => {
-          //diplay items that are in the cart(context)
-          if (cartItems[product.id] !== 0) {
-            //display the products in the cart
-            return <CartItem data={product} key={product.id} />;
-          }
-        })}
+        {cartItems !== null
+          ? PRODUCTS.map((product) => {
+              const matches = cartItems.find(
+                (itm) => itm.product_id === product.id
+              );
+
+              if (matches) {
+                console.log("matches");
+                return <CartItem data={product} key={product.id} />;
+              }
+            })
+          : // cartItems.forEach((element) => {
+            //   if (element.product_id === product.id) {
+            //     //display the products in the cart
+            //     return <CartItem data={product} key={product.id} />;
+            //   }
+            // });
+            null}
       </div>
 
       {/* if the total amount is greater than 0, display subtotal */}
-      {totAmount > 0 ? (
+      {cartItems !== null ? (
         <div className="checkout">
           <p>Subtotal: R {totAmount}</p>
           <button onClick={() => navigate("/Shop")}>Continue Shopping</button>
