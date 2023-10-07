@@ -3,13 +3,13 @@ import PRODUCTS from "../products/productsData";
 import { CartItem } from "./itemDetails/CartItem";
 import { ShopContext } from "../../context/shop-context";
 import "./ShoppingCart.css";
-import { postItemsInCart, getCartItems } from "../../Service/service";
-
+import { getCartItems, createOrder } from "../../Service/service";
 
 import { useNavigate } from "react-router-dom";
 
 export const ShoppingCart = () => {
-  const { isLoggedIn, token, cartState } = useContext(ShopContext);
+  const { isLoggedIn, token, cartState, setInvoiceList } =
+    useContext(ShopContext);
   const [cartItems, setCartItems] = useState([]);
   //const totAmount = getTotCartAmount();
 
@@ -35,12 +35,12 @@ export const ShoppingCart = () => {
 
       try {
         //send the items to the database
-        const res = await postItemsInCart(cartItemList, token);
+        const res = await createOrder(token);
+        setInvoiceList(res.invoice);
+        console.log(res.invoice);
 
-    
-      
         // redirect to payment page
-        navigate("/Payment")
+        navigate("/Payment");
 
         //afterwards,  generate the invoice from here:
       } catch (error) {
@@ -51,7 +51,6 @@ export const ShoppingCart = () => {
       console.log("not loggedin");
       navigate("/login");
     }
-
   };
 
   useEffect(() => {
@@ -100,51 +99,52 @@ export const ShoppingCart = () => {
           : 
             null}
       </div>  */}
-        {cartItems !== null ?
-          <div>
-            <table className="cart-table">
-              <thead>
-                <tr>
-                  <th>Image</th>
-                  <th>Product</th>
-                  <th>Remove</th>
-                  <th>Quantity</th>
-                  <th>Unit Price</th>
-                  <th>Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                {cartItems !== null
-                  ? PRODUCTS.map((product) => {
-                      const matches = cartItems.find(
-                        (itm) => itm.product_id === product.id
-                      );
-
-                      if (matches) {
-                        console.log("matches");
-                        totAmount +=
-                          product.price === product.discount
-                            ? product.price * matches.qty
-                            : product.discount * matches.qty;
-                        return (
-                          <CartItem
-                            data={product}
-                            pqty={matches.qty}
-                            key={product.id}
-                          />
+          {cartItems !== null ? (
+            <div>
+              <table className="cart-table">
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th>Remove</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {cartItems !== null
+                    ? PRODUCTS.map((product) => {
+                        const matches = cartItems.find(
+                          (itm) => itm.product_id === product.id
                         );
-                      }
-                    })
-                  : null}
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td colSpan="3">Total:</td>
-                  <td>R {totAmount.toFixed(2)}</td>
-                </tr>
-              </tfoot>
-            </table>
-          </div> : null}
+
+                        if (matches) {
+                          console.log("matches");
+                          totAmount +=
+                            product.price === product.discount
+                              ? product.price * matches.qty
+                              : product.discount * matches.qty;
+                          return (
+                            <CartItem
+                              data={product}
+                              pqty={matches.qty}
+                              key={product.id}
+                            />
+                          );
+                        }
+                      })
+                    : null}
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colSpan="3">Total:</td>
+                    <td>R {totAmount.toFixed(2)}</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          ) : null}
 
           {/* if the total amount is greater than 0, display subtotal */}
           {cartItems !== null ? (

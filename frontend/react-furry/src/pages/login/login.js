@@ -6,7 +6,8 @@ import { login } from "../../Service/service";
 import { ShopContext } from "../../context/shop-context";
 
 export const Login = () => {
-  const { setIsLoggedIn, setUserType, setToken } = useContext(ShopContext);
+  const { setIsLoggedIn, setUserType, setToken, setFullNames } =
+    useContext(ShopContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -30,12 +31,13 @@ export const Login = () => {
         // localStorage.setItem("token", response.token);
 
         //store the token for the session
-        setToken(response.token);       
+        setToken(response.token);
 
         setIsLoggedIn(true);
 
         //set the userType
         setUserType(response.user_type);
+        setFullNames(`${response.name} ${response.surname}`);
 
         if (response.user_type === 1) {
           console.log("Welcome Admin");

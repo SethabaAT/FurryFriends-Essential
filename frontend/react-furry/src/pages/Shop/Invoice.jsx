@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { usePDF } from "react-to-pdf";
+import { ShopContext } from "../../context/shop-context";
 import { getProductByCategory, getInvoice } from "../../Service/service";
 import "./Invoice.css";
 
 export const Invoice = () => {
   const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
   const [products, setProducts] = useState([]);
+  const { invoiceList, fullNames } = useContext(ShopContext);
 
+  console.log(invoiceList);
   useEffect(() => {}, []);
 
   return (
@@ -24,9 +27,9 @@ export const Invoice = () => {
         </div>
         <div className="billing-info">
           <p>Bill To:</p>
-          <p>Customer Name</p>
-          <p>456 Customer Street</p>
-          <p>City, State ZIP</p>
+          <p>${fullNames}</p>
+          <p>456 Binary Syndicate Street</p>
+          <p>Pretoria, 2092</p>
         </div>
         <table className="invoice-table">
           <thead>
@@ -38,12 +41,12 @@ export const Invoice = () => {
             </tr>
           </thead>
           <tbody>
-            {products.map((product, index) => (
+            {invoiceList.map((product, index) => (
               <tr key={index}>
-                <td>{product.name}</td>
-                <td>{product.quantity}</td>
-                <td>{product.price}</td>
-                <td>{product.quantity * product.price}</td>
+                <td>{product.product_name}</td>
+                <td>{product.product_qty}</td>
+                <td>{product.product_price}</td>
+                <td>{product.total}</td>
               </tr>
             ))}
           </tbody>

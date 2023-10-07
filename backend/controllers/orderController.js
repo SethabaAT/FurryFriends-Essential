@@ -20,7 +20,7 @@ export const createOrder = async (req, res, next) => {
 
     // Add order items to the order we just created'
     console.log(data);
-    await addOrderItems(order, order_id, total, data);
+    total = await addOrderItems(order, order_id, total, data);
 
     // After adding all the order items, update the total
     await Order.updateTotal(order_id, total);
@@ -30,6 +30,8 @@ export const createOrder = async (req, res, next) => {
       "invoices/invoice.pdf",
       data
     );
+
+    console.log(invoiceDetails);
 
     res
       .status(201)
@@ -155,6 +157,8 @@ const addOrderItems = async (order, order_id, total, data) => {
     );
     await Product.update(product_id, updatedProduct);
   }
+
+  return total;
 };
 
 // Create Invoice

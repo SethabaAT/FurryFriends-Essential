@@ -51,6 +51,8 @@ export const login = async (req, res, next) => {
       // Response to the endpoints
       res.status(200).json({
         message: "Login successful",
+        name: user.firstName,
+        surname: user.secondName,
         user_type: user.user_type,
         token: token,
       });
