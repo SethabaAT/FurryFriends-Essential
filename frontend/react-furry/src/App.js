@@ -40,9 +40,6 @@ import  {About}  from "./pages/admin/about";
 >>>>>>> newb
 
 const App = () => {
-
-    
-
   return (
     <div className="App">
       <ShopContextProvider>
@@ -57,8 +54,7 @@ const App = () => {
 <<<<<<< HEAD
             <Route path="/admin" element={<Admin />} />
 
-            
-            <Route path="/removeProducts" element={  <RemoveProducts /> }/>
+            <Route path="/removeProducts" element={<RemoveProducts />} />
             <Route path="/addProducts" element={<AddProducts />} />
             <Route path="/updateProducts" element={<UpdateProduct />} />
 
