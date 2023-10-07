@@ -26,14 +26,13 @@ const adminMenu = (
   </>
 );
 
-<<<<<<< HEAD
 const DefaultUserMenu = (
   <>
     <li>
       <Link to="/">HOME</Link>
     </li>
     <li>
-      <a href="#">ABOUT</a>
+      <a href="/about">ABOUT</a>
     </li>
     <li>
       <Link to="/Shop">SHOP</Link>
@@ -45,23 +44,6 @@ const DefaultUserMenu = (
     </li>
   </>
 );
-=======
-const DefaultUserMenu = 
-    (<>
-        <li>
-            <Link to="/">HOME</Link>
-        </li>
-        <li>
-            <a href="/about">ABOUT</a>
-        </li>
-        <li>
-            <Link to="/Shop">SHOP</Link>
-        </li>
-        <li>
-            <Link to="/ShoppingCart"><GiShoppingCart size={22}/></Link>
-        </li>
-    </>);
->>>>>>> newb
 
 const userMenu = (
   <>
@@ -130,13 +112,13 @@ export const Navbar = () => {
       <div className="menu">
         <ul className="myNav">
           {/* check the type of user */}
-          {userType === 1 
+          {userType === 1
             ? adminMenu
             : userType === 0
             ? userMenu
             : DefaultUserMenu}
-            
-          { token === null && userType === -1 ? (
+
+          {token === null && userType === -1 ? (
             <li>
               <Button
                 classN={"def-btn"}

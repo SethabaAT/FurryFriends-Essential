@@ -16,23 +16,8 @@ export const Admin = () => {
         </div>
       ) : (
         <div className="admin">
-          {/* <Button text={"Add Product"} onClickAdd={() => navigate('/addProducts')}/>
-        <Button text={"Remove Product"} onClickAdd={() => navigate('/removeProducts')}/>
-        <Button text={"Update Product"} onClickAdd={() => navigate('/updateProducts')}/> */}
-<<<<<<< HEAD
           <h4 className="titlename">Admin Dashboard</h4>
-=======
-<<<<<<< HEAD
-        
-      <h3>Welcome Admin </h3>
-       
 
-    </div> )} </>
-  )
-}
-=======
-          <h4>Admin Dashboard</h4>
->>>>>>> a2481e2c94b3c72c39e65d914892fafb58a43e0c
           <PowerBIEmbed
             embedConfig={{
               type: "report", // Supported types: report, dashboard, tile, visual, qna, paginated report and create
@@ -86,4 +71,3 @@ export const Admin = () => {
     </>
   );
 };
->>>>>>> 66d23e0484d94bc8edf5770b17cff98aeb8507ae
