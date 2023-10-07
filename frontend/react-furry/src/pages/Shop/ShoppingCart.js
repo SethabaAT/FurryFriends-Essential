@@ -5,6 +5,7 @@ import { ShopContext } from "../../context/shop-context";
 import "./ShoppingCart.css";
 import { postItemsInCart, getCartItems } from "../../Service/service";
 
+
 import { useNavigate } from "react-router-dom";
 
 export const ShoppingCart = () => {
@@ -36,7 +37,10 @@ export const ShoppingCart = () => {
         //send the items to the database
         const res = await postItemsInCart(cartItemList, token);
 
-        //clear the cart
+    
+      
+        // redirect to payment page
+        navigate("/Payment")
 
         //afterwards,  generate the invoice from here:
       } catch (error) {
@@ -47,6 +51,7 @@ export const ShoppingCart = () => {
       console.log("not loggedin");
       navigate("/login");
     }
+
   };
 
   useEffect(() => {

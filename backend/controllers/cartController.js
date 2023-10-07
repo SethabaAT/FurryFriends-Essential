@@ -32,6 +32,7 @@ export const getUserCartItems = async (req, res, next) => {
   try {
     const user_id = req.user_id;
     const cartItems = await Cart.findUserCartItems(user_id);
+
     res.status(200).json(cartItems);
   } catch (error) {
     console.log("Error in getting all cart items", error);

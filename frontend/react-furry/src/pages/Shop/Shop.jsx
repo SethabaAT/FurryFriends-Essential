@@ -136,11 +136,17 @@ export const Shop = () => {
       <div className="cntnr">
         {" "}
         <div className="filter-products">
-          <button onClick={handleAll}>All</button>
-          <Button text={"Cat"} onClickAdd={handleCat} />
-          <Button text={"Dog"} onClickAdd={handleDog} />
-          <Button text={"Bird"} onClickAdd={handleBird} />
-          <Button text={"Rodent"} onClickAdd={handleRodent} />
+          <button className="fbuttons" onClick={handleAll}>
+            All
+          </button>
+          <Button text={"Cat"} classN={"fbuttons"} onClickAdd={handleCat} />
+          <Button text={"Dog"} classN={"fbuttons"} onClickAdd={handleDog} />
+          <Button text={"Bird"} classN={"fbuttons"} onClickAdd={handleBird} />
+          <Button
+            text={"Rodent"}
+            classN={"fbuttons"}
+            onClickAdd={handleRodent}
+          />
         </div>
         <h2> Available Products </h2>
         <div className="small-container">

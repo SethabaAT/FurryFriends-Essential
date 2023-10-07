@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 import { getDiscountedProducts } from "../Service/service";
 
 const banner = "/images/display/bannerImg.png";
-const fishImg = "/images/display/fish-category.png";
+const fishImg = "/images/display/bird.jpg";
 const dogImg = "/images/display/dog-category.png";
 const catImg = "/images/display/cat-category.png";
-const catIcon = "images/display/cat-icon.png";
+const catIcon = "images/display/rabbit.jpg";
 
 export const Home = () => {
   const [discountedProducts, setDiscounted] = useState([]);
@@ -66,7 +66,7 @@ export const Home = () => {
           <h2>Featured Categories</h2>
           <div className="small-container">
             <div className="card category">
-              <div className="card-contents">
+              <div className="support-icon-image">
               <Link to={`/Shop/${1}`}>
                   <img src={dogImg} alt="" />
                   </Link>
@@ -74,7 +74,7 @@ export const Home = () => {
             </div>
 
             <div className="card category">
-              <div className="card-contents">
+              <div className="support-icon-image">
                 {/* Cat */}
                 <Link to={`/shop/${2}`}>
                 
@@ -84,7 +84,7 @@ export const Home = () => {
             </div>
 
             <div className="card category">
-              <div className="card-contents">
+              <div className="support-icon-image">
                 {/* bird */}
               <Link to={`/shop/${3}`}>
                   <img src={fishImg} alt="" />
@@ -93,7 +93,7 @@ export const Home = () => {
             </div>
 
             <div className="card category">
-              <div className="card-contents">
+              <div className="support-icon-image">
                 {/* rodent */}
                 <Link to={`/shop/${4}`}>
                   <img src={catIcon} alt="" />

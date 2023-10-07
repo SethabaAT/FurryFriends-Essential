@@ -15,10 +15,3 @@
     flex-grow: 1;
 }
 
-.checkout-button {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-}

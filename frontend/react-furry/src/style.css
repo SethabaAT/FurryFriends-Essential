@@ -1,28 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Readex+Pro:wght@200;400;600;700&display=swap');
 
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Readex+Pro:wght@200;400;600;700&display=swap');
 
-
-*{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-body{
-    
-    /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
-    font-family: "Readex Pro", sans-serif;
+body {
+
+  /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+  font-family: "Readex Pro", sans-serif;
 }
 
-header h4{
-    padding:5px;
-    display: inline-block;
+header h4 {
+  padding: 5px;
+  display: inline-block;
 }
-header ul li a:hover{
 
-    color: brown;
+header ul li a:hover {
+
+  color: brown;
 
 }
+
 /* button{
     background-color: #FFC631;
     text-decoration-color:1E1F20 ;
@@ -43,38 +44,42 @@ header ul li a:hover{
 } */
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 16px;
-    width: 100%;
-    border-radius: 1rem;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    padding-top: 5px;
-    margin: 2rem auto;
-    margin-top: 0;
-    background-color: #FFE6A7;
-    height: 70vh;
-}
-#Right {
-    width: 40%;
-    float: right;
-}
-#Left {
-    width: 40%; 
-    height: 100%;   
-    float: left;
-    text-align: left;
-    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 16px;
+  width: 100%;
+  border-radius: 1rem;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  padding-top: 5px;
+  margin: 2rem auto;
+  margin-top: 0;
+  background-color: #FFE6A7;
+  height: 70vh;
 }
 
-#Left img{
-    height: 90%;
+#Right {
+  width: 40%;
+  float: right;
 }
-h3{
-    font-size: 2rem;
-} 
+
+#Left {
+  width: 40%;
+  height: 100%;
+  float: left;
+  text-align: left;
+
+}
+
+#Left img {
+  height: 90%;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
 /* .search-bar form {
     display: flex; 
     padding-bottom: 100px; 
@@ -99,269 +104,395 @@ h3{
 
 
 
-  .cntnr{
-    /* max-width: 1100px; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    margin-top: 20px;
-    padding: 0 30px;
-    
-  }
+.cntnr {
 
-  .cards{
-    /* background-color: #D9D9D9; */
-    border-radius: 1rem;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 16px;
-  }
-  .cards .cntnr{
-      display: flex;
-      flex-direction: column;
-  }
-
-
-  
- .cntnr  h2{   
-    text-align: center;    
-    height: 20px;   
-  }
-
-  .small-container{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    column-gap: 5px;
-  }
-
-  .card
-{
-    flex:1;
-    flex-basis: 23.0784%;
-    max-width: 18%;
-    max-height: 18%;   
-    /* border-radius: 10px; */
-    /* background: #d9d9d9; */
-    margin: 20px 10px;
-    border: 2px solid #FFE6A7;
-   
-    padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 0 30px;
 
 }
 
-.card:hover{
-    box-shadow:  0 3px 5px rgba(0,0,0,.6);
-    transition:  0.3s ease;
+.cards {
+
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 16px;
 }
 
-.card .card-contents, .category .card-contents{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    }
+.cards .cntnr {
+  display: flex;
+  flex-direction: column;
+}
 
 
 
- .card .card-contents a img{
-    max-width: 300px;
-    max-height: 200px;     
-     
- } 
+.cntnr h2 {
+  text-align: center;
+  height: 20px;
+}
 
- .card .card-contents a img:hover{
-    transition:  0.3s ease;
- }
- .category{    
-    border-radius: 50%;
-    width:100px;
-    height:100px;
-    
-    } 
+.small-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 5px;
+}
+
+.card {
+  flex: 1;
+  flex-basis: 23.0784%;
+  max-width: 18%;
+  max-height: 18%;
+  /* border-radius: 10px; */
+  /* background: #d9d9d9; */
+  margin: 20px 10px;
+  border: 2px solid #FFE6A7;
+
+  padding: 15px 20px;
+
+}
+
+.card:hover {
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .6);
+  transition: 0.3s ease;
+}
+
+.card .card-contents,
+.category .card-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.card .card-contents a img {
+  max-width: 300px;
+  max-height: 200px;
+
+}
+
+.card .card-contents a img:hover {
+  transition: 0.3s ease;
+}
+
+.category {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+
+}
 
 .category .card-contents a {
-    text-decoration: none;
-    color: #2d2c2c;
- }
-
- .category .card-contents a h3{
-    text-align: center;
-    } 
-    
-.category .card-contents a img{
-    
-    max-width: 150%;
-    max-height: 150%;
-    
-    /* border-radius: 100%; */
-    object-fit: cover;
- }
-
- .price{
-    font-size: large;
-    font-weight: 500;
- }
-
- .discount .price{
-    color: rgb(228, 48, 48);
- }
-
- .price .prev{
-    font-size: medium;
-    color:#504e4e;
-    margin-left: 5px;
- }
-
-footer{
-    margin-top: 50px;    
+  text-decoration: none;
+  color: #2d2c2c;
 }
 
-footer .cntnr .small-container{
-    display: flex;
-    justify-content: flex-start;
+.category .card-contents a h3 {
+  text-align: center;
 }
 
-.small-container .footer{
-    max-width: 320px;
-    box-shadow: none;
-    background-color: #FFE6A7;
-    line-height: 30px;
-   
+.category .card-contents a img {
+
+  max-width: 150%;
+  max-height: 150%;
+
+  object-fit: cover;
 }
 
-.footer h4{
-    margin-bottom: 10px;
+.price {
+  font-size: large;
+  font-weight: 500;
 }
 
-.icon{
-    color:#2d2c2c;
-    font-size: large;
-    margin-right: 5px;
+.discount .price {
+  color: rgb(228, 48, 48);
 }
 
-.icon:hover{
-    color:  brown;
+.price .prev {
+  font-size: medium;
+  color: #504e4e;
+  margin-left: 5px;
+}
+
+footer {
+  margin-top: 50px;
+}
+
+footer .cntnr .small-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.small-container .footer {
+  max-width: 320px;
+  box-shadow: none;
+  background-color: #FFE6A7;
+  line-height: 30px;
+
+}
+
+.footer h4 {
+  margin-bottom: 10px;
+}
+
+.icon {
+  color: #2d2c2c;
+  font-size: large;
+  margin-right: 5px;
+}
+
+.icon:hover {
+  color: brown;
 }
 
 @media only screen and (max-width: 750px) {
-    .category{    
-        border-radius: 50%;
-       width: 40%;
-       height: 40%;
-    
-     }
-    
-}
+  .category {
+    border-radius: 50%;
+    width: 40%;
+    height: 40%;
 
-  /* css code for login page*/
-  input{
-	height: 30px;
-	border-radius: 1rem;
-	padding-left:1rem;
-	}
-  .Back_LG{
-    display:block;
-    justify-content: center;
-    align-items: center;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 16px;
-    width: 300px;
-    height: 250px;
-    border-radius: 1rem;
-    padding:30px 5px 5px 25px; 
-    margin:  auto;
-    background-color: #D9D9D9;
-    } 
-
-    p a{
-    text-decoration:none ;
-    color: brown;
-    text-shadow: #FFC631 ;
-    }
-
-    
-
-    /* The Product's Page Css Code*/ 
-    /* Idea is  to have 5 for each pet and I need about 20 products */
-    /*Question is are we only selling food items or anyting related to pets?*/
-
-    /*sign-up*/
-   
-.sign-up{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin: 100px auto;
-        padding: 20px 15px;
-        max-width:25em;
-        min-height: 20em;
-        background: #403d3d;
-        border-radius: 1rem;
-        color: #fff;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 16px;
+  }
 
 }
 
-.sign-up h1{
-    font-size: 32px;
-    text-align: center;
-    margin-bottom: 20px;
-    border-bottom: 5px solid #f0b930;
-    border-radius: 10px;
-    border-width: 50%;
+/* css code for login page*/
+input {
+  height: 30px;
+  border-radius: 1rem;
+  padding-left: 1rem;
 }
 
-.form-group{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
+.Back_LG {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 16px;
+  width: 300px;
+  height: 250px;
+  border-radius: 1rem;
+  padding: 30px 5px 5px 25px;
+  margin: auto;
+  background-color: #D9D9D9;
 }
 
-.form-group label{
-    font-size: 16px;
-    font-weight: 600;
-    padding-bottom: 8px;
+p a {
+  text-decoration: none;
+  color: brown;
+  text-shadow: #FFC631;
 }
 
-.form-group input{
-    outline: none;
-    border: 1.5px solid ;
-    background:#e0e0e0;
-    border-radius: 4px;
-    min-width: 350px;
-    height: 44px;
+
+
+/* The Product's Page Css Code*/
+/* Idea is  to have 5 for each pet and I need about 20 products */
+/*Question is are we only selling food items or anyting related to pets?*/
+
+/*sign-up*/
+
+.sign-up {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 100px auto;
+  padding: 20px 15px;
+  max-width: 25em;
+  min-height: 20em;
+  background: #403d3d;
+  border-radius: 1rem;
+  color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 16px;
+
 }
 
-.form-group select{
-    outline: none;
-    border: 1.5px solid ;
-    background:#e0e0e0;
-    border-radius: 4px;
-    min-width: 350px;
-    height: 44px;
+.sign-up h1 {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 5px solid #f0b930;
+  border-radius: 10px;
+  border-width: 50%;
 }
 
-.form-group input:focus{
-    background-color: #fff;
-    border: 1px solid #f0b930;
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
 }
 
-.frm-btn{
-    background-color:#f0b930;
-    font-weight: 500;
-    border-radius: 4px;
-    min-width: 350px;
-    height: 44px;
-    text-transform: uppercase;
+.form-group label {
+  font-size: 16px;
+  font-weight: 600;
+  padding-bottom: 8px;
+}
+
+.form-group input {
+  outline: none;
+  border: 1.5px solid;
+  background: #e0e0e0;
+  border-radius: 4px;
+  min-width: 350px;
+  height: 44px;
+}
+
+.form-group select {
+  outline: none;
+  border: 1.5px solid;
+  background: #e0e0e0;
+  border-radius: 4px;
+  min-width: 350px;
+  height: 44px;
+}
+
+.form-group input:focus {
+  background-color: #fff;
+  border: 1px solid #f0b930;
+}
+
+.frm-btn {
+  background-color: #f0b930;
+  font-weight: 500;
+  border-radius: 4px;
+  min-width: 350px;
+  height: 44px;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.unAuth {
+  display: flex;
+  justify-content: center;
+  /* Horizontally center */
+  align-items: center;
+  /* Vertically center */
+  height: 50vh;
+  color: red;
+
+  .admin {
+    background-color: navajowhite;
+    padding-top: 20px;
+    height: 800px;
+  }
+
+  .admin h3 {
+    font-size: larger;
+    padding-left: 30px
+  }
+
+  /*filtering buttons in the products page*/
+  .fbuttons {
+    background-color: #FFC631;
+    text-decoration-color: 1E1F20;
+    border-radius: 45px;
+    height: 2.3rem;
+    width: 100px;
+    top: 4.3%;
     cursor: pointer;
-    margin-bottom: 5px;
+    margin: 20px, 10px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
-.unAuth{
-    display: flex;
-  justify-content: center; /* Horizontally center */
-  align-items: center; /* Vertically center */
-  height: 50vh; 
-  color:red;  
-         
+
+footer {
+  background-color: #333;
+
+  padding: 20px;
+}
+
+
+footer h4 {
+  font-size: 18px;
+}
+
+.social_icons {
+  padding-top: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.social_icon {
+  flex: 1;
+  text-align: right;
+  margin-left: 10px;
+}
+
+.Footer_Title {
+  text-align: center;
+  color: white;
+}
+
+
+
+.main_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+
+.footer_card {
+  flex: 1;
+  background-color: #D9D9D9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+  max-height: 11rem;
+}
+
+.footer_card h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.footer_card p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.no-bullets {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+
+.no-bullets li {
+  margin-bottom: 5px;
+}
+
+.footer_card a {
+  text-decoration: none;
+  color: #000;
+}
+
+.fbuttons{
+  background-color: #FFC631;
+  text-decoration-color:1E1F20 ;
+  border-radius: 45px;
+  height: 2.3rem;
+  width:100px;
+  top:4.3%;
+  cursor: pointer;
+}
+
+.support-icon-image{
+  display: flex;  
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  background: none;
+  align-items: flex-start;
+}
+
+.support-icon-image img{
+  width: 100%;
+  height: 100%;
 }
