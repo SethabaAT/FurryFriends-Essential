@@ -87,12 +87,7 @@ export const ShoppingCart = () => {
                 return <CartItem data={product} key={product.id} />;
               }
             })
-          : // cartItems.forEach((element) => {
-            //   if (element.product_id === product.id) {
-            //     //display the products in the cart
-            //     return <CartItem data={product} key={product.id} />;
-            //   }
-            // });
+          : 
             null}
       </div>
 
