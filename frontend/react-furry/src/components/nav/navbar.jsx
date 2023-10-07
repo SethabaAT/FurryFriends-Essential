@@ -23,7 +23,7 @@ const DefaultUserMenu =
             <Link to="/">HOME</Link>
         </li>
         <li>
-            <a href="#">ABOUT</a>
+            <a href="/about">ABOUT</a>
         </li>
         <li>
             <Link to="/Shop">SHOP</Link>

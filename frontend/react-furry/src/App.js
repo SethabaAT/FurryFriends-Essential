@@ -15,6 +15,10 @@ import {UpdateProduct} from "./pages/admin/updateProducts";
 import {Admin} from "./pages/admin/admin";
 import {ItemDetails} from "./pages/Shop/itemDetails/itemDetails";
 import {Switch} from "@mui/material";
+import { Invoice } from "./pages/Shop/Invoice"; 
+import  Payment  from "./pages/Shop/Payment"; 
+import  {About}  from "./pages/admin/about"; 
+
 
 const App = () => {
 
@@ -35,12 +39,14 @@ const App = () => {
                         <Route path="/removeProducts" element={< RemoveProducts />}/>
                         <Route path="/addProducts" element={< AddProducts />}/>
                         <Route path="/updateProducts" element={< UpdateProduct />}/>
-
+                        <Route path="/Invoice" element={< Invoice />}/>
+                        <Route path="/Payment" element={< Payment />}/>
                         <Route path="/register" element={< Register />}/>
 
                         <Route path="/shop" element={< Shop />}/>
                         <Route path="/ItemDetails/:id" element={< ItemDetails />}/>
                         <Route path="/ShoppingCart" element={< ShoppingCart />}/>
+                        <Route path="/about" element={< About />}/>
                     </Routes>
 
                     <Footer/>

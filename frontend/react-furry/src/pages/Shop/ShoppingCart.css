@@ -1,7 +1,12 @@
 .checkout-button {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
+    
+        background-color: #FFC631;
+        text-decoration-color:black ;
+        border-radius: 45px;
+        height: 2.3rem;
+        width:150px;
+        top:4.3%;
+        cursor: pointer;
+       
+
 }

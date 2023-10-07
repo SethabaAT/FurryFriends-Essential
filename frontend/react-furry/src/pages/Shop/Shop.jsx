@@ -2,6 +2,8 @@ import React, {useContext, useState, useEffect} from 'react'
 import {Card} from '../../components/card'
 import {Button} from '../../components/button'
 import {getProductByCategory} from '../../Service/service'
+import '../../style.css'
+
 
 import PRODUCTS from
 '../products/productsData'
@@ -132,11 +134,11 @@ const activeFilterBtn ={
 
     return ( <> 
     < div className = "cntnr" > <div className='filter-products'>
-        <button onClick={handleAll} style={activeFilterBtn}>All</button>
-        <Button text={"Cat"} onClickAdd={handleCat}/>
-        <Button text={"Dog"} onClickAdd={handleDog}/>
-        <Button text={"Bird"} onClickAdd={handleBird}/>
-        <Button text={"Rodent"} onClickAdd={handleRodent}/>
+        <button className="fbuttons" onClick={handleAll} >All</button>
+        <Button text={"Cat"} classN={"fbuttons"} onClickAdd={handleCat}/>
+        <Button text={"Dog"} classN={"fbuttons"} onClickAdd={handleDog}/>
+        <Button text={"Bird"} classN={"fbuttons"} onClickAdd={handleBird}/>
+        <Button text={"Rodent"} classN={"fbuttons"} onClickAdd={handleRodent}/>
     </div> 
         <h2> Available Products </h2>
         <div className="small-container">
