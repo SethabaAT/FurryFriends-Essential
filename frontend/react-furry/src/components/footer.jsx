@@ -1,10 +1,14 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import {React , useContext} from 'react'
+import {ShopContext} from "../../src/context/shop-context"
 
 
 export const Footer = () => {
+
+    const { userType } = useContext(ShopContext);
   return (
     // <!-- add footer -->
+    <>
+    {userType === -1}
     <footer>
         <div className="cntnr">
             <div className="small-container">
@@ -31,5 +35,7 @@ export const Footer = () => {
             </div>
         </div>
     </footer>
+
+    </>
   )
 }

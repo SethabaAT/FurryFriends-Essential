@@ -26,6 +26,7 @@ const adminMenu = (
   </>
 );
 
+<<<<<<< HEAD
 const DefaultUserMenu = (
   <>
     <li>
@@ -44,6 +45,23 @@ const DefaultUserMenu = (
     </li>
   </>
 );
+=======
+const DefaultUserMenu = 
+    (<>
+        <li>
+            <Link to="/">HOME</Link>
+        </li>
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        <li>
+            <Link to="/Shop">SHOP</Link>
+        </li>
+        <li>
+            <Link to="/ShoppingCart"><GiShoppingCart size={22}/></Link>
+        </li>
+    </>);
+>>>>>>> newb
 
 const userMenu = (
   <>
