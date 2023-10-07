@@ -21,9 +21,6 @@ import { Admin } from "./pages/admin/admin";
 import { ItemDetails } from "./pages/Shop/itemDetails/itemDetails";
 
 const App = () => {
-
-    
-
   return (
     <div className="App">
       <ShopContextProvider>
@@ -37,8 +34,7 @@ const App = () => {
 
             <Route path="/admin" element={<Admin />} />
 
-            
-            <Route path="/removeProducts" element={  <RemoveProducts /> }/>
+            <Route path="/removeProducts" element={<RemoveProducts />} />
             <Route path="/addProducts" element={<AddProducts />} />
             <Route path="/updateProducts" element={<UpdateProduct />} />
 
