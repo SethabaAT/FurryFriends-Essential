@@ -29,7 +29,7 @@ export const Card = (props) => {
         <h5>{name}</h5>
 
         <p className="price">
-          R {price > discount ? discount : price}{" "}
+          R {price > discount ? discount : price}
           {price > discount ? (
             <span className="prev">
               <del>R {price}</del>

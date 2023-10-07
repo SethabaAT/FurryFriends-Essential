@@ -64,43 +64,7 @@ export const UpdateProduct = () => {
     }
   };
 
-  // const handleNameChange = (e) => {
-
-  //   const { name, value } = e.target;
-
-  //   setProductToUpdate(> ({ ...[name]: name }));
-  // };
-
-  // const handlePriceChange = (e) => {
-  //   const { price, value } = e.target;
-  //   console.log("price changed");
-  //   setProductToUpdate(> ({ ...[price]: parseFloat(value) }));
-  // };
-  // const handleImageChange = (e) => {
-  //   const { image, value } = e.target;
-  //   console.log("Image changed");
-  //   setProductToUpdate({ ...[image]: value });
-  // };
-  // const handleDescChange = (e) => {
-  //   const { Description, value } = e.target;
-  //   setProductToUpdate({ ...[Description]: value });
-  // };
-  // const handleQtyChange = (e) => {
-  //   const { qty, value } = e.target;
-  //   setProductToUpdate({ ...[qty]: parseInt(value) });
-  // };
-
-  // const handleCategoryChange = (e) => {
-  //   const { categoryid, value } = e.target;
-  //   console.log("Cate Id changed");
-  //   setProductToUpdate({ ...prodToUpdate, [categoryid]: parseInt(value) });
-  // };
-
-  // const handleDiscountChange = (e) => {
-  //   const { discount, value } = e.target;
-  //   setProductToUpdate({ ...prodToUpdate, [discount]: value });
-  // };
-
+  
   return (
     <>
       {token === null && userType !== 1 ? (

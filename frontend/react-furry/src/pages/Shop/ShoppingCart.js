@@ -8,7 +8,7 @@ import { postItemsInCart, getCartItems } from "../../Service/service";
 import { useNavigate } from "react-router-dom";
 
 export const ShoppingCart = () => {
-  const { isLoggedIn, clearCart, token } = useContext(ShopContext);
+  const { isLoggedIn,  token, cartState } = useContext(ShopContext);
   const [cartItems, setCartItems] = useState([]);
   //const totAmount = getTotCartAmount();
 
@@ -37,7 +37,7 @@ export const ShoppingCart = () => {
         const res = await postItemsInCart(cartItemList, token);
 
         //clear the cart
-        clearCart();
+      
 
         //afterwards,  generate the invoice from here:
       } catch (error) {
@@ -65,15 +65,15 @@ export const ShoppingCart = () => {
     };
 
     fetchCartItems();
-  }, []);
+  }, [CartItem,cartState]);
 
   return (
     <div className="cart">
-      {/* cartItems !== null ? (
+      { cartItems !== null ? (
           <div>
             <h1>Your Cart Items</h1>
           </div>
-        ) : null} */}
+        ) : null} 
 
       <div className="cart-items">
         {cartItems !== null
@@ -84,7 +84,8 @@ export const ShoppingCart = () => {
 
               if (matches) {
                 console.log("matches");
-                return <CartItem data={product} key={product.id} />;
+                totAmount += (product.price === product.discount ? product.price * matches.qty : product.discount * matches.qty)
+                return <CartItem data={product} pqty={matches.qty}  key={product.id} />;
               }
             })
           : 
@@ -94,7 +95,7 @@ export const ShoppingCart = () => {
       {/* if the total amount is greater than 0, display subtotal */}
       {cartItems !== null ? (
         <div className="checkout">
-          <p>Subtotal: R {totAmount}</p>
+          <p>Subtotal: R {totAmount.toFixed(2)}</p>
           <button onClick={() => navigate("/Shop")}>Continue Shopping</button>
           <button className="checkout-button" onClick={handleCheckOut}>
             Checkout

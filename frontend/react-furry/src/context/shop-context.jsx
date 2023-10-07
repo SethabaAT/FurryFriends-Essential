@@ -19,6 +19,7 @@ const getDefaultCart = () => {
 export const ShopContextProvider = (props) => {
   // const [cartItems, setCartItems] = useState(getDefaultCart());
   const [cartItems, setCartItems] = useState([]);
+  const [cartState, setCartState] = useState(false);
 
   const [shouldRedirect, setShouldRedirect] = useState(false);
 
@@ -28,6 +29,7 @@ export const ShopContextProvider = (props) => {
   //login status
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userType, setUserType] = useState(-1);
+  
 
   /*useEffect(() => {
     const fetchCartItems = async () => {
@@ -42,6 +44,10 @@ export const ShopContextProvider = (props) => {
 
     fetchCartItems();
   }, [cartItems]);*/
+
+  const toggleCartState = () =>{
+    setCartState((prev) => !prev);
+  }
 
   //a fuction for adding an item to cart
   const add_To_Cart = async (itemId) => {
@@ -109,15 +115,15 @@ export const ShopContextProvider = (props) => {
   //context value for outside access
   const contextValue = {
     cartItems,
+    cartState,
+    toggleCartState,
     isLoggedIn,
     setIsLoggedIn,
     token,
     setToken,
     userType,
     setUserType,
-    add_To_Cart,
-    remove_From_Cart,
-    updateCartItemCount,
+    
     getTotCartAmount,
     clearCart,
     shouldRedirect,
