@@ -1,14 +1,27 @@
+<<<<<<< HEAD
+import {React , useContext} from 'react'
+import {ShopContext} from "../../src/context/shop-context"
+=======
 import { Link } from 'react-router-dom';
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faTwitter, } from '@fortawesome/free-brands-svg-icons';
 import { faHome, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 
+>>>>>>> 66d23e0484d94bc8edf5770b17cff98aeb8507ae
 
 
 export const Footer = () => {
+
+    const { userType } = useContext(ShopContext);
   return (
     // <!-- add footer -->
+<<<<<<< HEAD
+    <>
+    {userType === -1}
+    <footer>
+        <div className="cntnr">
+=======
         <footer>
 
           <div>
@@ -61,6 +74,7 @@ export const Footer = () => {
 
 /**
  * <div className="cntnr">
+>>>>>>> 66d23e0484d94bc8edf5770b17cff98aeb8507ae
             <div className="small-container">
                 <div className="card footer">
                     <h4>Company Info</h4>
@@ -81,6 +95,17 @@ export const Footer = () => {
 
                     /* <a href=''><FontAwesomeIcon icon="fa-brands fa-facebook icon" /></a> */
                     
+<<<<<<< HEAD
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    </>
+  )
+}
+=======
                     //</div>
                     //</div>
                 //</div>
+>>>>>>> 66d23e0484d94bc8edf5770b17cff98aeb8507ae

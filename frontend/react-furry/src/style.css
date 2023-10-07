@@ -356,6 +356,7 @@ footer .cntnr .small-container{
     margin-bottom: 5px;
 }
 
+<<<<<<< HEAD
 .unAuth{
     display: flex;
   justify-content: center; /* Horizontally center */
@@ -363,6 +364,35 @@ footer .cntnr .small-container{
   height: 50vh; 
   color:red;  
          
+<<<<<<< HEAD
+=======
+.admin{
+    background-color:navajowhite ;
+    padding-top: 20px;
+    height: 800px;
+}
+
+.admin h3{
+    font-size: larger;
+    padding-left :30px
+
+}
+
+/*filtering buttons in the products page*/
+.fbuttons{
+    background-color: #FFC631;
+    text-decoration-color:1E1F20 ;
+    border-radius: 45px;
+    height: 2.3rem;
+    width:100px;
+    top:4.3%;
+    cursor: pointer;
+    margin:20px,10px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+>>>>>>> newb
+}
+=======
 }
 
 
@@ -437,3 +467,4 @@ footer {
     text-decoration: none;
     color: #000;
   }
+>>>>>>> 66d23e0484d94bc8edf5770b17cff98aeb8507ae

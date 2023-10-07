@@ -5,6 +5,7 @@ import { ShopContext } from "../../context/shop-context";
 import "./ShoppingCart.css";
 import { postItemsInCart } from "../../Service/service";
 
+
 import { useNavigate } from "react-router-dom";
 
 export const ShoppingCart = () => {
@@ -38,7 +39,9 @@ export const ShoppingCart = () => {
 
         //clear the cart
         clearCart();
-        
+        // redirect to payment page
+        navigate("/Payment")
+
         //afterwards,  generate the invoice from here:
       } catch (error) {
         console.log("Error sending cartItems list " + error);
@@ -48,7 +51,9 @@ export const ShoppingCart = () => {
       console.log("not loggedin");
       navigate("/login");
     }
+
   };
+
 
   return (
     <div className="cart">
@@ -72,7 +77,7 @@ export const ShoppingCart = () => {
       {totAmount > 0 ? (
         <div className="checkout">
           <p>Subtotal: R {totAmount}</p>
-          <button onClick={() => navigate("/Shop")}>Continue Shopping</button>
+          <button className="checkout-button" onClick={() => navigate("/Shop")}>Continue Shopping</button>
           <button className="checkout-button" onClick={handleCheckOut}>
             Checkout
           </button>
