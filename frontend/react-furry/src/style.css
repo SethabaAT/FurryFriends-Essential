@@ -471,3 +471,13 @@ footer h4 {
   text-decoration: none;
   color: #000;
 }
+
+.fbuttons{
+  background-color: #FFC631;
+  text-decoration-color:1E1F20 ;
+  border-radius: 45px;
+  height: 2.3rem;
+  width:100px;
+  top:4.3%;
+  cursor: pointer;
+}
