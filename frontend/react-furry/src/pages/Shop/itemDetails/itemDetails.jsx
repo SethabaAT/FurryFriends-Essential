@@ -1,18 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
-import { getProduct,addProduct } from "../../../Service/service";
+import { getProduct, addToCart } from "../../../Service/service";
 import { ShopContext } from "../../../context/shop-context";
 
 import "./itemDetails.css";
 
 export const ItemDetails = () => {
+
   //get the id from the url parameter
   const { id } = useParams();
 
   const [product, setProduct] = useState([]);
   //shopping context
-  const { addToCart, cartItems } = useContext(ShopContext);
+  const { cartItems, toggleCartState,token } = useContext(ShopContext);
+
+
+  const handleAddToCart = async (id) =>{
+    try{
+      const res = await addToCart(id,token);
+      toggleCartState();
+      console.log(res);
+    }catch(er){
+      console.error("coulndt add to cart", er)
+    }
+  }
 
   const cartItemAmount = cartItems[id];
 
@@ -40,7 +52,7 @@ export const ItemDetails = () => {
         <h1>{product.name}</h1>
         <p className="product-description">{product.description}</p>
         <p className="product-price">R {product.price}</p>
-        <button className="add-to-cart-button" onClick={() => addToCart(id)}>
+        <button className="add-to-cart-button" onClick={() => handleAddToCart(id)}>
           Add to Cart {cartItemAmount > 0 && <>({cartItemAmount})</>}{" "}
         </button>
       </div>

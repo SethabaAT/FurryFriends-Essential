@@ -7,11 +7,12 @@ import { addToCart } from "../Service/service";
 export const Card = (props) => {
   const { id, name, price, image, discount } = props.data;
   //useContext is a hook that comes with react
-  const { token } = useContext(ShopContext);
+  const { token, toggleCartState } = useContext(ShopContext);
 
   const handleAddToCart = async (id) =>{
     try{
       const res = await addToCart(id,token);
+      toggleCartState();
       console.log(res);
     }catch(er){
       console.error("coulndt add to cart", er)

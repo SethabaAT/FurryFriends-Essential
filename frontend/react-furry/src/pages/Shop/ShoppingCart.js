@@ -8,7 +8,7 @@ import { postItemsInCart, getCartItems } from "../../Service/service";
 import { useNavigate } from "react-router-dom";
 
 export const ShoppingCart = () => {
-  const { isLoggedIn,  token, cartState } = useContext(ShopContext);
+  const { isLoggedIn, token, cartState } = useContext(ShopContext);
   const [cartItems, setCartItems] = useState([]);
   //const totAmount = getTotCartAmount();
 
@@ -37,7 +37,6 @@ export const ShoppingCart = () => {
         const res = await postItemsInCart(cartItemList, token);
 
         //clear the cart
-      
 
         //afterwards,  generate the invoice from here:
       } catch (error) {
@@ -65,17 +64,22 @@ export const ShoppingCart = () => {
     };
 
     fetchCartItems();
-  }, [CartItem,cartState]);
+  }, [CartItem, cartState]);
 
   return (
-    <div className="cart">
-      { cartItems !== null ? (
-          <div>
-            <h1>Your Cart Items</h1>
-          </div>
-        ) : null} 
+    <>
+      {" "}
+      {token === null ? (
+        navigate("/Login")
+      ) : (
+        <div className="cart">
+          {cartItems !== null ? (
+            <div>
+              <h1>Your Cart Items</h1>
+            </div>
+          ) : null}
 
-      <div className="cart-items">
+          {/* <div className="cart-items">
         {cartItems !== null
           ? PRODUCTS.map((product) => {
               const matches = cartItems.find(
@@ -90,21 +94,70 @@ export const ShoppingCart = () => {
             })
           : 
             null}
-      </div>
+      </div>  */}
+        {cartItems !== null ?
+          <div>
+            <table className="cart-table">
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Product</th>
+                  <th>Remove</th>
+                  <th>Quantity</th>
+                  <th>Unit Price</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cartItems !== null
+                  ? PRODUCTS.map((product) => {
+                      const matches = cartItems.find(
+                        (itm) => itm.product_id === product.id
+                      );
 
-      {/* if the total amount is greater than 0, display subtotal */}
-      {cartItems !== null ? (
-        <div className="checkout">
-          <p>Subtotal: R {totAmount.toFixed(2)}</p>
-          <button onClick={() => navigate("/Shop")}>Continue Shopping</button>
-          <button className="checkout-button" onClick={handleCheckOut}>
-            Checkout
-          </button>
+                      if (matches) {
+                        console.log("matches");
+                        totAmount +=
+                          product.price === product.discount
+                            ? product.price * matches.qty
+                            : product.discount * matches.qty;
+                        return (
+                          <CartItem
+                            data={product}
+                            pqty={matches.qty}
+                            key={product.id}
+                          />
+                        );
+                      }
+                    })
+                  : null}
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colSpan="3">Total:</td>
+                  <td>R {totAmount.toFixed(2)}</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div> : null}
+
+          {/* if the total amount is greater than 0, display subtotal */}
+          {cartItems !== null ? (
+            <div className="checkout">
+              <p>Subtotal: R {totAmount.toFixed(2)}</p>
+              <button onClick={() => navigate("/Shop")}>
+                Continue Shopping
+              </button>
+              <button className="checkout-button" onClick={handleCheckOut}>
+                Checkout
+              </button>
+            </div>
+          ) : (
+            //else display: your cart is empty
+            <h1>Your Cart is Empty</h1>
+          )}
         </div>
-      ) : (
-        //else display: your cart is empty
-        <h1>Your Cart is Empty</h1>
       )}
-    </div>
+    </>
   );
 };
