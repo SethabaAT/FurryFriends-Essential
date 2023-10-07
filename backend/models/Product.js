@@ -97,22 +97,6 @@ class Product {
 
     return productRows;
   }
-
-  // Find category by name
-  static async findCategoryIdByName(name) {
-    let sql = "SELECT * FROM category WHERE name=?";
-    const [[category] = []] = await db.execute(sql, [name]);
-
-    return category.id;
-  }
-
-  //find category name by id
-  static async findCategoryNameById(id) {
-    let sql = "SELECT * FROM category WHERE id=?";
-    const [[category] = []] = await db.execute(sql, [id]);
-
-    return category.name;
-  }
 }
 
 export default Product;
