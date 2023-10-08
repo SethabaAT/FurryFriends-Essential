@@ -51,13 +51,13 @@ const userMenu = (
       <Link to="/">HOME</Link>
     </li>
     <li>
-      <a href="#">ABOUT</a>
+      <a href="/about">ABOUT</a>
     </li>
     <li>
       <Link to="/Shop">SHOP</Link>
     </li>
     <li>
-      <Link to="">ORDERS</Link>
+      <Link to="/Orders">ORDERS</Link>
     </li>
     <li>
       <Link to="/ShoppingCart">

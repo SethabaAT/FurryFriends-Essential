@@ -1,16 +1,26 @@
 import React, { useState, useEffect, useContext } from "react";
 import { usePDF } from "react-to-pdf";
 import { ShopContext } from "../../context/shop-context";
-import { getProductByCategory, getInvoice } from "../../Service/service";
 import "./Invoice.css";
 
 export const Invoice = () => {
   const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
-  const [products, setProducts] = useState([]);
   const { invoiceList, fullNames } = useContext(ShopContext);
+  const [subTotal, setSubTotal] = useState(0);
+  const freeShippingThreshold = 200;
+  const VATRate = 0.15;
 
-  console.log(invoiceList);
-  useEffect(() => {}, []);
+  useEffect(() => {
+    // Calculate subtotal when invoiceList or its items change
+    const total = invoiceList.reduce((acc, product) => {
+      return acc + product.product_qty * product.product_price;
+    }, 0);
+    setSubTotal(total);
+  }, [invoiceList]);
+
+  const shippingFee = subTotal >= freeShippingThreshold ? 0 : 50;
+  const VAT = subTotal * VATRate;
+  const total = subTotal + shippingFee;
 
   return (
     <>
@@ -27,7 +37,7 @@ export const Invoice = () => {
         </div>
         <div className="billing-info">
           <p>Bill To:</p>
-          <p>${fullNames}</p>
+          <p>{fullNames}</p>
           <p>456 Binary Syndicate Street</p>
           <p>Pretoria, 2092</p>
         </div>
@@ -51,7 +61,21 @@ export const Invoice = () => {
             ))}
           </tbody>
         </table>
-        {/* ... Total and footer sections ... */}
+        <div className="total-section">
+          <p>Sub Total: R{subTotal.toFixed(2)}</p>
+        </div>
+        <div className="total-section">
+          <p>VAT (15%): R{VAT.toFixed(2)}</p>
+        </div>
+        <div className="total-section">
+          <p>Shipping: R{shippingFee.toFixed(2)}</p>
+        </div>
+        <div className="total-section">
+          <p>Total: R{total.toFixed(2)}</p>
+        </div>
+        <div className="invoice-footer">
+          <p>Thank you for your business!</p>
+        </div>
       </div>
       <button className="btn" onClick={() => toPDF()}>
         Download Invoice PDF
