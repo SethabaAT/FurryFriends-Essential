@@ -94,10 +94,10 @@ export const Login = () => {
             />
           </div>
 
-          <p>
-            <b>
-              <Link to="/register">Create New Account</Link>
-            </b>
+          <p className="newAcc">
+            
+              <Link to="/register">Create New Account..</Link>
+           
           </p>
         </form>
       </div>

@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 export const RemoveProducts = () => {
   const [id, setProdId] = useState("");
 
-  const { userType, token } = useContext(ShopContext);
+  const { userType, token , toggleProductsState } = useContext(ShopContext);
 
   const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ export const RemoveProducts = () => {
 
       // const token = localStorage.getItem("token");
       const response = await removeProduct(parseInt(id), token);
-
+      toggleProductsState();
       console.log(response.message);
       // Go to admin
       if (response.message === "Product Deleted") {

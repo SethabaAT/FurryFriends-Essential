@@ -1,23 +1,29 @@
 import { React, useContext } from "react";
 import { Button } from "./button";
 import { ShopContext } from "../context/shop-context";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { addToCart } from "../Service/service";
+
 
 export const Card = (props) => {
   const { id, name, price, image, discount } = props.data;
   //useContext is a hook that comes with react
   const { token, toggleCartState } = useContext(ShopContext);
+  const navigate = useNavigate();
 
-  const handleAddToCart = async (id) =>{
-    try{
-      const res = await addToCart(id,token);
-      toggleCartState();
-      console.log(res);
-    }catch(er){
-      console.error("coulndt add to cart", er)
+  const handleAddToCart = async (id) => {
+    try {
+      if (token !== null) {
+        const res = await addToCart(id, token);
+        toggleCartState();
+        
+      } else {
+        navigate("/Login");
+      }
+    } catch (er) {
+      console.error("couldn't add to cart", er);
     }
-  }
+  };
 
   //const cartItemAmount = cartItems[id];
 
@@ -25,7 +31,7 @@ export const Card = (props) => {
     <div className="card">
       <div className="card-contents">
         <Link to={`/ItemDetails/${id}`}>
-          <img src={image} alt="Item image" />
+          <img src={image} className="zoom-image" alt="Item image" />
         </Link>
         <h5>{name}</h5>
 
@@ -44,6 +50,7 @@ export const Card = (props) => {
           onClickAdd={() => handleAddToCart(id)}
         />
       </div>
+    
     </div>
   );
 };

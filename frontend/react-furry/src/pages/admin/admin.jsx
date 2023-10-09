@@ -1,5 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
-import { Button } from "../../components/button";
+
 import { React, useContext } from "react";
 import { ShopContext } from "../../context/shop-context";
 import { PowerBIEmbed } from "powerbi-client-react";

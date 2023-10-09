@@ -9,7 +9,7 @@ export const UpdateProduct = () => {
   //states
   const [id, setProdId] = useState("");
   const navigate = useNavigate();
-  const { userType, token } = useContext(ShopContext);
+  const { userType, token ,toggleProductsState } = useContext(ShopContext);
 
   const [temp_name, setName] = useState("");
   const [temp_price, setPrice] = useState("");
@@ -35,7 +35,7 @@ export const UpdateProduct = () => {
 
       console.log("prod to update: " , ProductToUpdate);
       const response = await updateProduct(ProductToUpdate,parseInt(id), token);
-      
+      toggleProductsState();
       // Go to admin
       if (response.message === "Product updated successfully") {
         console.log(response.message);

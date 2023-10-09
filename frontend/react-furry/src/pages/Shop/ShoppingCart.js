@@ -17,6 +17,7 @@ export const ShoppingCart = () => {
 
   let cartItemList = [];
   let totAmount = 0;
+  let vat = 0 , subtot = 0;
 
   const handleCheckOut = async () => {
     if (isLoggedIn === true) {
@@ -36,9 +37,7 @@ export const ShoppingCart = () => {
       try {
         //send the items to the database
         const res = await postItemsInCart(cartItemList, token);
-
-    
-      
+        
         // redirect to payment page
         navigate("/Payment")
 
@@ -77,10 +76,12 @@ export const ShoppingCart = () => {
       {token === null ? (
         navigate("/Login")
       ) : (
+        <div className="shopping-cart">
         <div className="cart">
-          {cartItems !== null ? (
+          {cartItems.length >0 ? (
+            console.log(cartItems.length),
             <div>
-              <h1>Your Cart Items</h1>
+              <h2>Your Cart Items</h2>
             </div>
           ) : null}
 
@@ -100,7 +101,7 @@ export const ShoppingCart = () => {
           : 
             null}
       </div>  */}
-        {cartItems !== null ?
+        {cartItems.length >0  ?
           <div>
             <table className="cart-table">
               <thead>
@@ -114,7 +115,7 @@ export const ShoppingCart = () => {
                 </tr>
               </thead>
               <tbody>
-                {cartItems !== null
+                {cartItems.length >0 
                   ? PRODUCTS.map((product) => {
                       const matches = cartItems.find(
                         (itm) => itm.product_id === product.id
@@ -126,6 +127,9 @@ export const ShoppingCart = () => {
                           product.price === product.discount
                             ? product.price * matches.qty
                             : product.discount * matches.qty;
+                        vat = totAmount * 0.15;
+                        subtot = totAmount -vat;
+
                         return (
                           <CartItem
                             data={product}
@@ -139,6 +143,14 @@ export const ShoppingCart = () => {
               </tbody>
               <tfoot>
                 <tr>
+                  <td colSpan="3">Subtotal:</td>
+                  <td>R {subtot.toFixed(2)}</td>
+                  </tr>
+                  <tr>
+                  <td colSpan="3">VAT(15%):</td>
+                  <td>R {vat.toFixed(2)}</td>
+                  </tr>
+                  <tr>
                   <td colSpan="3">Total:</td>
                   <td>R {totAmount.toFixed(2)}</td>
                 </tr>
@@ -147,20 +159,27 @@ export const ShoppingCart = () => {
           </div> : null}
 
           {/* if the total amount is greater than 0, display subtotal */}
-          {cartItems !== null ? (
+          {cartItems.length > 0  ? (
             <div className="checkout">
-              <p>Subtotal: R {totAmount.toFixed(2)}</p>
-              <button onClick={() => navigate("/Shop")}>
-                Continue Shopping
+              
+              <button className="fbuttons cart-btn" onClick={() => navigate("/Shop")}>
+                Add Items
               </button>
-              <button className="checkout-button" onClick={handleCheckOut}>
+              <button className="fbuttons cart-btn" onClick={handleCheckOut}>
                 Checkout
               </button>
             </div>
+            
           ) : (
             //else display: your cart is empty
-            <h1>Your Cart is Empty</h1>
+            <div className="emptyCart">
+            <h2>Your Cart is Empty</h2>
+            <button className="fbuttons" onClick={() => navigate("/Shop")}>
+                Add Items
+              </button>
+              </div>
           )}
+          </div>
         </div>
       )}
     </>

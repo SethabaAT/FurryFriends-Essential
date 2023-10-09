@@ -16,7 +16,7 @@ export const AddProducts = () => {
 
   const navigate = useNavigate();
 
-  const { userType, token, shouldRedirect, setShouldRedirect } =
+  const { userType, token,toggleProductsState, setShouldRedirect } =
     useContext(ShopContext);
 
   const handleRedirect = () => {
@@ -46,6 +46,8 @@ export const AddProducts = () => {
 
       const response = await addProduct(prod, token);
 
+      //toggle to update
+      toggleProductsState();
       // Go to admin
       if (response.message === "Product Added") {
         console.log(response.message);
@@ -67,7 +69,7 @@ export const AddProducts = () => {
             <h1 className="headingSignUp">Add New Product</h1>
             <form onSubmit={handleAddNewProduct}>
               <div className="form-group">
-                <label for="productName">Product Name</label>
+                <label htmlFor="productName">Product Name</label>
                 <input
                   type="text"
                   id="name"

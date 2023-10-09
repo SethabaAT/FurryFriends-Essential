@@ -41,7 +41,7 @@ export const Home = () => {
             <br />
           </h3>
           <Link to="/shop">
-            <Button text={"SHOP NOW"} classN={"def-btn"} />{" "}
+            <Button text={"SHOP NOW"} classN={"def-btn shpNow"} />{" "}
           </Link>
         </div>
         <div id="Left">
@@ -65,38 +65,38 @@ export const Home = () => {
         <div className="cntnr">
           <h2>Featured Categories</h2>
           <div className="small-container">
-            <div className="card category">
+            <div className="card_sup category">
               <div className="support-icon-image">
               <Link to={`/Shop/${1}`}>
-                  <img src={dogImg} alt="" />
+                  <img src={dogImg} className="zoom-image" alt="" />
                   </Link>
               </div>
             </div>
 
-            <div className="card category">
+            <div className="card_sup category">
               <div className="support-icon-image">
                 {/* Cat */}
                 <Link to={`/shop/${2}`}>
                 
-                  <img src={catImg} alt="" />
+                  <img src={catImg} className="zoom-image" alt="" />
                 </Link>
               </div>
             </div>
 
-            <div className="card category">
+            <div className="card_sup category">
               <div className="support-icon-image">
                 {/* bird */}
               <Link to={`/shop/${3}`}>
-                  <img src={fishImg} alt="" />
+                  <img src={fishImg} className="zoom-image" alt="" />
                 </Link>
               </div>
             </div>
 
-            <div className="card category">
+            <div className="card_sup category">
               <div className="support-icon-image">
                 {/* rodent */}
                 <Link to={`/shop/${4}`}>
-                  <img src={catIcon} alt="" />
+                  <img src={catIcon} className="zoom-image" alt="" />
                 </Link>
               </div>
             </div>
