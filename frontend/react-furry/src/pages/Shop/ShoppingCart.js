@@ -150,10 +150,10 @@ export const ShoppingCart = () => {
           {cartItems !== null ? (
             <div className="checkout">
               <p>Subtotal: R {totAmount.toFixed(2)}</p>
-              <button onClick={() => navigate("/Shop")}>
+              <button className="btns" onClick={() => navigate("/Shop")}>
                 Continue Shopping
               </button>
-              <button className="checkout-button" onClick={handleCheckOut}>
+              <button className="btns" onClick={handleCheckOut}>
                 Checkout
               </button>
             </div>

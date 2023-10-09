@@ -77,7 +77,7 @@ export const Invoice = () => {
           <p>Thank you for your business!</p>
         </div>
       </div>
-      <button className="btn" onClick={() => toPDF()}>
+      <button className="btns" onClick={() => toPDF()}>
         Download Invoice PDF
       </button>
     </>

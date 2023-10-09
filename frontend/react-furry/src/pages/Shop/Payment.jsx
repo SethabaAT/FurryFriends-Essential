@@ -123,7 +123,7 @@ export const Payment = () => {
           </div>
         </div>
 
-        <button type="submit" className="btn">
+        <button type="submit" className="btns">
           SUBMIT PAYMENT
         </button>
       </form>

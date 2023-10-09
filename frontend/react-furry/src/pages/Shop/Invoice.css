@@ -56,3 +56,16 @@ body {
     text-align: center;
     margin-top: 20px;
 }
+
+/*buttons styling*/
+.btns {
+    background-color: #FFC631;
+    text-decoration-color:black ;
+    border-radius: 45px;
+    height: 2.3rem;
+    width:140px;
+    top:4.3%;
+    cursor: pointer;
+    margin-top: 2%;
+   
+}
