@@ -270,3 +270,29 @@ export const getCartItems = async (token) => {
 
   return res.json();
 };
+
+// Get invoices
+export const getInvoices = async (token) => {
+  const res = await fetch(`${API_URL}/getInvoices`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+
+  return res.json();
+};
+
+// Get invoice
+export const getInvoice = async (id, token) => {
+  const res = await fetch(`${API_URL}/getInvoice/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+
+  return res.json();
+};

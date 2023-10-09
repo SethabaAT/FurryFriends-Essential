@@ -13,6 +13,7 @@ export const ShopContextProvider = (props) => {
   const [productsState, setProductState] = useState(false);
 
   const [shouldRedirect, setShouldRedirect] = useState(false);
+  const [invoiceList, setInvoiceList] = useState([]);
 
   //the token
   const [token, setToken] = useState(null);
@@ -20,6 +21,7 @@ export const ShopContextProvider = (props) => {
   //login status
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userType, setUserType] = useState(-1);
+  const [fullNames, setFullNames] = useState("");
 
   const toggleCartState = () => {
     setCartState((prev) => !prev);
@@ -41,10 +43,14 @@ export const ShopContextProvider = (props) => {
     setToken,
     userType,
     setUserType,
+    fullNames,
+    setFullNames,
     totCart,
     changeTotCart,
     shouldRedirect,
     setShouldRedirect,
+    invoiceList,
+    setInvoiceList,
   };
 
   return (

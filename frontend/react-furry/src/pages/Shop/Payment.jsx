@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './payment.css'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./payment.css";
 
-function Payment() { 
-    const navigate = useNavigate();
+export const Payment = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    card: '',
-    expiry: '',
-    cvv: '',
-    paymentMethod: 'credit-card',
-    billingAddress: '',
-    shippingAddress: '',
+    name: "",
+    email: "",
+    card: "",
+    expiry: "",
+    cvv: "",
+    paymentMethod: "credit-card",
+    billingAddress: "",
+    shippingAddress: "",
   });
 
   const handleInputChange = (e) => {
@@ -26,7 +26,7 @@ function Payment() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here, e.g., send data to a server.
-    console.log('Form data submitted:', formData);
+    console.log("Form data submitted:", formData);
     return navigate("/Invoice");
   };
 
@@ -123,12 +123,10 @@ function Payment() {
           </div>
         </div>
 
-        <button type="submit" className="btn">
+        <button type="submit" className="btns">
           SUBMIT PAYMENT
         </button>
       </form>
     </div>
   );
-}
-
-export default Payment;
+};

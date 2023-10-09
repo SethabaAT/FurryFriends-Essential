@@ -19,11 +19,12 @@ import { AddProducts } from "./pages/admin/addProducts";
 import { UpdateProduct } from "./pages/admin/updateProducts";
 import { Admin } from "./pages/admin/admin";
 import { ItemDetails } from "./pages/Shop/itemDetails/itemDetails";
+import { Invoice } from "../src/pages/Shop/Invoice";
+import { Payment } from "../src/pages/Shop/Payment";
+import { About } from "./pages/admin/about";
+import { Orders } from "./pages/Shop/Invoices/Orders";
 
 const App = () => {
-
-    
-
   return (
     <div className="App">
       <ShopContextProvider>
@@ -37,12 +38,16 @@ const App = () => {
 
             <Route path="/admin" element={<Admin />} />
 
-            
-            <Route path="/removeProducts" element={  <RemoveProducts /> }/>
+            <Route path="/removeProducts" element={<RemoveProducts />} />
             <Route path="/addProducts" element={<AddProducts />} />
             <Route path="/updateProducts" element={<UpdateProduct />} />
 
             <Route path="/register" element={<Register />} />
+
+            <Route path="/Invoice" element={<Invoice />} />
+            <Route path="/Payment" element={<Payment />} />
+            <Route path="/Orders" element={<Orders />} />
+            <Route path="/about" element={<About />} />
 
             <Route path="/shop/:s_categ" element={<Shop />} />
             <Route path="/shop" element={<Shop />} />

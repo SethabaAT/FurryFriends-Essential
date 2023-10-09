@@ -68,7 +68,7 @@ export const Navbar = () => {
         <Link to="/Shop">SHOP</Link>
       </li>
       <li>
-        <Link to="">ORDERS</Link>
+        <Link to="/Orders">ORDERS</Link>
       </li>
       <li>
         <Link to="/ShoppingCart">

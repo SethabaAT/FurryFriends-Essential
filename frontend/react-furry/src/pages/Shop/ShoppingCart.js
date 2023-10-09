@@ -3,13 +3,13 @@ import PRODUCTS from "../products/productsData";
 import { CartItem } from "./itemDetails/CartItem";
 import { ShopContext } from "../../context/shop-context";
 import "./ShoppingCart.css";
-import { postItemsInCart, getCartItems } from "../../Service/service";
-
+import { getCartItems, createOrder } from "../../Service/service";
 
 import { useNavigate } from "react-router-dom";
 
 export const ShoppingCart = () => {
-  const { isLoggedIn, token, cartState } = useContext(ShopContext);
+  const { isLoggedIn, token, cartState, setInvoiceList } =
+    useContext(ShopContext);
   const [cartItems, setCartItems] = useState([]);
   //const totAmount = getTotCartAmount();
 
@@ -36,10 +36,12 @@ export const ShoppingCart = () => {
 
       try {
         //send the items to the database
-        const res = await postItemsInCart(cartItemList, token);
-        
+        const res = await createOrder(token);
+        setInvoiceList(res.invoice);
+        console.log(res.invoice);
+
         // redirect to payment page
-        navigate("/Payment")
+        navigate("/Payment");
 
         //afterwards,  generate the invoice from here:
       } catch (error) {
@@ -50,7 +52,6 @@ export const ShoppingCart = () => {
       console.log("not loggedin");
       navigate("/login");
     }
-
   };
 
   useEffect(() => {
