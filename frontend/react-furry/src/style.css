@@ -536,3 +536,11 @@ footer h4 {
   width: 90%;
 }
 
+.qtyInput label input {
+  width: 60px; 
+    padding: 8px;
+    font-size: 16px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+}
