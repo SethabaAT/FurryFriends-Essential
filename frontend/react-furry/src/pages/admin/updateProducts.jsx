@@ -9,7 +9,7 @@ export const UpdateProduct = () => {
   //states
   const [id, setProdId] = useState("");
   const navigate = useNavigate();
-  const { userType, token ,toggleProductsState } = useContext(ShopContext);
+  const { userType, token, toggleProductsState } = useContext(ShopContext);
 
   const [temp_name, setName] = useState("");
   const [temp_price, setPrice] = useState("");
@@ -33,8 +33,8 @@ export const UpdateProduct = () => {
         qty: parseInt(temp_quantity),
       };
 
-      console.log("prod to update: " , ProductToUpdate);
-      const response = await updateProduct(ProductToUpdate,parseInt(id), token);
+      console.log("prod to update: ", ProductToUpdate);
+      const response = await updateProduct(ProductToUpdate, parseInt(id), token);
       toggleProductsState();
       // Go to admin
       if (response.message === "Product updated successfully") {
@@ -64,7 +64,7 @@ export const UpdateProduct = () => {
     }
   };
 
-  
+
   return (
     <>
       {token === null && userType !== 1 ? (

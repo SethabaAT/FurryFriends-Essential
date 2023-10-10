@@ -54,50 +54,6 @@ export const Payment = () => {
           required
         />
 
-        <label htmlFor="card">Credit Card:</label>
-        <input
-          type="number"
-          id="card"
-          name="card"
-          value={formData.card}
-          onChange={handleInputChange}
-          required
-        />
-
-        <label htmlFor="expiry">Expiry Date:</label>
-        <input
-          type="text"
-          id="expiry"
-          name="expiry"
-          value={formData.expiry}
-          onChange={handleInputChange}
-          placeholder="MM/YY"
-          required
-        />
-
-        <label htmlFor="cvv">CVV:</label>
-        <input
-          type="text"
-          id="cvv"
-          name="cvv"
-          value={formData.cvv}
-          onChange={handleInputChange}
-          maxLength="3"
-          required
-        />
-
-        <label htmlFor="payment-method">Payment Method:</label>
-        <select
-          id="payment-method"
-          name="paymentMethod"
-          value={formData.paymentMethod}
-          onChange={handleInputChange}
-        >
-          <option value="credit-card">Credit Card</option>
-          <option value="paypal">PayPal</option>
-          <option value="other">Other</option>
-        </select>
-
         <div className="card-group">
           <div className="Bcard">
             <label htmlFor="billing-address">Billing Address:</label>

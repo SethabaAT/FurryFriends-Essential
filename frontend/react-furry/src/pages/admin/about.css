@@ -78,15 +78,19 @@ h1 {
     font-size: 3rem;
     font-family: 'Pacifico', cursive;
     border-bottom: 2px solid #fff;
-    letter-spacing: 2px; /* Add letter spacing for a playful effect */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add text shadow for depth */
+    letter-spacing: 2px;
+    /* Add letter spacing for a playful effect */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    /* Add text shadow for depth */
 }
 
 .company-description {
     font-size: 1.2rem;
     margin: 20px 0;
-    line-height: 1.6; /* Increase line height for readability */
-    text-align: justify; /* Justify text for a clean look */
+    line-height: 1.6;
+    /* Increase line height for readability */
+    text-align: justify;
+    /* Justify text for a clean look */
 }
 
 .cta-button {
@@ -99,6 +103,7 @@ h1 {
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s ease;
+    text-decoration: none;
 }
 
 .cta-button:hover {
@@ -123,8 +128,10 @@ h1 {
 }
 
 .image-frame {
-    width: 500px; /* Set the width to your preferred size */
-    height: auto; /* Let the height adjust proportionally */
+    width: 500px;
+    /* Set the width to your preferred size */
+    height: auto;
+    /* Let the height adjust proportionally */
     border: 5px solid #d9d9d9;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);

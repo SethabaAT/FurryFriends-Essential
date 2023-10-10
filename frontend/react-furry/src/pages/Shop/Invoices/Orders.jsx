@@ -110,8 +110,8 @@ export const Orders = () => {
                       <tr key={index}>
                         <td>{product.product_name}</td>
                         <td>{product.product_qty}</td>
-                        <td>{product.product_price}</td>
-                        <td>{product.total}</td>
+                        <td>{product.product_price.toFixed(2)}</td>
+                        <td>{product.total.toFixed(2)}</td>
                       </tr>
                     ))}
                   </tbody>

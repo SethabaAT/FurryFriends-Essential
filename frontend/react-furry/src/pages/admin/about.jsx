@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './about.css';
 
 export const About = () => {
@@ -12,7 +13,7 @@ export const About = () => {
           for dogs, cats, rabbits, birds, and more. Our mission is to ensure
           that your furry companions lead a joyful and healthy life.
         </p>
-        <button className="cta-button">Discover Our Products</button>
+        <button className="cta-button"><Link to="/Shop" className='cta-button'>Discover Our Products </Link></button>
       </div>
       <div className="right-section">
         <div className="zigzag-images">
