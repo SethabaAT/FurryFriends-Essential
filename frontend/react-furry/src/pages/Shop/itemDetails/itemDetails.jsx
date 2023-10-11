@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getProduct, addToCart } from "../../../Service/service";
 import { ShopContext } from "../../../context/shop-context";
 
@@ -10,7 +10,6 @@ export const ItemDetails = () => {
 
   //get the id from the url parameter
   const { id } = useParams();
-  const navigate = useNavigate();
 
   const [product, setProduct] = useState([]);
   //shopping context
@@ -26,14 +25,6 @@ export const ItemDetails = () => {
       console.error("coulndt add to cart", er)
     }
   }
-
-  const handleUpdate = () => {
-    navigate(`/updateProducts`);
-  };
-
-  const handleDelete = () => {
-    navigate(`/removeProducts`);
-  };
 
   const cartItemAmount = cartItems[id];
 
@@ -63,11 +54,16 @@ export const ItemDetails = () => {
         <p className="product-price">R {product.price}</p>
         {userType === 1 && (
           <div className="admin-buttons">
-            <button className="remove-button" onClick={handleDelete}>Remove</button>
-            <button className="update-button" onClick={handleUpdate}>Update</button>
+            <Link to={`/removeProducts/${id}`}>
+              <button className="remove-button" >Remove</button>
+            </Link>
+
+            <Link to={`/updateProducts/${id}`}>
+              <button className="update-button" >Update</button>
+            </Link>
           </div>
         )}
-        {userType === 0 && (
+        {userType !== 1 && (
           <button className="add-to-cart-button" onClick={() => handleAddToCart(id)}>
             Add to Cart {cartItemAmount > 0 && <>({cartItemAmount})</>}
           </button>

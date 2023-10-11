@@ -1,13 +1,14 @@
-import { React, useState, useContext } from "react";
+import { React, useState, useContext, useEffect } from "react";
 import { getProduct, updateProduct } from "../../Service/service";
 import { ShopContext } from "../../context/shop-context";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 export const UpdateProduct = () => {
   //states
-  const [id, setProdId] = useState("");
+  const { id } = useParams();
+  const [Id, setProdId] = useState("");
   const navigate = useNavigate();
   const { userType, token, toggleProductsState } = useContext(ShopContext);
 
@@ -34,7 +35,7 @@ export const UpdateProduct = () => {
       };
 
       console.log("prod to update: ", ProductToUpdate);
-      const response = await updateProduct(ProductToUpdate, parseInt(id), token);
+      const response = await updateProduct(ProductToUpdate, parseInt(Id), token);
       toggleProductsState();
       // Go to admin
       if (response.message === "Product updated successfully") {
@@ -49,7 +50,7 @@ export const UpdateProduct = () => {
   const handleGetProduct = async () => {
     try {
       //get the product id from the input
-      const dbProduct = await getProduct(parseInt(id));
+      const dbProduct = await getProduct(parseInt(Id));
       console.log(dbProduct);
 
       setName(dbProduct.name);
@@ -64,6 +65,17 @@ export const UpdateProduct = () => {
     }
   };
 
+  useEffect(() => {
+    if (id != "") {
+      setProdId(parseInt(id));
+    }
+  }, [id]);
+
+  useEffect(() => {
+    if (Id !== "") {
+      handleGetProduct();
+    }
+  }, [Id]);
 
   return (
     <>
@@ -80,10 +92,10 @@ export const UpdateProduct = () => {
               <label htmlFor="">Product ID</label>
               <input
                 type="number"
-                id="id"
+                id="Id"
                 placeholder="Product ID:"
-                value={id}
-                name="id"
+                value={Id}
+                name="Id"
                 onChange={(e) => setProdId(e.target.value)}
                 required
               />

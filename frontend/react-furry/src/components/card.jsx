@@ -8,7 +8,7 @@ import { addToCart } from "../Service/service";
 export const Card = (props) => {
   const { id, name, price, image, discount } = props.data;
   //useContext is a hook that comes with react
-  const { token, toggleCartState } = useContext(ShopContext);
+  const { token, toggleCartState, userType } = useContext(ShopContext);
   const navigate = useNavigate();
 
   const handleAddToCart = async (id) => {
@@ -16,7 +16,7 @@ export const Card = (props) => {
       if (token !== null) {
         const res = await addToCart(id, token);
         toggleCartState();
-        
+
       } else {
         navigate("/Login");
       }
@@ -43,14 +43,15 @@ export const Card = (props) => {
             </span>
           ) : null}{" "}
         </p>
-        <Button
-          text={"Add to cart"}
-          classN={"add-to-cart-button"}
-          // itemAmount={cartItemAmount > 0 && <>({cartItemAmount})</>}
-          onClickAdd={() => handleAddToCart(id)}
-        />
+        {userType !== 1 && (
+          <Button
+            text={"Add to cart"}
+            classN={"add-to-cart-button"}
+            onClickAdd={() => handleAddToCart(id)}
+          />
+        )}
       </div>
-    
+
     </div>
   );
 };
