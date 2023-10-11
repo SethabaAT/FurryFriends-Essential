@@ -152,6 +152,7 @@ h3 {
   margin: 20px 10px;
   border: 2px solid #FFE6A7;
   padding: 15px 30px;
+  position:relative;
 
 }
 
@@ -543,4 +544,28 @@ footer h4 {
     border: 1px solid #ccc;
     border-radius: 4px;
     text-align: center;
+}
+
+.Sale{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    text-align: center;
+    z-index: 3;
+    color: #fff;
+    background-color: rgba(255, 0, 0, 0.601);
+    border-radius: 4px;
+    padding: 2px;
+    margin: 0;
+}
+
+.invoice-btn{
+  display: flex;
+ align-items: center;
+ align-content: center;
+ justify-content: center;
+}
+
+.b-w{
+  width: 400px;
 }

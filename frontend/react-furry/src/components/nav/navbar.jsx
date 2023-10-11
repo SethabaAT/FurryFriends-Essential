@@ -62,7 +62,7 @@ export const Navbar = () => {
         <Link to="/">HOME</Link>
       </li>
       <li>
-        <a href="#">ABOUT</a>
+        <Link to="/About">ABOUT</Link>
       </li>
       <li>
         <Link to="/Shop">SHOP</Link>
@@ -106,7 +106,7 @@ export const Navbar = () => {
         <Link to="/">HOME</Link>
       </li>
       <li>
-        <a href="/about">ABOUT</a>
+        <Link to="/About">ABOUT</Link>
       </li>
       <li>
         <Link to="/Shop">SHOP</Link>
@@ -114,7 +114,6 @@ export const Navbar = () => {
       <li>
         <Link to="/ShoppingCart">
           <Badge badgeContent={"0"}>
-            {" "}
             <ShoppingCartIcon fontSize="16" />
           </Badge>
         </Link>
@@ -139,7 +138,7 @@ export const Navbar = () => {
       <Link to="/">
         <div className="nav-logo">
           <h4>
-            <span className="logo-1">Ferry</span>
+            <span className="logo-1">Furry</span>
             <span>Friends</span>
             Essentials
           </h4>

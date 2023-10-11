@@ -30,6 +30,9 @@ export const Card = (props) => {
   return (
     <div className="card">
       <div className="card-contents">
+       {price > discount ? <div className="Sale">
+          Furry Sale          
+        </div> : null}
         <Link to={`/ItemDetails/${id}`}>
           <img src={image} className="zoom-image" alt="Item image" />
         </Link>

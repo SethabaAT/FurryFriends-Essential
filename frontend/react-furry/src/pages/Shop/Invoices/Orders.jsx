@@ -16,6 +16,7 @@ export const Orders = () => {
   const [shippingFee, setShippingFee] = useState(0);
   const [VAT, setVAT] = useState(0);
   const [total, setTotal] = useState(0);
+  const [invoiceNumber, setInvoiceNum] = useState(null);
 
   // Fetch invoices from the backend when the component mounts
   useEffect(() => {
@@ -54,6 +55,7 @@ export const Orders = () => {
     try {
       const invoice = await getInvoice(invoiceId, token);
       setSelectedInvoice(invoice);
+      setInvoiceNum(invoiceId);
     } catch (error) {
       console.error("Error fetching individual invoice:", error);
     }
@@ -81,7 +83,7 @@ export const Orders = () => {
             <>
               <div className="invoice" ref={targetRef}>
                 <div className="invoice-header">
-                  <h1>Invoice</h1>
+                  <h1>Invoice #{invoiceNumber}</h1>
                 </div>
                 <div className="company-info">
                   <p>Furry Friends LTE</p>
@@ -132,9 +134,11 @@ export const Orders = () => {
                   <p>Thank you for your business!</p>
                 </div>
               </div>
-              <button className="btn" onClick={() => toPDF()}>
+              <div className="invoice-btn">
+              <button className="fbuttons b-w" onClick={() => toPDF()}>
                 Download Invoice PDF
               </button>
+              </div>
             </>
           )}
         </div>

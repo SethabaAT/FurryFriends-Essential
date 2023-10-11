@@ -101,7 +101,7 @@ export const CartItem = (props) => {
             </span>
           ) : null}
         </td>
-        <td>R {(price * props.pqty).toFixed(2)}</td>
+        <td>R { price > discount ? (discount * props.pqty).toFixed(2) :(price * props.pqty).toFixed(2)}</td>
       </tr>
     </>
   );
