@@ -111,6 +111,7 @@ export const getInvoice = async (req, res, next) => {
     // Get invoice datails for each product
     let invoice_details = [];
 
+    // note that we use dicount and not price
     for (const { name, qty, discount } of lines) {
       var invoice_line = {
         product_name: name,
@@ -173,6 +174,7 @@ const createInvoice = async (order_id, invoice_location, data) => {
     for (const { product_id, qty } of data) {
       let product = await Product.findById(product_id);
 
+      // Note that the lines are using dicount not price
       var invoice_line = {
         product_name: product.name,
         product_qty: qty,
