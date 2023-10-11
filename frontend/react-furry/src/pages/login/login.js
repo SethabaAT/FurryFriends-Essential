@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../../components/button";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +10,12 @@ export const Login = () => {
     useContext(ShopContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [DisplayAuthError, setAuthError] = useState(false);
+
+  useEffect(() =>{
+    setAuthError(false);
+  },[])
+
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -26,15 +32,11 @@ export const Login = () => {
         // Successful login, redirect to home
         console.log("Login Succesful");
 
-        //store the data in local storage for future use
-        // localStorage.setItem("user", JSON.stringify(response.user_type));
-        // localStorage.setItem("token", response.token);
-
         //store the token for the session
         setToken(response.token);
 
         setIsLoggedIn(true);
-
+       
         //set the userType
         setUserType(response.user_type);
         setFullNames(`${response.name} ${response.surname}`);
@@ -47,7 +49,9 @@ export const Login = () => {
           navigate("/Shop", { replace: true });
         }
       } else {
+
         console.error("Login was not successful:", response.statusText);
+        setAuthError(true);
         // Handle the case of unsuccessful login, e.g., show an error message
       }
     } catch (error) {
@@ -59,6 +63,7 @@ export const Login = () => {
   return (
     <div className="cntnr signup">
       <div className="sign-up">
+        
         <h1 className="headingSignUp">Sign In</h1>
         <form onSubmit={handleLogin}>
           <div className="form-group">
@@ -95,11 +100,13 @@ export const Login = () => {
               value="Sign-In"
             />
           </div>
-
+          {DisplayAuthError === true ? 
+        <div className="flash-err">
+          <p>Incorrect email or password.</p>
+        </div>
+        : null}
           <p className="newAcc">
-            
-              <Link to="/register">Create New Account..</Link>
-           
+            <Link to="/register">Create New Account..</Link>
           </p>
         </form>
       </div>
