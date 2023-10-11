@@ -111,12 +111,12 @@ export const getInvoice = async (req, res, next) => {
     // Get invoice datails for each product
     let invoice_details = [];
 
-    for (const { name, qty, price } of lines) {
+    for (const { name, qty, discount } of lines) {
       var invoice_line = {
         product_name: name,
         product_qty: qty,
-        product_price: price,
-        total: qty * price,
+        product_price: discount,
+        total: qty * discount,
       };
       invoice_details.push(invoice_line);
     }
@@ -176,8 +176,8 @@ const createInvoice = async (order_id, invoice_location, data) => {
       var invoice_line = {
         product_name: product.name,
         product_qty: qty,
-        product_price: product.price,
-        total: qty * product.price,
+        product_price: product.discount,
+        total: qty * product.discount,
       };
       invoice_details.push(invoice_line);
     }
