@@ -68,6 +68,9 @@ export const Navbar = () => {
         <Link to="/Shop">SHOP</Link>
       </li>
       <li>
+        <Link to="/Invoices">INVOICES</Link>
+      </li>
+      <li>
         <Link to="/Orders">ORDERS</Link>
       </li>
       <li>
@@ -161,8 +164,8 @@ export const Navbar = () => {
           {userType === 1
             ? adminMenu
             : userType === 0 && token !== null
-            ? userMenu
-            : DefaultUserMenu}
+              ? userMenu
+              : DefaultUserMenu}
 
           {token === null && userType === -1 ? (
             <li>

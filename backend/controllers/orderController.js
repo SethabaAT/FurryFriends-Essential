@@ -112,11 +112,13 @@ export const getInvoice = async (req, res, next) => {
     let invoice_details = [];
 
     // note that we use dicount and not price
-    for (const { name, qty, discount } of lines) {
+    for (const { id, name, qty, discount, image } of lines) {
       var invoice_line = {
+        product_id: id,
         product_name: name,
         product_qty: qty,
         product_price: discount,
+        product_image: image,
         total: qty * discount,
       };
       invoice_details.push(invoice_line);

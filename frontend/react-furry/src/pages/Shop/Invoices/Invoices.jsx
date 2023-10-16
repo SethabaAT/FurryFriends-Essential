@@ -2,9 +2,9 @@ import React, { useState, useEffect, useContext } from "react";
 import { getInvoices, getInvoice } from "../../../Service/service.js";
 import { ShopContext } from "../../../context/shop-context.jsx";
 import { usePDF } from "react-to-pdf";
-import "./Orders.css";
+import "./Invoices.css";
 
-export const Orders = () => {
+export const Invoices = () => {
   // Variables
   const [invoices, setInvoices] = useState([]);
   const [selectedInvoice, setSelectedInvoice] = useState(null);
@@ -74,7 +74,7 @@ export const Orders = () => {
               className="invoice-item"
               onClick={() => displayInvoiceDetails(invoice.id)}
             >
-              {`Order #${invoice.id}`}
+              {`Invoice #${invoice.id}`}
             </div>
           ))}
         </div>
@@ -135,9 +135,9 @@ export const Orders = () => {
                 </div>
               </div>
               <div className="invoice-btn">
-              <button className="fbuttons b-w" onClick={() => toPDF()}>
-                Download Invoice PDF
-              </button>
+                <button className="fbuttons b-w" onClick={() => toPDF()}>
+                  Download Invoice PDF
+                </button>
               </div>
             </>
           )}

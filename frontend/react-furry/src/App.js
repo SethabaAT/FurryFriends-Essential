@@ -22,7 +22,9 @@ import { ItemDetails } from "./pages/Shop/itemDetails/itemDetails";
 import { Invoice } from "../src/pages/Shop/Invoice";
 import { Payment } from "../src/pages/Shop/Payment";
 import { About } from "./pages/admin/about";
-import { Orders } from "./pages/Shop/Invoices/Orders";
+import { Invoices } from "./pages/Shop/Invoices/Invoices";
+import { Orders } from "./pages/Shop/Orders/Orders";
+import { Review } from "./pages/Shop/Review/Review";
 
 const App = () => {
   return (
@@ -48,7 +50,9 @@ const App = () => {
 
             <Route path="/Invoice" element={<Invoice />} />
             <Route path="/Payment" element={<Payment />} />
+            <Route path="/Invoices" element={<Invoices />} />
             <Route path="/Orders" element={<Orders />} />
+            <Route path="/Review/:id" element={<Review />} />
             <Route path="/about" element={<About />} />
 
             <Route path="/shop/:s_categ" element={<Shop />} />

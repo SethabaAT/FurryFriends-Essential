@@ -30,7 +30,7 @@ class Invoice {
 
   // Get Invoice lines
   static async getInvoiceLines(order_id) {
-    const sql = `SELECT product.name, product.discount, order_item.qty
+    const sql = `SELECT product.name, product.discount, product.image,product.id, order_item.qty
     FROM product
     INNER JOIN order_item ON product.id = order_item.product_id
     WHERE order_item.order_id = ?;`;
