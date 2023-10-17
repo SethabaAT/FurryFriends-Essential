@@ -308,3 +308,56 @@ export const getInvoice = async (id, token) => {
 
   return res.json();
 };
+
+// Add review
+export const addReview = async (id, message, token) => {
+  const res = await fetch(`${API_URL}/addReview/${id}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ message }),
+  });
+
+  return res.json();
+};
+
+// Get product reviews
+export const getProductReviews = async (id) => {
+  const res = await fetch(`${API_URL}/getProductReviews/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return res.json();
+};
+
+// Remove review
+export const removeReview = async (id, token) => {
+  const res = await fetch(`${API_URL}/removeReview/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+
+  return res.json();
+};
+
+// Update review
+export const updateReview = async (id, message, token) => {
+  const res = await fetch(`${API_URL}/updateReview/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ message }),
+  });
+
+  return res.json();
+};

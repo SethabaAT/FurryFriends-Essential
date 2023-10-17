@@ -93,3 +93,14 @@ body {
 .remove-button:hover {
     background-color: red;
 }
+
+.reviews {
+    padding: 10px;
+    width: 60%;
+    margin-left: 20%;
+    border: 1px solid #f0b930;
+}
+
+.message {
+    margin-left: 5%;
+}

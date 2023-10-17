@@ -97,7 +97,7 @@ p {
 .order-table {
     margin-left: 25%;
     width: 50%;
-    border: solid black;
+    border: 1px solid #f0b930;
     margin-top: 20px;
 }
 
