@@ -20,7 +20,7 @@ h1 {
 }
 
 /* Container for the main content */
-.invoice-container {
+.orders-container {
     display: flex;
     justify-content: space-between;
     max-width: 1200px;
@@ -31,7 +31,7 @@ h1 {
 }
 
 /* Styling for the invoice list */
-.invoice-list {
+.order-list {
     flex: 1;
     padding: 20px;
     background-color: #f9f9f9;
@@ -40,24 +40,29 @@ h1 {
     overflow-y: auto;
 }
 
-.invoice-item {
+.order-item {
     cursor: pointer;
     padding: 10px;
     border-bottom: 1px solid #ddd;
     transition: background-color 0.3s;
 }
 
-.invoice-item:hover {
+.order-item:hover {
     background-color: #e0e0e0;
 }
 
 /* Styling for the invoice details */
-.invoice-details {
+.order-details {
     flex: 2;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styles */
+.order-header {
+    text-align: center;
 }
 
 h2 {
@@ -98,14 +103,15 @@ p {
 .order-table {
     border: 2px solid #d35400;
     margin-top: 20px;
-    margin-left: 25%;
+    margin-left: 10%;
     background-color: #f9f9f9;
-    width: 50%;
+    width: 80%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .order-item-img {
     float: left;
+    margin: 10px;
 }
 
 .order-item-img:hover {

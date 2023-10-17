@@ -37,27 +37,27 @@ export const Orders = () => {
     };
 
     return (
-        <div className="invoices">
+        <div className="orders">
             <header>
                 <h1>Your Orders</h1>
             </header>
-            <div className="invoices-container">
-                <div className="invoice-list">
+            <div className="orders-container">
+                <div className="order-list">
                     {invoices.map((invoice) => (
                         <div
                             key={invoice.id}
-                            className="invoice-item"
+                            className="order-item"
                             onClick={() => displayInvoiceDetails(invoice.id)}
                         >
                             {`Order #${invoice.id}`}
                         </div>
                     ))}
                 </div>
-                <div className="invoice-details">
+                <div className="order-details">
                     {selectedInvoice && (
                         <>
 
-                            <div className="invoice-header">
+                            <div className="order-header">
                                 <h1>Order #{invoiceNumber}</h1>
                             </div>
 
