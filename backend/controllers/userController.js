@@ -16,6 +16,20 @@ export const register = async (req, res, next) => {
   }
 };
 
+// Register Manager
+export const registerManager = async (req, res, next) => {
+  try {
+    let { firstName, secondName, email, password } = req.body;
+    let user = new User(1, firstName, secondName, email, password, 1);
+    user = await user.save();
+    res.status(201).json({ message: "Manager Registered" });
+    console.log(user);
+  } catch (error) {
+    console.error("Error Registering Manager", error);
+    next(error);
+  }
+};
+
 // Login Controller
 export const login = async (req, res, next) => {
   try {

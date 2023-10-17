@@ -25,6 +25,7 @@ import { About } from "./pages/admin/about";
 import { Invoices } from "./pages/Shop/Invoices/Invoices";
 import { Orders } from "./pages/Shop/Orders/Orders";
 import { Review } from "./pages/Shop/Review/Review";
+import { RegisterManager } from "./pages/admin/RegisterManager";
 
 const App = () => {
   return (
@@ -40,6 +41,7 @@ const App = () => {
 
             <Route path="/admin" element={<Admin />} />
 
+            <Route path="/registerManager" element={<RegisterManager />} />
             <Route path="/removeProducts" element={<RemoveProducts />} />
             <Route path="/removeProducts/:id" element={<RemoveProducts />} />
             <Route path="/addProducts" element={<AddProducts />} />

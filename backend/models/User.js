@@ -19,7 +19,7 @@ class User {
 
     // Query for inseritn into the database
     let sql =
-      "INSERT INTO user(firstName, secondName, email, password) VALUES(?,?,?,?)";
+      "INSERT INTO user(firstName, secondName, email, password,user_type) VALUES(?,?,?,?,?)";
 
     await db
       .execute(sql, [
@@ -27,6 +27,7 @@ class User {
         this.secondName,
         this.email,
         hashedPassword,
+        this.user_type,
       ])
       .then((result) => {
         console.log("User Added");

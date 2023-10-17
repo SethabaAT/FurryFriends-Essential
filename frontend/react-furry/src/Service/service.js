@@ -15,6 +15,18 @@ export const register = async (userData) => {
   return data;
 };
 
+export const registerManager = async (userData) => {
+  const res = await fetch(`${API_URL}/registerManager`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userData), // Send the registration data as JSON
+  });
+  const data = await res.json();
+  return data;
+};
+
 /*  This is the function that does an api call
     You can put all api calls in one file "sevice if you want"
 */

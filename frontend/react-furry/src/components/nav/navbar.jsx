@@ -100,6 +100,9 @@ export const Navbar = () => {
       <li>
         <Link to="/removeProducts">DELETE</Link>
       </li>
+      <li>
+        <Link to="/registerManager">REGISTER MANAGER</Link>
+      </li>
     </>
   );
 
