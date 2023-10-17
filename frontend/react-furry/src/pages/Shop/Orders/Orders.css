@@ -94,11 +94,14 @@ p {
     border: #f0b930;
 }
 
+
 .order-table {
-    margin-left: 25%;
-    width: 50%;
-    border: 1px solid #f0b930;
+    border: 2px solid #d35400;
     margin-top: 20px;
+    margin-left: 25%;
+    background-color: #f9f9f9;
+    width: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .order-item-img {
@@ -106,7 +109,7 @@ p {
 }
 
 .order-item-img:hover {
-    border: solid #f0b930;
+    border: 1px solid #f0b930;
 }
 
 /* Responsive design for smaller screens */
